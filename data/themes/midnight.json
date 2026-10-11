@@ -1,0 +1,18 @@
+{
+  "name": "Medianoche",
+  "theme": {
+    "grid": "#1a2236",
+    "node_backdrop": "#141a2b",
+    "node_outline": "#05070d",
+    "node_selected": "#4fc3f7",
+    "wire": "#000000",
+    "wire_select": "#4fc3f7"
+  },
+  "widgets": {
+    "wcol_regular": {"inner": "#1d2540", "outline": "#2b3556", "text": "#dbe4ff"},
+    "wcol_menu": {"inner": "#222c4d"},
+    "wcol_numslider": {"item": "#3a5fa8"},
+    "wcol_option": {"inner_sel": "#3a7bd5"}
+  },
+  "extra": {"bg": "#0b0f1a", "grid_minor": "#0f1422", "title": "#eef2ff", "dim": "#6b7799"}
+}

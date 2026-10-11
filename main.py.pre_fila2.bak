@@ -1,0 +1,2381 @@
+"""Nodo Capture - replica visual (no funcional) de los nodos de Blender
+para sacar capturas en alta definicion (PNG a cualquier escala o SVG).
+Los datos (nodos, colores del tema, widgets, fuente Inter) vienen de data/,
+extraidos de tu propio Blender."""
+import sys
+import json
+import copy
+import math
+from pathlib import Path
+
+from PySide6.QtCore import Qt, QPointF, QRectF, QSize
+from PySide6.QtGui import (QColor, QPainter, QPen, QBrush, QFont, QPainterPath,
+                           QPainterPathStroker, QImage, QPolygonF, QCursor,
+                           QAction, QPalette, QFontDatabase, QConicalGradient,
+                           QRadialGradient, QLinearGradient)
+from PySide6.QtSvg import QSvgGenerator
+from PySide6.QtWidgets import (QApplication, QMainWindow, QGraphicsView, QGraphicsScene,
+                               QGraphicsItem, QGraphicsPathItem, QGraphicsEllipseItem,
+                               QComboBox, QSpinBox, QFileDialog, QDialog, QVBoxLayout,
+                               QLineEdit, QListWidget, QListWidgetItem, QInputDialog,
+                               QColorDialog, QMenu)
+
+DATA = Path(__file__).parent / "data"
+
+
+def load(name):
+    return json.loads((DATA / name).read_text(encoding="utf-8"))
+
+
+THEME = load("theme.json")
+WID = load("widgets.json")
+CATALOG = {"shader": load("shader_nodes.json"), "compositor": load("compositor_nodes.json")}
+WIDTH_LIMITS = load("width_limits.json") if (DATA / "width_limits.json").exists() else {}   # idname -> [ancho min, max] de Blender
+# Frame y Reroute son nodos de "layout": no vienen del exportador, se dibujan con clases propias
+LAYOUT_SPECS = [
+    {"idname": "NodeFrame", "label": "Frame", "width": 300.0, "inputs": [], "outputs": [], "props": []},
+    {"idname": "NodeReroute", "label": "Reroute", "width": 11.0,
+     "inputs": [{"name": "Input", "identifier": "Input", "type": "NodeSocketColor", "stype": "VALUE",
+                 "hide_value": True, "enabled": True, "default": None}],
+     "outputs": [{"name": "Output", "identifier": "Output", "type": "NodeSocketColor", "stype": "VALUE",
+                  "hide_value": False, "enabled": True, "default": None}],
+     "props": []},
+]
+for _m in CATALOG:
+    CATALOG[_m] = CATALOG[_m] + copy.deepcopy(LAYOUT_SPECS)
+
+
+# ------------------------------------------------------------------ estilo
+def col(v):
+    return QColor.fromRgbF(v[0], v[1], v[2], v[3] if len(v) > 3 else 1.0)
+
+
+def lin2s(c):
+    c = max(0.0, min(1.0, c))
+    return 12.92 * c if c <= 0.0031308 else 1.055 * c ** (1 / 2.4) - 0.055
+
+
+def s2lin(c):
+    return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+
+
+HEAD = {k: col(THEME[k]) for k in ("input_node", "output_node", "shader_node", "texture_node",
+                                   "converter_node", "vector_node", "filter_node", "color_node",
+                                   "matte_node", "distor_node", "group_node", "group_socket_node",
+                                   "frame_node")}
+BG = QColor("#1a1a1a")                      # fondo del Node Editor (tema de tu Blender)
+GRID_MINOR = QColor("#212121")
+GRID_MAJOR = col(THEME["grid"])
+BODY = col(THEME["node_backdrop"])
+OUTLINE = col(THEME["node_outline"])
+SEL = col(THEME["node_selected"])           # naranja de seleccion
+TXT = col(WID["wcol_regular"]["text"])
+TITLE = QColor("#eeeeee")
+DIM = QColor("#7d7d7d")
+FIELD = col(WID["wcol_regular"]["inner"])
+FIELD_LINE = col(WID["wcol_regular"]["outline"])
+MENU = col(WID["wcol_menu"]["inner"])
+MENU_ITEM = col(WID["wcol_menu"]["item"])   # color de la flechita de los menus
+SLIDER = col(WID["wcol_numslider"]["item"])
+CHECK_ON = col(WID["wcol_option"]["inner_sel"])
+WIRE = col(THEME["wire"])
+WIRE_SEL = col(THEME["wire_select"])
+SOCK = {"VALUE": "#a1a1a1", "INT": "#598c5c", "BOOLEAN": "#cca6d6", "VECTOR": "#6363c7",
+        "RGBA": "#c7c729", "SHADER": "#63c763", "STRING": "#71b2ff", "ROTATION": "#a64dc7",
+        "MATRIX": "#8c2b4f", "MENU": "#a1a1a1"}
+
+# medidas en px a escala 1 (unidad de widget de Blender = 20 px)
+HEADER, ROW, FH, GAP, PAD, R, SR = 20.0, 20.0, 20.0, 2.0, 10.0, 6.0, 5.0
+LINK_LINE, LINK_LINE_W = "#000000", 1.0   # borde de los cables (grosor a cada lado del hilo)
+SOCK_LINE, SOCK_LINE_W = "#000000", 1.0   # borde de los sockets (fino, como en Blender)
+RAD = 4.0   # esquinas de campos (roundness 0.4 del tema)
+CURVING = 5.0
+FIELD_LINE_W = 0.8   # grosor del borde de los campos (menus, numeros, casillas)
+NODE_LINE_W = 0.85   # grosor del borde del nodo (seleccionado: 2.0)
+IMG_TOP = 3.0        # aire sobre la fila selector/New/Open de los nodos de imagen
+IMGSEL_H = 28.5      # alto del bloque: IMG_TOP + 20 de botones + 5.5 de aire antes del primer menu
+MULTI_IMG_USERS = 3     # usuarios que Blender muestra en "Multiple Images.png" (el 3 junto al nombre)
+IMG_LOADED_H = 181.0    # alto real del nodo Image con imagen cargada (medido en tu Blender)
+IMG_SRC_ITEMS = [{"id": "FILE", "name": "Single Image"}, {"id": "SEQUENCE", "name": "Image Sequence"},
+                 {"id": "MOVIE", "name": "Movie"}, {"id": "GENERATED", "name": "Generated"},
+                 {"id": "VIEWER", "name": "Viewer"}, {"id": "TILED", "name": "UDIM Tiles"}]
+IMG_ALPHA_ITEMS = [{"id": "STRAIGHT", "name": "Straight"}, {"id": "PREMUL", "name": "Premultiplied"},
+                   {"id": "CHANNEL_PACKED", "name": "Channel Packed"}, {"id": "NONE", "name": "None"}]
+ENUM_TIGHT = {"ShaderNodeTexImage": 1.5, "ShaderNodeTexEnvironment": 1.5}   # menos aire entre menus (Blender: ~25 u de paso)
+TOP_SHIFT = {"ShaderNodeBsdfPrincipled": 2.6}   # sube la primera fila (la salida) de estos nodos
+INPUT_PULL = {"ShaderNodeMath": 2.0, "ShaderNodeVectorMath": 5.6, "ShaderNodeTexImage": 3.5, "ShaderNodeTexEnvironment": 3.5, "ShaderNodeBsdfPrincipled": 3.6}   # acerca las entradas al ultimo menu
+LINK_W = 3.5   # grosor del hilo del cable (antes 2.2); sube o baja este valor para ajustarlo
+# CURVING arriba = noodle_curving del tema (0 = cable recto, 10 = muy curvo); 5 es el valor de Blender
+LROW = 21.0   # fila de socket sin widget
+PANEL_GAP_HEAD = 4.5   # aire bajo la cabecera de un panel abierto (Blender lo deja mas holgado)
+PANEL_GAP_END = 3.0
+NUM_PAD_L, NUM_PAD_R = 15.0, 13.5
+MENU_DOWN = {"ShaderNodeMath": 2.0, "ShaderNodeVectorMath": 2.0}   # baja el primer menu de estos nodos (Blender lo deja ~2 u mas abajo); Clamp y entradas no se mueven
+BOOL_UP = 2.0   # sube la casilla (Clamp...) hacia el menu de arriba; la altura total del nodo no cambia   # margen del texto en los campos numericos (Blender los deja mas holgados que los menus)    # aire antes de la cabecera siguiente si el panel anterior esta abierto
+EROW = 26.5   # fila de menu desplegable (alto + espacio)
+BROW = 23.5   # fila de casilla (medida en el PDF: ~25 px entre menu y casilla)
+TIGHT_PAD = 1.8   # holgura final de los nodos que solo tienen salidas (Value, Light Path...)
+# nodos cuyos deslizadores van apilados sin hueco, con esquinas unidas (como en el PDF)
+STACKED = {"ShaderNodeTexSky", "ShaderNodeTexBrick"}
+AL = Qt.AlignLeft | Qt.AlignVCenter
+AR = Qt.AlignRight | Qt.AlignVCenter
+
+_FAMILY = None
+
+
+def font_family():
+    global _FAMILY
+    if _FAMILY is None:
+        _FAMILY = "Inter"
+        fid = QFontDatabase.addApplicationFont(str(DATA / "Inter.ttf"))
+        fams = QFontDatabase.applicationFontFamilies(fid) if fid != -1 else []
+        if fams:
+            _FAMILY = fams[0]
+        print("Fuente:", _FAMILY, "(Inter.woff2 cargada)" if fams else "(no se pudo cargar Inter.woff2)")
+    return _FAMILY
+
+
+def make_font():
+    f = QFont(font_family())
+    f.setFamilies([font_family(), "Inter", "Segoe UI", "Arial"])
+    f.setPixelSize(11)
+    f.setHintingPreference(QFont.PreferNoHinting)
+    return f
+
+
+# ------------------------------------------------------------ categorias
+SH_IN = {"AmbientOcclusion", "Attribute", "Bevel", "CameraData", "Fresnel", "LayerWeight",
+         "LightPath", "ObjectInfo", "ParticleInfo", "PointInfo", "RGB", "TexCoord", "UVMap",
+         "Value", "VertexColor", "VolumeInfo", "Wireframe", "Tangent", "NewGeometry",
+         "HairInfo", "CurvesInfo", "UVAlongStroke"}
+SH_COLOR = {"BrightContrast", "Gamma", "HueSaturation", "Invert", "LightFalloff", "MixRGB",
+            "RGBCurve"}
+SH_VEC = {"Bump", "Displacement", "Mapping", "Normal", "NormalMap", "VectorCurve",
+          "VectorDisplacement", "VectorRotate", "VectorTransform", "VectorMath"}
+SH_CONV = {"Blackbody", "Clamp", "ValToRGB", "CombineColor", "CombineRGB", "CombineXYZ", "Math",
+           "MapRange", "RGBToBW", "SeparateColor", "SeparateRGB", "SeparateXYZ", "ShaderToRGB",
+           "VectorMath", "Wavelength", "FloatCurve", "Mix"}
+CO_IN = {"RLayers", "Image", "MovieClip", "Mask", "RGB", "Value", "Time", "TexCoord",
+         "BokehImage", "TrackPos", "SceneTime"}
+CO_OUT = {"Composite", "Viewer", "SplitViewer", "OutputFile"}
+CO_COLOR = {"AlphaOver", "BrightContrast", "ColorBalance", "ColorCorrection", "Curve", "Gamma",
+            "HueCorrect", "HueSat", "Invert", "MixRGB", "Mix", "Posterize", "Tonemap", "Zcombine",
+            "Exposure", "ConvertColorSpace", "ConvertToDisplay", "ColorToAlpha"}
+CO_FILTER = {"Blur", "Bilateralblur", "BokehBlur", "Defocus", "Denoise", "Despeckle", "Dilate",
+             "Filter", "Glare", "Inpaint", "Kuwahara", "Pixelate", "SunBeams", "VecBlur",
+             "DBlur", "AntiAliasing", "Convolve"}
+CO_MATTE = {"BoxMask", "ChannelMatte", "ChromaMatte", "ColorMatte", "ColorSpill", "DiffMatte",
+            "DistanceMatte", "DoubleEdgeMask", "EllipseMask", "KeyingScreen", "Keying",
+            "LumaMatte", "Cryptomatte", "CryptomatteV2"}
+CO_DIST = {"Crop", "Displace", "Flip", "LensDist", "MapUV", "MovieDistortion",
+           "PlaneTrackDeform", "Rotate", "Scale", "Stabilize2D", "Transform", "Translate",
+           "CornerPin"}
+CO_VEC = {"Normal", "Normalize", "MapValue", "CurveVec"}
+# nodos compartidos (Function/Geometry) que Blender 5.x tambien ofrece en el compositor y son de entrada
+CO_SHARED_IN = {"FunctionNodeInputBool", "FunctionNodeInputInt", "FunctionNodeInputIntVector",
+                "FunctionNodeInputMenu", "FunctionNodeInputRotation", "FunctionNodeInputString",
+                "FunctionNodeInputVector", "FunctionNodeInputSpecialCharacters", "GeometryNodeInputFont",
+                "GeometryNodeInputObject", "GeometryNodeInputActiveCamera", "GeometryNodeCameraInfo",
+                "GeometryNodeObjectInfo"}
+
+
+def category(idname, mode):
+    if mode == "shader":
+        n = idname.replace("ShaderNode", "")
+        if n.startswith("Output"):
+            return "output_node"
+        if n.startswith("Tex"):
+            return "texture_node"
+        for s, c in ((SH_IN, "input_node"), (SH_COLOR, "color_node"), (SH_VEC, "vector_node"),
+                     (SH_CONV, "converter_node")):
+            if n in s:
+                return c
+        return "shader_node"
+    if not idname.startswith("CompositorNode"):   # nodos compartidos que Blender tambien ofrece en el compositor
+        if idname.startswith("ShaderNode"):
+            c = category(idname, "shader")
+            return "converter_node" if c == "shader_node" else c
+        if idname in CO_SHARED_IN:
+            return "input_node"
+        if idname in ("NodeGroupInput", "NodeGroupOutput"):
+            return "group_socket_node"
+        if idname == "GeometryNodeWarning":
+            return "output_node"
+        return "converter_node"
+    n = idname.replace("CompositorNode", "")
+    for s, c in ((CO_OUT, "output_node"), (CO_IN, "input_node"), (CO_COLOR, "color_node"),
+                 (CO_FILTER, "filter_node"), (CO_MATTE, "matte_node"), (CO_DIST, "distor_node"),
+                 (CO_VEC, "vector_node")):
+        if n in s:
+            return c
+    if "Matte" in n or "Mask" in n:
+        return "matte_node"
+    return "converter_node"
+
+
+# Paneles plegables (Blender no los expone por API; se agrupan por el nombre de los sockets)
+PANELS = {
+    "ShaderNodeBsdfPrincipled": [
+        ("Diffuse", ["Diffuse Roughness"]),
+        ("Subsurface", ["Subsurface Weight", "Subsurface Radius", "Subsurface Scale",
+                        "Subsurface IOR", "Subsurface Anisotropy"]),
+        ("Specular", ["Specular IOR Level", "Specular Tint", "Anisotropic",
+                      "Anisotropic Rotation", "Tangent"]),
+        ("Transmission", ["Transmission Weight"]),
+        ("Coat", ["Coat Weight", "Coat Roughness", "Coat IOR", "Coat Tint", "Coat Normal"]),
+        ("Sheen", ["Sheen Weight", "Sheen Roughness", "Sheen Tint"]),
+        ("Emission", ["Emission Color", "Emission Strength"]),
+        ("Thin Film", ["Thin Film Thickness", "Thin Film IOR"]),
+    ],
+    "ShaderNodeBsdfGlass": [("Thin Film", ["Thin Film Thickness", "Thin Film IOR"])],
+    "CompositorNodeGlare": [
+        ("Highlights", ["Threshold", "Smoothness", "Clamp", "Maximum"]),
+        ("Adjust", ["Strength", "Saturation", "Tint"]),
+        ("Glare", ["Size", "Streaks", "Streaks Angle", "Iterations", "Fade", "Color Modulation",
+                   "Diagonal", "Sun Position", "Jitter", "Kernel Data Type", "Kernel"]),
+    ],
+    "ShaderNodeBsdfMetallic": [("Thin Film", ["Thin Film Thickness", "Thin Film IOR"])],
+    "ShaderNodeVolumeCoefficients": [
+        ("Absorption", ["Absorption Coefficients"]),
+        ("Scatter", ["Scatter Coefficients", "Anisotropy"]),
+        ("Emission", ["Emission Coefficients"]),
+    ],
+}
+# menus que en Blender viven dentro de un panel (propiedad -> panel)
+PROP_PANEL = {"ShaderNodeBsdfPrincipled": {"distribution": "Specular",
+                                             "subsurface_method": "Subsurface"}}
+
+SKIP_PROPS = {"is_active_output", "use_custom_color"}
+PROP_PANEL["ShaderNodeVolumeCoefficients"] = {"phase": "Scatter"}
+# nodos cuyos paneles vienen abiertos por defecto (como en el PDF)
+OPEN_DEFAULT = {"ShaderNodeVolumeCoefficients", "CompositorNodeGlare"}
+# nodos que dibujan sus propiedades (casillas/menus) ANTES de las salidas
+PROPS_FIRST = {"ShaderNodeRaycast", "ShaderNodeVectorRotate"}
+# la primera entrada comparte fila con la salida; valor = mostrar tambien el nombre de la salida
+IO_MERGE = {"ShaderNodeGamma": True, "ShaderNodeVectorRotate": False}
+# panel plegable sin sockets al final del nodo
+TRAILING_PANELS = {"ShaderNodeRaycast": "Attributes"}
+# Mix: que menus/casillas se ven segun el tipo de dato (como en Blender 5.2)
+MIX_ORDER = {"FLOAT": ["data_type", "clamp_factor"],
+             "VECTOR": ["data_type", "factor_mode", "clamp_factor"],
+             "RGBA": ["data_type", "blend_type", "clamp_result", "clamp_factor"],
+             "ROTATION": ["data_type"]}
+MIX_SFX = {"FLOAT": "Float", "VECTOR": "Vector", "RGBA": "Color", "ROTATION": "Rotation"}
+# Math / Vector Math: cuantas entradas y que etiquetas segun la operacion
+MATH_1 = {"SQRT", "INVERSE_SQRT", "ABSOLUTE", "EXPONENT", "SIGN", "ROUND", "FLOOR", "CEIL", "TRUNC",
+          "FRACT", "SINE", "COSINE", "TANGENT", "ARCSINE", "ARCCOSINE", "ARCTANGENT", "SINH",
+          "COSH", "TANH", "RADIANS", "DEGREES"}
+MATH_3 = {"MULTIPLY_ADD", "COMPARE", "SMOOTH_MIN", "SMOOTH_MAX", "WRAP"}
+MATH_LABELS = {"POWER": ["Base", "Exponent", "Value"], "LOGARITHM": ["Value", "Base", "Value"],
+               "MULTIPLY_ADD": ["Value", "Multiplier", "Addend"],
+               "COMPARE": ["Value", "Value", "Epsilon"],
+               "SMOOTH_MIN": ["Value", "Value", "Distance"],
+               "SMOOTH_MAX": ["Value", "Value", "Distance"],
+               "WRAP": ["Value", "Max", "Min"], "SNAP": ["Value", "Increment", "Value"],
+               "PINGPONG": ["Value", "Scale", "Value"]}
+VM_1 = {"NORMALIZE", "LENGTH", "ABSOLUTE", "SIGN", "ROUND", "FLOOR", "CEIL", "FRACTION", "SINE",
+        "COSINE", "TANGENT"}
+VM_3 = {"MULTIPLY_ADD", "FACEFORWARD", "WRAP"}
+VM_VAL = {"LENGTH", "DISTANCE", "DOT_PRODUCT"}
+VM_LABELS = {"MULTIPLY_ADD": ["Vector", "Multiplier", "Addend"],
+             "FACEFORWARD": ["Vector", "Incident", "Reference"],
+             "WRAP": ["Vector", "Max", "Min"], "SNAP": ["Vector", "Increment", "Vector"],
+             "REFLECT": ["Vector", "Normal", "Vector"], "REFRACT": ["Vector", "Normal", "Vector"]}
+
+# propiedades dibujadas en el cuerpo del nodo (orden y ajustes tal como en Blender 5.2)
+PROP_ORDER = {
+    "ShaderNodeAmbientOcclusion": ["samples", "inside", "only_local"],
+    "ShaderNodeBevel": ["samples"],
+    "ShaderNodeTexMagic": ["turbulence_depth"],
+    "ShaderNodeTexBrick": ["offset", "offset_frequency", "squash", "squash_frequency"],
+    "ShaderNodeTexSky": ["sky_type", "_warn", "sun_disc", "sun_size", "sun_intensity",
+                         "sun_elevation", "sun_rotation", "altitude", "air_density",
+                         "aerosol_density", "ozone_density"],
+    "ShaderNodeAttribute": ["attribute_type", "attribute_name"],
+    "ShaderNodeUVMap": ["from_instancer", "uv_map"],
+    "ShaderNodeVertexColor": ["layer_name"],
+    "ShaderNodeNormalMap": ["space", "convention", "base", "uv_map"],
+    "ShaderNodeTexIES": ["mode", "ies"],
+    "ShaderNodeTexCoord": ["object", "from_instancer"],
+    "ShaderNodeTangent": ["direction_type", "axis"],
+    "ShaderNodeVectorTransform": ["vector_type", "convert_from", "convert_to"],
+    "ShaderNodeTexEnvironment": ["interpolation", "projection"],
+    "ShaderNodeOutputAOV": ["aov_name"],
+    "ShaderNodeMapping": ["vector_type"],
+    "ShaderNodeMapRange": ["data_type", "interpolation_type", "clamp"],
+    "ShaderNodeVectorRotate": ["rotation_type", "invert"],
+    "ShaderNodeTexImage": ["interpolation", "projection", "projection_blend", "extension"],
+    "ShaderNodeTexEnvironment": ["interpolation", "projection"],
+    "ShaderNodeTexVoronoi": ["voronoi_dimensions", "feature", "distance", "normalize"],
+    "CompositorNodeDefocus": ["_lbl", "bokeh", "angle", "f_stop", "blur_max", "scene",
+                              "use_zbuffer", "z_scale"],
+    "CompositorNodeCryptomatte": ["_lbl", "_pick", "matte_id"],
+    "CompositorNodeOutputFile": ["directory", "save_as_render", "use_file_extension"],
+}
+PROP_EXTRA = {
+    "ShaderNodeAmbientOcclusion": {"samples": {"name": "Samples"}},
+    "ShaderNodeBevel": {"samples": {"name": "Samples"}},
+    "ShaderNodeTexMagic": {"turbulence_depth": {"name": "Depth"}},
+    "ShaderNodeTexBrick": {"offset": {"name": "Offset", "fac": True, "lo": 0.0, "hi": 1.0},
+                           "offset_frequency": {"name": "Frequency"},
+                           "squash": {"name": "Squash"},
+                           "squash_frequency": {"name": "Frequency"}},
+    "ShaderNodeTexSky": {"_warn": {"name": "Sun disc not available"},
+                         "sun_size": {"name": "Sun Size", "unit": "deg"},
+                         "sun_intensity": {"name": "Sun Intensity"},
+                         "sun_elevation": {"name": "Sun Elevation", "unit": "deg"},
+                         "sun_rotation": {"name": "Sun Rotation", "unit": "deg"},
+                         "altitude": {"name": "Altitude", "unit": "m"},
+                         "air_density": {"name": "Air"},
+                         "aerosol_density": {"name": "Aerosols"},
+                         "ozone_density": {"name": "Ozone"}},
+    "ShaderNodeAttribute": {"attribute_name": {"name": "Name", "ph": "Name"}},
+    "ShaderNodeUVMap": {"uv_map": {"name": "UV Map", "icon": "uv"}},
+    "ShaderNodeVertexColor": {"layer_name": {"name": "Color", "icon": "uv"}},
+    "ShaderNodeNormalMap": {"uv_map": {"name": "UV Map", "icon": "uv"}},
+    "ShaderNodeTexIES": {"mode": {"seg": True}, "ies": {"name": "Text", "ph": "Text", "icon": "uv"}},
+    "ShaderNodeTexCoord": {"object": {"name": "Object", "ph": "Object", "icon": "obj"}},
+    "ShaderNodeTangent": {"axis": {"seg": True}},
+    "ShaderNodeVectorTransform": {"vector_type": {"seg": True}},
+    "ShaderNodeOutputAOV": {"aov_name": {"name": "", "ph": "", "icon": "circle"}},
+    "ShaderNodeMapping": {"vector_type": {"inline": True}},
+    "ShaderNodeVectorRotate": {"rotation_type": {"inline": True}},
+    "ShaderNodeTexImage": {"projection_blend": {"name": "Blend", "fac": True, "lo": 0.0, "hi": 1.0}},
+    "CompositorNodeDefocus": {"_lbl": {"type": "LABEL", "name": "Bokeh Type:"},
+                              "angle": {"name": "Angle", "unit": "deg"},
+                              "f_stop": {"name": "F-Stop"},
+                              "blur_max": {"name": "Max Blur"},
+                              "scene": {"name": "Scene", "ph": "Scene", "icon": "uv"},
+                              "z_scale": {"name": "Z-Scale"}},
+    "CompositorNodeCryptomatte": {"_lbl": {"type": "LABEL", "name": "Matte Objects:"},
+                                  "_pick": {"type": "PICK"},
+                                  "matte_id": {"name": "Matte ID", "ph": ""}},
+    "CompositorNodeOutputFile": {"directory": {"name": "Directory", "ph": "Directory"}},
+}
+
+# widgets dibujados como bloque justo despues de las salidas: idname -> (tipo, alto extra)
+BLOCKS = {"ShaderNodeRGB": ("wheel", 98), "ShaderNodeRGBCurve": ("curve_rgb", 188),
+          "ShaderNodeFloatCurve": ("curve", 188), "ShaderNodeVectorCurve": ("curve_xyz", 184),
+          "ShaderNodeValToRGB": ("ramp", 110), "ShaderNodeTexImage": ("imgsel", IMGSEL_H),
+          "ShaderNodeGroup": ("groupsel", 22), "ShaderNodeNormal": ("spheres", 127),
+          "ShaderNodeTexEnvironment": ("imgsel", IMGSEL_H)}
+# alto extra (real de Blender 5.2 menos el de la app) de nodos con widgets aun sin dibujar
+EXTRA_H = {"ShaderNodeVolumeCoefficients": 21.3,
+           "ShaderNodeGamma": -2.2,
+           "ShaderNodeVectorRotate": 0.8,
+           "ShaderNodeRaycast": 0.8,
+           "ShaderNodeOutputAOV": -2.2,
+           "ShaderNodeTexCoord": 7.8,
+           "ShaderNodeTexSky": 25.3,
+           "ShaderNodeAttribute": 3.3,
+           "ShaderNodeAmbientOcclusion": 5.8,
+           "ShaderNodeNormalMap": -3.2,
+           "ShaderNodeTexIES": 0.8,
+           "ShaderNodeUVMap": 4.8,
+           "ShaderNodeVertexColor": 3.8,
+           "ShaderNodeTangent": -2.7,
+           "ShaderNodeTexMagic": 2.8,
+           "ShaderNodeBevel": 2.3,
+           "ShaderNodeBsdfGlass": -5.2,
+           "ShaderNodeBsdfMetallic": -5.7,
+           "ShaderNodeBsdfPrincipled": -1.1,
+           "ShaderNodeMath": -1.5,
+           "ShaderNodeTexEnvironment": 0.0,
+           "ShaderNodeTexImage": 0.0,
+           "ShaderNodeVectorCurve": 5.3,
+           "ShaderNodeVectorTransform": -5.2,
+           "ShaderNodeBsdfDiffuse": 2.3,
+           "ShaderNodeBsdfTranslucent": 2.3,
+           "ShaderNodeClamp": -3.2,
+           "ShaderNodeCombineColor": -3.2,
+           "ShaderNodeDisplacement": -2.2,
+           "ShaderNodeEeveeSpecular": 3.3,
+           "ShaderNodeMapping": 0.8,
+           "ShaderNodeOutputMaterial": -2.7,
+           "ShaderNodeRadialTiling": 2.3,
+           "ShaderNodeSeparateColor": -2.2,
+           "ShaderNodeSeparateXYZ": 1.3,
+           "ShaderNodeSubsurfaceScattering": 0.8,
+           "ShaderNodeTexVoronoi": -2.7,
+           "ShaderNodeTexWave": -4.7,
+           "ShaderNodeVectorDisplacement": -2.2,
+           "ShaderNodeVectorMath": 0.8,
+           "ShaderNodeAddShader": 1.3,
+           "ShaderNodeBsdfTransparent": 1.3,
+           "ShaderNodeBump": 1.8,
+           "ShaderNodeEmission": 1.3,
+           "ShaderNodeMapRange": -1.2,
+           "ShaderNodeMixShader": 1.3,
+           "ShaderNodeNormal": -1.2,
+           "ShaderNodeRGB": 1.8,
+           "ShaderNodeTexBrick": 9.8,
+           "ShaderNodeTexGradient": -1.7,
+           "ShaderNodeTexNoise": -1.7,
+           "ShaderNodeValToRGB": -1.2,
+           "ShaderNodeVolumeAbsorption": 1.3,
+           "ShaderNodeVolumePrincipled": 1.3,
+           "ShaderNodeVolumeScatter": -1.2,
+           "CompositorNodeDefocus": 8.3,
+           "CompositorNodeCryptomatte": -0.7,
+           "CompositorNodeOutputFile": -2.2,
+           "FunctionNodeInputBool": -27.2,
+           "FunctionNodeInputVector": 36.3,
+           "GeometryNodeMenuSwitch": -27.2,
+           "GeometryNodeRepeatInput": 16.3,
+           "GeometryNodeRepeatOutput": 15.8,
+           "NodeClosureInput": 17.8,
+           "NodeClosureOutput": -2.2,
+           "NodeCombineBundle": -7.2,
+           "NodeEvaluateClosure": 41.3,
+           "NodeJoinBundle": -26.7,
+           "NodeSeparateBundle": -1.7}
+
+
+# Glare: sockets activos segun el Type (verificado en Blender 5.2.0 LTS). "Maximum" vive dentro del
+# subpanel plegado de Clamp, asi que de momento no se dibuja.
+_GLARE_COMMON = {"Quality", "Threshold", "Smoothness", "Clamp", "Strength", "Saturation", "Tint"}
+GLARE_SOCKS = {
+    "bloom": _GLARE_COMMON | {"Size"},
+    "fog glow": _GLARE_COMMON | {"Size"},
+    "streaks": _GLARE_COMMON | {"Streaks", "Streaks Angle", "Iterations", "Fade", "Color Modulation"},
+    "simple star": _GLARE_COMMON | {"Iterations", "Fade", "Diagonal"},
+    "ghosts": _GLARE_COMMON | {"Iterations", "Color Modulation"},
+    "sun beams": _GLARE_COMMON | {"Size", "Sun Position", "Jitter"},
+    "kernel": _GLARE_COMMON | {"Kernel Data Type", "Kernel"},
+}
+
+
+def fmt(v, st):
+    if isinstance(v, bool):
+        return str(v)
+    if st == "INT":
+        return str(int(v))
+    if isinstance(v, float):
+        return f"{v:.3f}"
+    return str(v)
+
+
+def fmt_unit(v, r):
+    u = r.get("unit")
+    if u in ("deg", "m", "nm"):
+        x = math.degrees(float(v)) if u == "deg" else float(v)
+        t = f"{x:.3f}".rstrip("0").rstrip(".")
+        return t + ("\u00b0" if u == "deg" else " " + u)
+    return fmt(v, r["st"])
+
+
+# ------------------------------------------------------------------ items
+class SocketItem(QGraphicsEllipseItem):
+    def __init__(self, node, spec, is_out):
+        super().__init__(-SR, -SR, 2 * SR, 2 * SR, node)
+        self.node, self.spec, self.is_out = node, spec, is_out
+        self.setBrush(QBrush(QColor(SOCK.get(spec.get("stype"), "#a1a1a1"))))
+        self.setPen(QPen(QColor(SOCK_LINE), SOCK_LINE_W))
+        self.setZValue(2)
+        self.setAcceptedMouseButtons(Qt.LeftButton)
+        self.setCursor(Qt.CrossCursor)
+
+    HIT = 8.0   # area de clic mas grande que el circulo dibujado (como en Blender)
+
+    def boundingRect(self):
+        h = SocketItem.HIT + 1
+        return QRectF(-h, -h, 2 * h, 2 * h)
+
+    def shape(self):
+        path = QPainterPath()
+        path.addEllipse(QPointF(0, 0), SocketItem.HIT, SocketItem.HIT)
+        return path
+
+    def mousePressEvent(self, e):
+        self.scene().drag_begin(self, e.scenePos())
+        e.accept()
+
+    def mouseMoveEvent(self, e):
+        self.scene().drag_update(e.scenePos())
+
+    def mouseReleaseEvent(self, e):
+        sc = self.scene()
+        sc.drag_end(sc.drag_src or self, e.scenePos())
+        sc.drag_src = None
+
+
+class LinkItem(QGraphicsPathItem):
+    def __init__(self, a, b):
+        super().__init__()
+        self.a, self.b, self.end = a, b, None
+        pen = QPen(WIRE, LINK_W)
+        pen.setCapStyle(Qt.RoundCap)
+        self.setPen(pen)
+        self.setZValue(0)
+        self.setFlag(QGraphicsItem.ItemIsSelectable, True)
+
+    def gradient(self):
+        """Color del cable segun el tipo de socket (como 'Wire Colors' de Blender)."""
+        ca = QColor(SOCK.get(self.a.spec.get("stype"), "#a1a1a1"))
+        cb = QColor(SOCK.get(self.b.spec.get("stype"), "#a1a1a1")) if self.b is not None else ca
+        pa = self.a.scenePos()
+        pb = self.b.scenePos() if self.b is not None else (self.end or pa)
+        g = QLinearGradient(pa, pb)
+        g.setColorAt(0, ca)
+        g.setColorAt(1, cb)
+        return g
+
+    def boundingRect(self):
+        m = LINK_LINE_W + 1
+        return super().boundingRect().adjusted(-m, -m, m, m)   # espacio para el borde
+
+    def update_path(self):
+        pa = self.a.scenePos()
+        pb = self.b.scenePos() if self.b is not None else (self.end or pa)
+        if self.b is None and not self.a.is_out:
+            pa, pb = pb, pa
+        d = max(abs(pb.x() - pa.x()) * CURVING * 0.1, CURVING * 8.0)
+        path = QPainterPath(pa)
+        path.cubicTo(QPointF(pa.x() + d, pa.y()), QPointF(pb.x() - d, pb.y()), pb)
+        self.setPath(path)
+
+    def shape(self):
+        s = QPainterPathStroker()
+        s.setWidth(10)
+        return s.createStroke(self.path())
+
+    def paint(self, p, opt, widget=None):
+        pen = QPen(self.pen())
+        if self.isSelected():
+            pen.setColor(WIRE_SEL)
+        else:
+            pen.setBrush(QBrush(self.gradient()))
+        p.setPen(pen)
+        p.setBrush(Qt.NoBrush)
+        border = QPen(QColor(LINK_LINE), pen.widthF() + 2 * LINK_LINE_W)
+        border.setCapStyle(Qt.RoundCap)
+        p.setPen(border)
+        p.drawPath(self.path())     # primero el borde oscuro, luego el hilo encima
+        p.setPen(pen)
+        p.drawPath(self.path())
+
+
+class NodeItem(QGraphicsItem):
+    F = None
+
+    def __init__(self, spec, cat):
+        super().__init__()
+        if NodeItem.F is None:
+            NodeItem.F = make_font()
+        self.spec, self.cat = copy.deepcopy(spec), cat
+        self._ed = None
+        spec = self.spec
+        self.w = max(100.0, float(spec.get("width", 140)))
+        self.h = 60.0
+        self.vals = {s["identifier"]: (list(s["default"]) if isinstance(s.get("default"), list)
+                                       else s.get("default")) for s in spec["inputs"]}
+        self.pvals = {p["id"]: p.get("value") for p in spec["props"]}
+        self.panels = PANELS.get(spec["idname"], [])
+        self.panel_open = {name: (spec["idname"] in OPEN_DEFAULT) for name, _ in self.panels}
+        if spec["idname"] in TRAILING_PANELS:
+            self.panel_open.setdefault(TRAILING_PANELS[spec["idname"]], False)
+        self.pmap = {sock: name for name, socks in self.panels for sock in socks}
+        self.panel_props = PROP_PANEL.get(spec["idname"], {})
+        self.lin_in, self.lin_out = set(), set()
+        self.hide_unused = False
+        self.img_loaded = None   # nodo Image con imagen cargada (Multiple Images): dict con nombre y usuarios
+        self.rows = []
+        self.socks = {}
+        self.setFlags(QGraphicsItem.ItemIsMovable | QGraphicsItem.ItemIsSelectable |
+                      QGraphicsItem.ItemSendsGeometryChanges)
+        self.setZValue(1)
+        self._rs = None                     # redimensionado del ancho en curso
+        self.setAcceptHoverEvents(True)
+        for s in spec["inputs"]:
+            self.socks[("in", s["identifier"])] = SocketItem(self, s, False)
+        for s in spec["outputs"]:
+            self.socks[("out", s["identifier"])] = SocketItem(self, s, True)
+        self.relayout()
+
+    # ---- layout
+    def shown_props(self):
+        order = PROP_ORDER.get(self.spec["idname"])
+        if self.spec["idname"] == "ShaderNodeMix":
+            order = MIX_ORDER.get(self.pvals.get("data_type"), ["data_type"])
+        if order is None:
+            return self._auto_props()
+        extra = PROP_EXTRA.get(self.spec["idname"], {})
+        by_id = {p["id"]: p for p in self.spec["props"]}
+        out = []
+        for pid in order:
+            if pid.startswith("_"):
+                q = {"id": pid, "type": "WARN", "name": ""}
+            elif pid in by_id:
+                q = dict(by_id[pid])
+            else:
+                continue
+            q.update(extra.get(pid, {}))
+            out.append(q)
+        out = self._cond_props(out)
+        return out if any(not q["id"].startswith("_") for q in out) else self._auto_props()
+
+    def _cond_props(self, out):
+        """Menus/casillas que Blender oculta segun otras propiedades."""
+        idn, pv = self.spec["idname"], self.pvals
+        if idn == "ShaderNodeTexImage" and pv.get("projection") != "BOX":
+            out = [q for q in out if q["id"] != "projection_blend"]
+        elif idn == "ShaderNodeTexVoronoi":
+            edge = pv.get("feature") in ("DISTANCE_TO_EDGE", "N_SPHERE_RADIUS")
+            one_d = pv.get("voronoi_dimensions") == "1D"
+            out = [q for q in out if not (q["id"] == "normalize" and edge)
+                   and not (q["id"] == "distance" and (edge or one_d))]
+        return out
+
+    def _auto_props(self):
+        out = []
+        for p in self.spec["props"]:
+            if self.spec["idname"] == "ShaderNodeTexWave" and p["id"] == (
+                    "bands_direction" if self.pvals.get("wave_type") == "RINGS" else "rings_direction"):
+                continue
+            v = p.get("value")
+            if p["id"] in SKIP_PROPS or (p["id"] == "ycc_mode" and self.pvals.get("mode") != "YCC"):
+                continue
+            if p["type"] == "ENUM" and isinstance(v, str) and p.get("items"):
+                out.append(p)
+            elif p["type"] == "BOOLEAN" and isinstance(v, bool):
+                out.append(p)
+        return out
+
+    def _apply_dyn(self):
+        """Sockets/etiquetas que cambian segun los menus (Math, Vector Math, Map Range, Combine/Separate Color)."""
+        idn, pv = self.spec["idname"], self.pvals
+        ins, outs = self.spec["inputs"], self.spec["outputs"]
+        if idn == "ShaderNodeMath" and len(ins) >= 3:
+            op = pv.get("operation") or "ADD"
+            n = 1 if op in MATH_1 else 3 if op in MATH_3 else 2
+            lab = MATH_LABELS.get(op, ["Value", "Value", "Value"])
+            for i, s in enumerate(ins[:3]):
+                s["enabled"], s["name"] = i < n, lab[i]
+        elif idn == "ShaderNodeVectorMath" and len(ins) >= 4 and len(outs) >= 2:
+            op = pv.get("operation") or "ADD"
+            n = 1 if (op in VM_1 or op == "SCALE") else 3 if op in VM_3 else 2
+            lab = VM_LABELS.get(op, ["Vector", "Vector", "Vector"])
+            for i, s in enumerate(ins[:3]):
+                s["enabled"], s["name"] = i < n, lab[i]
+            ins[3]["enabled"] = op in ("SCALE", "REFRACT")
+            ins[3]["name"] = "IOR" if op == "REFRACT" else "Scale"
+            outs[0]["enabled"] = op not in VM_VAL
+            outs[1]["enabled"] = op in VM_VAL
+        elif idn == "ShaderNodeMapRange":
+            vec = pv.get("data_type") == "FLOAT_VECTOR"
+            stepped = pv.get("interpolation_type") == "STEPPED"
+            for s in ins:
+                ident = s["identifier"]
+                isv = ident == "Vector" or ident.endswith("_FLOAT3")
+                st = ident in ("Steps", "Steps_FLOAT3")
+                s["enabled"] = (isv == vec) and (stepped or not st)
+            if len(outs) >= 2:
+                outs[0]["enabled"], outs[1]["enabled"] = not vec, vec
+        elif idn == "ShaderNodeTexNoise":
+            dim, typ = pv.get("noise_dimensions"), pv.get("noise_type")
+            on = {"Vector": dim != "1D", "W": dim in ("1D", "4D"), "Offset": typ != "FBM",
+                  "Gain": typ in ("RIDGED_MULTIFRACTAL", "HYBRID_MULTIFRACTAL")}
+            for s in ins:
+                if s["name"] in on:
+                    s["enabled"] = on[s["name"]]
+        elif idn == "ShaderNodeTexWhiteNoise":
+            dim = pv.get("noise_dimensions")
+            for s in ins:
+                if s["name"] == "Vector":
+                    s["enabled"] = dim != "1D"
+                elif s["name"] == "W":
+                    s["enabled"] = dim in ("1D", "4D")
+        elif idn == "ShaderNodeTexVoronoi":
+            dim, feat, dist = pv.get("voronoi_dimensions"), pv.get("feature"), pv.get("distance")
+            fract = feat not in ("DISTANCE_TO_EDGE", "N_SPHERE_RADIUS")
+            on = {"Vector": dim != "1D", "W": dim in ("1D", "4D"), "Detail": fract,
+                  "Roughness": fract, "Lacunarity": fract, "Smoothness": feat == "SMOOTH_F1",
+                  "Exponent": dist == "MINKOWSKI" and dim != "1D" and fract}
+            for s in ins:
+                if s["name"] in on:
+                    s["enabled"] = on[s["name"]]
+            on_o = {"Distance": feat != "N_SPHERE_RADIUS", "Color": fract,
+                    "Position": fract and dim != "1D", "W": fract and dim in ("1D", "4D"),
+                    "Radius": feat == "N_SPHERE_RADIUS"}
+            for s in outs:
+                if s["name"] in on_o:
+                    s["enabled"] = on_o[s["name"]]
+        elif idn == "ShaderNodeTexGabor":
+            is3 = pv.get("gabor_type") == "3D"
+            for s in ins:
+                if s["name"] == "Orientation":
+                    s["enabled"] = (s.get("stype") == "VECTOR") == is3
+        elif idn == "CompositorNodeColorBalance":
+            t = str(self.vals.get("Type") or "")
+            mode = "wp" if t.startswith("White") else ("cdl" if ("Offset" in t or "ASC" in t) else "lgg")
+            grp = {"lgg": ("Lift", "Gamma", "Gain"), "cdl": ("Offset", "Power", "Slope")}.get(mode, ())
+            for s in ins:
+                ident = s["identifier"]
+                if ident.startswith(("Base ", "Color ")):
+                    s["enabled"] = ident.split(" ", 1)[1] in grp
+                elif ident.startswith(("Input ", "Output ")):
+                    s["enabled"] = mode == "wp"
+        elif idn in ("CompositorNodeConvolve", "CompositorNodeGlare"):
+            is_col = "color" in str(self.vals.get("Kernel Data Type") or "").lower()
+            for s in ins:
+                if s["identifier"] == "Float Kernel":
+                    s["enabled"] = not is_col
+                elif s["identifier"] == "Color Kernel":
+                    s["enabled"] = is_col
+            if idn == "CompositorNodeGlare":
+                self._glare_dyn(ins)
+        elif idn in ("ShaderNodeCombineColor", "ShaderNodeSeparateColor",
+                     "CompositorNodeCombineColor", "CompositorNodeSeparateColor"):
+            names = {"HSV": ["Hue", "Saturation", "Value"],
+                     "HSL": ["Hue", "Saturation", "Lightness"],
+                     "YUV": ["Y", "U", "V"],
+                     "YCC": ["Y", "Cb", "Cr"]}.get(pv.get("mode"),
+                                                                    ["Red", "Green", "Blue"])
+            for s, nm in zip(ins if idn.endswith("CombineColor") else outs, names):
+                s["name"] = nm
+
+    def _glare_dyn(self, ins):
+        """Glare: oculta los sockets que no aplican al Type elegido (si el Type no se reconoce, no toca nada)."""
+        t = str(self.vals.get("Type") or "").lower().replace("_", " ")
+        key = next((k for k in GLARE_SOCKS if k in t), None)
+        if key is None:
+            return
+        on = GLARE_SOCKS[key]
+        is_col = "color" in str(self.vals.get("Kernel Data Type") or "").lower()
+        for s in ins:
+            nm = s["name"]
+            if nm in ("Image", "Type"):
+                continue
+            if nm == "Kernel":
+                s["enabled"] = "Kernel" in on and (s["identifier"] == "Color Kernel") == is_col
+            else:
+                s["enabled"] = nm in on
+
+    def _cat(self):
+        """Categoria (color de cabecera). El Mix de Shader cambia con el tipo de dato, como en Blender 5.2:
+        Float = Converter (azul claro), Vector = Vector (indigo), Color = Color."""
+        if self.spec["idname"] == "ShaderNodeMix":
+            return {"VECTOR": "vector_node", "RGBA": "color_node"}.get(self.pvals.get("data_type"),
+                                                                       "converter_node")
+        return self.cat
+
+    def _inactive(self, s):
+        """Entradas que no influyen en el resultado (Blender las atenua). Mix: con Factor = 1 no cuenta A
+        y con Factor = 0 no cuenta B (solo si el Factor no esta conectado)."""
+        if self.spec["idname"] != "ShaderNodeMix":
+            return False
+        ident = s["identifier"]
+        if ident[:2] == "A_":
+            which = "A"
+        elif ident[:2] == "B_":
+            which = "B"
+        else:
+            return False
+        dt = self.pvals.get("data_type") or "FLOAT"
+        if dt == "ROTATION" or (dt == "RGBA" and (self.pvals.get("blend_type") or "MIX") != "MIX"):
+            return False
+        fid = next((q["identifier"] for q in self.spec["inputs"]
+                    if q["identifier"].startswith("Factor") and self._mix_enabled(q)), None)
+        if fid is None or fid in self.lin_in:
+            return False
+        f = self.vals.get(fid)
+        try:
+            fs = [float(x) for x in (f if isinstance(f, list) else [f])]
+        except (TypeError, ValueError):
+            return False
+        if self.pvals.get("clamp_factor", True):
+            fs = [min(1.0, max(0.0, x)) for x in fs]
+        return all(x == 1.0 for x in fs) if which == "A" else all(x == 0.0 for x in fs)
+
+    def title(self):
+        idn = self.spec["idname"]
+        if self.img_loaded is not None:
+            return self.img_loaded["name"]   # Blender titula el nodo con el nombre de la imagen
+        if idn == "CompositorNodeGlare" and self.vals.get("Type"):
+            return str(self.vals.get("Type"))   # Blender titula el nodo con el tipo elegido
+        if idn in ("ShaderNodeMath", "ShaderNodeVectorMath"):
+            op = self.pvals.get("operation")
+            for p in self.spec["props"]:
+                if p["id"] == "operation":
+                    for it in p.get("items", []):
+                        if it["id"] == op:
+                            return it["name"]
+        return self.spec["label"]
+
+    def _mix_enabled(self, s):
+        ident = s["identifier"]
+        sfx = ident.rsplit("_", 1)[-1]
+        dt = self.pvals.get("data_type") or "FLOAT"
+        if ident.startswith("Factor"):
+            nonuni = dt == "VECTOR" and self.pvals.get("factor_mode") == "NON_UNIFORM"
+            return sfx == ("Vector" if nonuni else "Float")
+        return sfx == MIX_SFX.get(dt, "Float")
+
+    def _visible(self, s, linked):
+        en = self._mix_enabled(s) if self.spec["idname"] == "ShaderNodeMix" else s["enabled"]
+        return (en and s["type"] != "NodeSocketVirtual" and
+                not (self.hide_unused and s["identifier"] not in linked))
+
+    def prop_row(self, p, y):
+        t, ref = p["type"], ("p", p["id"])
+        if t == "ENUM":
+            return dict(k="enum", y=y, h=FH, name=p["name"], ref=ref, items=p["items"],
+                        seg=p.get("seg", False), inline=p.get("inline", False)), EROW - ENUM_TIGHT.get(self.spec["idname"], 0.0)
+        if t in ("INT", "FLOAT"):
+            return dict(k="num", y=y, h=FH, name=p["name"], ref=ref,
+                        st="INT" if t == "INT" else "VALUE", fac=p.get("fac", False),
+                        lo=p.get("lo"), hi=p.get("hi"), unit=p.get("unit")), \
+                FH + (0.0 if self.spec["idname"] in STACKED else GAP)
+        if t in ("STRING", "POINTER"):
+            return dict(k="str", y=y, h=FH, name=p["name"], ref=ref, ph=p.get("ph", ""),
+                        icon=p.get("icon")), FH + GAP
+        if t == "WARN":
+            return dict(k="warn", y=y, h=ROW, name=p.get("name", "")), ROW
+        return dict(k="bool", y=y - BOOL_UP - MENU_DOWN.get(self.spec["idname"], 0.0), h=BROW, name=p["name"], ref=ref), BROW
+
+    def relayout(self):
+        self.prepareGeometryChange()
+        self._apply_dyn()
+        idn = self.spec["idname"]
+        if self.img_loaded is not None:
+            self._relayout_loaded_image()
+            return
+        tight = (not (idn in BLOCKS or idn in EXTRA_H or idn in PROP_ORDER or idn in PANELS)
+                 and not any(i["enabled"] and i["type"] != "NodeSocketVirtual" for i in self.spec["inputs"])
+                 and not self.shown_props())
+        orow = ROW + 2 if tight else 21.5
+        rows, y = [], HEADER + (2 if tight else 5) - TOP_SHIFT.get(idn, 0.0)
+        blk = BLOCKS.get(self.spec["idname"])
+        wheel = blk is not None and blk[0] == "wheel"
+        merged_in = None
+        if idn in PROPS_FIRST:
+            for q in self.shown_props():
+                if q["id"] in self.panel_props:
+                    continue
+                row, hh = self.prop_row(q, y)
+                rows.append(row)
+                y += hh
+        y_out0 = y
+        blk_y = 0.0
+        for s in self.spec["outputs"]:
+            sk = self.socks[("out", s["identifier"])]
+            vis = self._visible(s, self.lin_out)
+            sk.setVisible(vis)
+            if not vis:
+                continue
+            if wheel:
+                sk.setPos(self.w, y + ROW / 2 + 12)
+                y += ROW
+                continue
+            if idn in IO_MERGE and merged_in is None:
+                fin = next((i for i in self.spec["inputs"] if self._visible(i, self.lin_in)), None)
+                if fin is not None and (fin["hide_value"] or fin["identifier"] in self.lin_in):
+                    merged_in = (fin["identifier"], y + LROW / 2)
+                    rows.append(dict(k="io", y=y, h=LROW, inname=fin["name"],
+                                     outname=s["name"] if IO_MERGE[idn] else ""))
+                    sk.setPos(self.w, y + LROW / 2)
+                    y += LROW
+                    continue
+            rows.append(dict(k="out", y=y, h=orow, name=s["name"]))
+            sk.setPos(self.w, y + orow / 2)
+            y += orow
+        y += (TIGHT_PAD if tight else (0 if merged_in is not None else 3)) + MENU_DOWN.get(idn, 0.0)
+        if blk is not None:
+            top = y_out0 if wheel else y
+            blk_y = top
+            rows.append(dict(k="block", y=top, h=(y - top) + blk[1], kind=blk[0]))
+            y += blk[1]
+        for p in (self.shown_props() if idn not in PROPS_FIRST else []):
+            if p["id"] in self.panel_props:
+                continue
+            row, hh = self.prop_row(p, y)
+            rows.append(row)
+            y += hh
+        y -= INPUT_PULL.get(idn, 0.0)   # en Blender las entradas quedan mas cerca del ultimo menu
+        panel_y = {}
+        for s in self.spec["inputs"]:
+            sk = self.socks[("in", s["identifier"])]
+            vis = self._visible(s, self.lin_in)
+            if not vis:
+                sk.setVisible(False)
+                continue
+            sk.setVisible(True)
+            if merged_in is not None and s["identifier"] == merged_in[0]:
+                sk.setPos(0, merged_in[1])
+                continue
+            if self.spec["idname"] == "ShaderNodeNormal":
+                sk.setPos(0, blk_y + blk[1] / 2)
+                continue
+            ident, st = s["identifier"], s.get("stype")
+            pname = self.pmap.get(s["name"])
+            if pname and s["name"].startswith(pname + " "):
+                s = dict(s, name=s["name"][len(pname) + 1:])   # dentro de su panel Blender muestra "Roughness", no "Diffuse Roughness"
+            if pname:
+                if pname not in panel_y:
+                    if panel_y and self.panel_open[list(panel_y)[-1]]:
+                        y += PANEL_GAP_END
+                    panel_y[pname] = y
+                    rows.append(dict(k="panel", y=y, h=ROW, name=pname, panel=pname))
+                    y += ROW
+                    if self.panel_open[pname]:
+                        y += PANEL_GAP_HEAD
+                    if self.panel_open[pname]:
+                        for pp in self.shown_props():
+                            if self.panel_props.get(pp["id"]) == pname and pp["type"] == "ENUM":
+                                rows.append(dict(k="enum", y=y, h=FH, name=pp["name"],
+                                                 ref=("p", pp["id"]), items=pp["items"]))
+                                y += FH + GAP
+                if not self.panel_open[pname]:
+                    sk.setVisible(ident in self.lin_in)
+                    sk.setPos(0, panel_y[pname] + ROW / 2)
+                    continue
+            d = self.vals.get(ident)
+            ref = ("v", ident)
+            plain = (ident in self.lin_in or s["hide_value"] or d is None)
+            if not plain and st in ("VECTOR", "ROTATION") and isinstance(d, list):
+                _r0 = len(rows)
+                rows.append(dict(k="label", y=y, h=LROW, name=s["name"]))
+                sk.setPos(0, y + LROW / 2)
+                y += LROW
+                for i in range(len(d)):
+                    rows.append(dict(k="vec", y=y, h=FH,
+                                     name="" if s["type"] in ("NodeSocketVector", "NodeSocketVector2D")
+                                     else ("XYZ"[i] if i < 3 else "?"),
+                                     ref=ref, i=i, st=st, vt=s["type"],
+                                     unit={"NodeSocketVectorTranslation": "m",
+                                           "NodeSocketVectorEuler": "deg"}.get(s["type"])))
+                    y += FH
+                if self._inactive(s):   # entrada que no influye: etiqueta y los tres campos atenuados
+                    for _rr in rows[_r0:]:
+                        _rr["dim"] = True
+                y += GAP   # hueco tras cada grupo X/Y/Z
+                continue
+            kind = None
+            if not plain:
+                kind = {"VALUE": "num", "INT": "num", "RGBA": "color", "BOOLEAN": "boolin",
+                        "STRING": "str", "MENU": "str"}.get(st)
+            if kind is None:
+                rows.append(dict(k="label", y=y, h=LROW, name=s["name"]))
+                sk.setPos(0, y + LROW / 2)
+                y += LROW
+            else:
+                if kind == "boolin":
+                    y -= 1.0   # Thin Wall: Blender la deja ~1 unidad mas arriba (paso 21 desde Alpha)
+                lo, hi = s.get("min"), s.get("max")
+                if "Factor" in s["type"] and not isinstance(lo, (int, float)):
+                    lo, hi = (-1.0, 1.0) if s["identifier"] == "Subsurface Anisotropy" else (0.0, 1.0)   # factores de 0 a 1 (el JSON no trae min/max); Anisotropy va de -1 a 1
+                fac = ("Factor" in s["type"]) and isinstance(lo, (int, float)) and hi != lo
+                rows.append(dict(k=kind, y=y, h=FH, name=s["name"], ref=ref, st=st,
+                                 fac=fac, lo=lo, hi=hi, dim=self._inactive(s), unit={"NodeSocketFloatDistance": "m", "NodeSocketFloatWavelength": "nm"}.get(s["type"])))
+                sk.setPos(0, y + FH / 2)
+                if kind == "boolin":
+                    y += 1.0   # compensa: las filas siguientes no se mueven
+                y += FH + GAP
+        if idn in TRAILING_PANELS:
+            tp = TRAILING_PANELS[idn]
+            rows.append(dict(k="panel", y=y, h=ROW, name=tp, panel=tp))
+            y += ROW
+        if idn in STACKED:
+            for a, b in zip(rows, rows[1:]):
+                if (a["k"] == "num" and b["k"] == "num"
+                        and abs(a["y"] + a["h"] - b["y"]) < 0.01):
+                    a["jb"] = True      # el campo de abajo esta pegado: esquinas inferiores rectas
+                    b["jt"] = True      # el de arriba esta pegado: esquinas superiores rectas
+        self.rows = rows
+        self.h = y + 4.2 + EXTRA_H.get(self.spec["idname"], 0)
+        self.update()
+
+    def load_image(self, name, users=1):
+        """Deja el nodo Image como en Blender cuando ya tiene una imagen cargada (p. ej. Multiple Images)."""
+        self.img_loaded = {"name": name, "users": users}
+        self.pvals.update({"_img_src": "FILE", "_img_cs": "", "_img_alpha": "STRAIGHT"})
+        self.relayout()
+
+    def _relayout_loaded_image(self):
+        rows, y = [], HEADER + 5
+        for key, sk in self.socks.items():
+            if key[0] == "in":
+                sk.setVisible(False)
+        for s in self.spec["outputs"]:
+            sk = self.socks[("out", s["identifier"])]
+            sk.setVisible(True)
+            rows.append(dict(k="out", y=y, h=21.5, name=s["name"]))
+            sk.setPos(self.w, y + 21.5 / 2)
+            y += 21.5
+        y += 3
+        rows.append(dict(k="imgloaded", y=y, h=IMGSEL_H))
+        y += IMGSEL_H
+        rows.append(dict(k="enum", y=y, h=FH, name="Source", ref=("p", "_img_src"), items=IMG_SRC_ITEMS, arrow=7.0))
+        y += 25.0
+        rows.append(dict(k="enum", y=y, h=FH, name="Color Space", ref=("p", "_img_cs"), items=[],
+                         inline=True, nocolon=True, lw=0.344, arrow=7.0))
+        y += 25.0
+        rows.append(dict(k="enum", y=y, h=FH, name="Alpha", ref=("p", "_img_alpha"), items=IMG_ALPHA_ITEMS,
+                         inline=True, nocolon=True, lw=0.344, arrow=7.0))
+        self.rows = rows
+        self.h = IMG_LOADED_H
+        self.update()
+
+    def boundingRect(self):
+        return QRectF(-8, -8, self.w + 16, self.h + 16)
+
+    def itemChange(self, change, value):
+        if change == QGraphicsItem.ItemPositionHasChanged and self.scene() is not None:
+            for l in self.scene().links:
+                if l.a.node is self or l.b.node is self:
+                    l.update_path()
+        return super().itemChange(change, value)
+
+    # ---- valores
+    def get(self, r):
+        src = self.pvals if r["ref"][0] == "p" else self.vals
+        return src[r["ref"][1]]
+
+    def put(self, r, v):
+        src = self.pvals if r["ref"][0] == "p" else self.vals
+        src[r["ref"][1]] = v
+
+    # ---- dibujo
+    def field(self, p, rect, fill, jt=False, jb=False):
+        path = QPainterPath()
+        self._rr(path, rect, jt, jb)
+        p.fillPath(path, fill)
+        return path
+
+    @staticmethod
+    def _rr(path, rect, jt=False, jb=False):
+        """Rectangulo redondeado; jt/jb = esquinas superiores/inferiores rectas (campo apilado)."""
+        if not (jt or jb):
+            path.addRoundedRect(rect, RAD, RAD)
+            return
+        x, y, w, h = rect.x(), rect.y(), rect.width(), rect.height()
+        rt = 0.0 if jt else RAD
+        rb = 0.0 if jb else RAD
+        path.moveTo(x + rt, y)
+        path.lineTo(x + w - rt, y)
+        if rt:
+            path.arcTo(QRectF(x + w - 2 * rt, y, 2 * rt, 2 * rt), 90, -90)
+        else:
+            path.lineTo(x + w, y)
+        path.lineTo(x + w, y + h - rb)
+        if rb:
+            path.arcTo(QRectF(x + w - 2 * rb, y + h - 2 * rb, 2 * rb, 2 * rb), 0, -90)
+        else:
+            path.lineTo(x + w, y + h)
+        path.lineTo(x + rb, y + h)
+        if rb:
+            path.arcTo(QRectF(x, y + h - 2 * rb, 2 * rb, 2 * rb), 270, -90)
+        else:
+            path.lineTo(x, y + h)
+        path.lineTo(x, y + rt)
+        if rt:
+            path.arcTo(QRectF(x, y, 2 * rt, 2 * rt), 180, -90)
+        else:
+            path.lineTo(x, y)
+        path.closeSubpath()
+
+    def outline(self, p, path):
+        p.setPen(QPen(FIELD_LINE, FIELD_LINE_W))
+        p.setBrush(Qt.NoBrush)
+        p.drawPath(path)
+
+    def _outline_legacy(self, p, path):
+        p.setPen(QPen(FIELD_LINE, 1.0))
+        p.setBrush(Qt.NoBrush)
+        p.drawPath(path)
+
+    def paint(self, p, opt, widget=None):
+        p.setRenderHint(QPainter.Antialiasing)
+        p.setRenderHint(QPainter.TextAntialiasing)
+        k = 0.55 if BODY.lightness() > 128 else 1.0   # sombra suave bajo el nodo (mas tenue en temas claros)
+        for i, a in ((4, 10), (3, 14), (2, 18), (1, 22)):
+            sh = QPainterPath()
+            sh.addRoundedRect(QRectF(-i + 0.5, -i + 2.5, self.w + 2 * i - 1, self.h + 2 * i - 1), R + i, R + i)
+            p.fillPath(sh, QColor(0, 0, 0, int(a * k)))
+        body = QPainterPath()
+        body.addRoundedRect(QRectF(0, 0, self.w, self.h), R, R)
+        p.fillPath(body, BODY)
+        p.save()
+        p.setClipPath(body)
+        p.fillRect(QRectF(0, 0, self.w, HEADER), HEAD[self._cat()])
+        p.restore()
+        sel = self.isSelected()
+        p.setPen(QPen(SEL if sel else OUTLINE, 2.0 if sel else NODE_LINE_W))
+        p.setBrush(Qt.NoBrush)
+        p.drawPath(body)
+        p.setFont(NodeItem.F)
+        hc = HEAD[self._cat()]
+        tcol = TITLE   # Blender: titulo claro sobre cabeceras oscuras
+        p.setPen(tcol)
+        tx = 24.5 if self.img_loaded is not None else 26.0   # Blender: el titulo arranca a ~24.5 u
+        p.drawText(QRectF(tx, 0, self.w - tx - (26.0 if self.img_loaded is not None else 8.0), HEADER), AL, self.title())
+        p.setBrush(QColor("#d9d9d9"))
+        p.setPen(Qt.NoPen)
+        p.setPen(QPen(tcol, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))   # "v" fina como en Blender
+        p.drawPolyline(QPolygonF([QPointF(8.5, 8.2), QPointF(12, 11.8), QPointF(15.5, 8.2)]))
+        if self.img_loaded is not None:   # icono del ojo (vista previa) a la derecha de la cabecera
+            ex, ey = self.w - 16.0, HEADER / 2
+            eye = QPainterPath()
+            eye.moveTo(ex - 7.0, ey)
+            eye.quadTo(ex, ey - 8.0, ex + 7.0, ey)
+            eye.quadTo(ex, ey + 8.0, ex - 7.0, ey)
+            p.setPen(QPen(tcol, 1.8, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+            p.setBrush(Qt.NoBrush)
+            p.drawPath(eye)
+            p.setPen(Qt.NoPen)
+            p.setBrush(tcol)
+            p.drawEllipse(QPointF(ex, ey), 3.1, 3.1)
+        for r in self.rows:
+            if r.get("dim") and r["k"] != "color":
+                p.save()
+                p.setOpacity(0.45)     # entrada que no influye en el resultado: Blender la atenua
+                self.paint_row(p, r)
+                p.restore()
+            else:
+                self.paint_row(p, r)
+
+    def paint_row(self, p, r):
+        k, y, h = r["k"], r["y"], r["h"]
+        fw = self.w - 2 * PAD
+        if k == "block":
+            self.paint_block(p, r)
+            return
+        if k == "imgloaded":
+            self.paint_imgloaded(p, r)
+            return
+        p.setPen(TXT)
+        if k == "out":
+            p.drawText(QRectF(PAD, y, fw, h), AR, r["name"])
+            return
+        if k == "io":
+            p.drawText(QRectF(PAD, y, fw, h), AL, r["inname"])
+            p.drawText(QRectF(PAD, y, fw, h), AR, r["outname"])
+            return
+        if k == "label":
+            p.drawText(QRectF(PAD, y, fw, h), AL, r["name"])
+            return
+        if k == "warn":
+            cx, cy = PAD + 7, y + h / 2
+            p.setBrush(QColor("#e0b000"))
+            p.setPen(Qt.NoPen)
+            p.drawPolygon(QPolygonF([QPointF(cx, cy - 6), QPointF(cx + 6.5, cy + 5), QPointF(cx - 6.5, cy + 5)]))
+            p.setPen(TXT)
+            p.drawText(QRectF(PAD + 20, y, fw - 20, h), AL, r["name"])
+            return
+        if k == "panel":
+            op = self.panel_open[r["panel"]]
+            if op:
+                p.fillRect(QRectF(0, y, self.w, h), QColor(0, 0, 0, 12 if BODY.lightness() > 128 else 38))
+            cx, cy = PAD + 5, y + h / 2
+            p.setBrush(QColor("#d9d9d9"))
+            p.setPen(Qt.NoPen)
+            if op:
+                p.setPen(QPen(TXT, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+                p.setBrush(Qt.NoBrush)
+                p.drawPolyline(QPolygonF([QPointF(cx - 4, cy - 1.8), QPointF(cx, cy + 1.8), QPointF(cx + 4, cy - 1.8)]))
+            else:
+                p.setPen(QPen(TXT, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+                p.setBrush(Qt.NoBrush)
+                p.drawPolyline(QPolygonF([QPointF(cx - 1.8, cy - 4), QPointF(cx + 1.8, cy), QPointF(cx - 1.8, cy + 4)]))
+            p.setPen(TXT)
+            p.drawText(QRectF(PAD + 16, y, fw - 16, h), AL, r["name"])
+            return
+        rect = QRectF(PAD, y, fw, h)
+        v = self.get(r)
+        if k == "enum" and r.get("seg"):
+            sw = fw / len(r["items"])
+            for i, it in enumerate(r["items"]):
+                self.mini_btn(p, QRectF(PAD + i * sw, y, sw, h), it["name"], it["id"] == v)
+            return
+        if k == "enum":
+            if r.get("inline"):
+                lw = fw * r.get("lw", 0.36)
+                p.setPen(TXT)
+                p.drawText(QRectF(PAD, y, lw, h), AL, r["name"] + ("" if r.get("nocolon") else ":"))
+                rect = QRectF(PAD + lw, y, fw - lw, h)
+            path = self.field(p, rect, MENU)
+            self.outline(p, path)
+            name = next((i["name"] for i in r["items"] if i["id"] == v), str(v))
+            p.setPen(TXT)
+            left = 8
+            if r["ref"][1] == "data_type":
+                dc = {"FLOAT": "#a1a1a1", "FLOAT_VECTOR": "#6363c7", "VECTOR": "#6363c7",
+                      "RGBA": "#c7c729", "INT": "#598c5c", "BOOLEAN": "#cca6d6",
+                      "ROTATION": "#a64dc7"}.get(v, "#a1a1a1")
+                p.setPen(Qt.NoPen)
+                p.setBrush(QColor(dc))
+                p.drawEllipse(QPointF(rect.x() + 12, rect.center().y()), 3.5, 3.5)
+                left = 22
+            p.setPen(TXT)
+            p.drawText(rect.adjusted(left, 0, -22, 0), AL, name)
+            cx, cy = rect.right() - r.get("arrow", 11.0), rect.center().y()
+            p.setPen(QPen(MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+            p.drawLine(QPointF(cx - 2.6, cy - 1.2), QPointF(cx, cy + 1.4))
+            p.drawLine(QPointF(cx, cy + 1.4), QPointF(cx + 2.6, cy - 1.2))
+        elif k in ("bool", "boolin"):
+            box = QRectF(PAD, y + (h - 14) / 2, 14, 14)
+            bp = QPainterPath()
+            bp.addRoundedRect(box, 3, 3)
+            p.fillPath(bp, CHECK_ON if v else FIELD)
+            self.outline(p, bp)
+            if v:
+                p.setPen(QPen(QColor("#ffffff"), 1.7, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+                p.drawLine(QPointF(box.x() + 3.2, box.y() + 7.3), QPointF(box.x() + 6, box.y() + 10.3))
+                p.drawLine(QPointF(box.x() + 6, box.y() + 10.3), QPointF(box.x() + 10.8, box.y() + 3.8))
+            p.setPen(TXT)
+            p.drawText(QRectF(PAD + 17, y, fw - 17, h), AL, r["name"])
+        elif k == "num":
+            path = self.field(p, rect, FIELD, r.get("jt", False), r.get("jb", False))
+            if r.get("fac"):
+                frac = max(0.0, min(1.0, (float(v) - r["lo"]) / (r["hi"] - r["lo"])))
+                if frac > 0:
+                    p.save()
+                    p.setClipPath(path)
+                    p.fillRect(QRectF(rect.x(), rect.y(), rect.width() * frac, rect.height()), SLIDER)
+                    p.restore()
+            self.outline(p, path)
+            p.setPen(TXT)
+            p.drawText(rect.adjusted(NUM_PAD_L, 0, -NUM_PAD_R, 0), AL, r["name"])
+            p.drawText(rect.adjusted(NUM_PAD_L, 0, -NUM_PAD_R, 0), AR, fmt_unit(v, r))
+        elif k == "num_legacy":   # rama antigua (margen 8), ya sin uso
+            path = self.field(p, rect, FIELD, r.get("jt", False), r.get("jb", False))
+            if r.get("fac"):
+                frac = max(0.0, min(1.0, (float(v) - r["lo"]) / (r["hi"] - r["lo"])))
+                if frac > 0:
+                    p.save()
+                    p.setClipPath(path)
+                    p.fillRect(QRectF(rect.x(), rect.y(), rect.width() * frac, rect.height()), SLIDER)
+                    p.restore()
+            self.outline(p, path)
+            p.setPen(TXT)
+            p.drawText(rect.adjusted(8, 0, -8, 0), AL, r["name"])
+            p.drawText(rect.adjusted(8, 0, -8, 0), AR, fmt_unit(v, r))
+        elif k == "vec":
+            path = self.field(p, rect, FIELD)
+            self.outline(p, path)
+            p.setPen(TXT)
+            p.drawText(rect.adjusted(8, 0, -8, 0), AL, r["name"])
+            vtxt = fmt_unit(v[r["i"]], {"unit": r.get("unit"), "st": "VALUE"})
+            if r["name"]:
+                p.drawText(rect.adjusted(8, 0, -8, 0), AR, vtxt)
+            else:
+                p.drawText(rect, Qt.AlignCenter, vtxt)
+        elif k == "color":
+            c = QColor.fromRgbF(lin2s(v[0]), lin2s(v[1]), lin2s(v[2]))
+            p.setPen(TXT)
+            if r.get("dim"):   # entrada que no influye: solo la etiqueta se atenua, la muestra de color no
+                p.setPen(QColor(TXT.red(), TXT.green(), TXT.blue(), 115))
+            p.drawText(QRectF(rect.x(), y, rect.width() * 0.4, h), AL, r["name"])   # etiqueta fuera del campo
+            rect = QRectF(rect.x() + rect.width() * 0.42, rect.y(), rect.width() * 0.58, rect.height())
+            path = self.field(p, rect, c)
+            self.outline(p, path)
+            lum = 0.299 * c.redF() + 0.587 * c.greenF() + 0.114 * c.blueF()
+            r = dict(r, name="")   # el nombre ya se dibujo a la izquierda; la muestra va sin texto
+            p.setPen(QColor("#111111") if lum > 0.6 else QColor("#ffffff"))
+            p.drawText(rect.adjusted(8, 0, -8, 0), AL, r["name"])
+        elif k == "str":
+            path = self.field(p, rect, FIELD)
+            self.outline(p, path)
+            left = 8
+            if r.get("icon"):
+                p.setPen(QPen(TXT, 1.1))
+                p.setBrush(Qt.NoBrush)
+                if r["icon"] == "circle":
+                    p.drawEllipse(QRectF(rect.x() + 7, rect.center().y() - 4, 9, 9))
+                else:
+                    p.drawRect(QRectF(rect.x() + 7, rect.center().y() - 4, 8, 8))
+                left = 22
+            shown = str(v) if v else ""
+            p.setPen(TXT if shown else DIM)
+            p.drawText(rect.adjusted(left, 0, -8, 0), AL, shown or r.get("ph", ""))
+
+    def mini_btn(self, p, rect, text, active=False):
+        path = self.field(p, rect, CHECK_ON if active else FIELD)
+        self.outline(p, path)
+        p.setPen(QColor("#ffffff") if active else TXT)
+        p.drawText(rect, Qt.AlignCenter, text)
+
+    def paint_imgsel(self, p, x, y, fw):
+        """Fila selector de imagen + New + Open como en Blender: el selector lleva su icono y su flechita,
+        y New/Open van pegados formando un solo grupo con una linea de union."""
+        yy, bh, sw = y + IMG_TOP, 20.0, 31.0
+        # selector (estilo menu)
+        path = self.field(p, QRectF(x, yy, sw, bh), MENU)
+        p.setPen(QPen(globals().get("WCOL_OUT", {}).get("menu", FIELD_LINE), FIELD_LINE_W))
+        p.setBrush(Qt.NoBrush)
+        p.drawPath(path)
+        ic = QRectF(x + 5.5, yy + 4.5, 11.0, 11.0)           # icono de imagen
+        p.setPen(Qt.NoPen)
+        p.setBrush(TXT)
+        p.drawRoundedRect(ic, 1.5, 1.5)
+        p.setBrush(MENU)
+        p.drawPolygon(QPolygonF([QPointF(ic.left() + 1.5, ic.bottom() - 1.5),
+                                 QPointF(ic.left() + 4.5, ic.bottom() - 5.5),
+                                 QPointF(ic.left() + 6.5, ic.bottom() - 3.5),
+                                 QPointF(ic.left() + 8.0, ic.bottom() - 5.0),
+                                 QPointF(ic.right() - 1.5, ic.bottom() - 1.5)]))
+        p.drawEllipse(QPointF(ic.left() + 3.2, ic.top() + 3.2), 1.2, 1.2)
+        cx, cy = x + sw - 7.5, yy + bh / 2                    # flechita del menu
+        p.setPen(QPen(MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+        p.setBrush(Qt.NoBrush)
+        p.drawPolyline(QPolygonF([QPointF(cx - 2.6, cy - 1.2), QPointF(cx, cy + 1.4), QPointF(cx + 2.6, cy - 1.2)]))
+        # grupo New | Open
+        gx = x + sw + 1
+        grp = QRectF(gx, yy, x + fw - gx, bh)
+        path = self.field(p, grp, FIELD)
+        p.setPen(QPen(FIELD_LINE, FIELD_LINE_W))
+        p.setBrush(Qt.NoBrush)
+        p.drawPath(path)
+        mid = grp.center().x()
+        p.drawLine(QPointF(mid, grp.top()), QPointF(mid, grp.bottom()))
+        p.setPen(TXT)
+        p.drawText(QRectF(grp.left() + 14, yy, mid - grp.left() - 14, bh), Qt.AlignCenter, "New")
+        p.drawText(QRectF(mid + 14, yy, grp.right() - mid - 14, bh), Qt.AlignCenter, "Open")
+        pc = QPointF(grp.left() + 12, yy + bh / 2)            # "+" de New
+        p.setPen(QPen(TXT, 1.2))
+        p.drawLine(QPointF(pc.x() - 4, pc.y()), QPointF(pc.x() + 4, pc.y()))
+        p.drawLine(QPointF(pc.x(), pc.y() - 4), QPointF(pc.x(), pc.y() + 4))
+        fx, fy = mid + 8, yy + 5.5                            # carpeta de Open
+        p.setPen(Qt.NoPen)
+        p.setBrush(TXT)
+        p.drawRect(QRectF(fx, fy, 5.5, 2.5))
+        p.drawRoundedRect(QRectF(fx, fy + 1.5, 12, 8), 1, 1)
+
+    def _fit_text(self, fm, text, width):
+        if fm.horizontalAdvance(text) <= width:
+            return text
+        while text and fm.horizontalAdvance(text + "...") > width:
+            text = text[:-1]
+        return text.rstrip() + "..."
+
+    def paint_imgloaded(self, p, r):
+        """FILA_V2 - fila de imagen cargada (template_ID de Blender):
+        selector | nombre (se estira) | usuarios | escudo | duplicar | carpeta | X.
+        Medidas de la captura de Blender: selector ~30 u, iconos 20 u, usuarios ~0.108 del ancho."""
+        from PySide6.QtGui import QFontMetrics
+        d = self.img_loaded or {}
+        x, fw = PAD, self.w - 2 * PAD
+        yy, bh = r["y"] + IMG_TOP, 20.0
+        wide = self.w >= 200
+        sw = 30.5 if wide else 21.0
+        ic_w = [20.0, 20.0, 20.0, 20.0]                  # escudo, duplicar, carpeta, X
+        users = max(24.0, 0.108 * self.w)
+        gw = fw - sw - 1
+        rest = users + sum(ic_w)
+        if gw - rest < 40:                                # nodo estrecho: se encogen los botones, no el nombre
+            f = max(0.5, (gw - 40) / rest)
+            users *= f
+            ic_w = [v * f for v in ic_w]
+        name_w = gw - users - sum(ic_w)
+
+        # --- selector de imagen (icono + flechita)
+        path = self.field(p, QRectF(x, yy, sw, bh), MENU)
+        p.setPen(QPen(globals().get("WCOL_OUT", {}).get("menu", FIELD_LINE), FIELD_LINE_W))
+        p.setBrush(Qt.NoBrush)
+        p.drawPath(path)
+        isz = 13.0 if wide else 10.0
+        ic = QRectF(x + (4.5 if wide else 3.5), yy + (bh - isz) / 2, isz, isz)
+        p.setPen(Qt.NoPen)
+        p.setBrush(TXT)
+        p.drawRoundedRect(ic, 2.0, 2.0)
+        pt = lambda fx, fy: QPointF(ic.left() + fx * ic.width(), ic.top() + fy * ic.height())
+        p.setBrush(MENU)
+        p.drawPolygon(QPolygonF([pt(.12, .86), pt(.38, .50), pt(.55, .70), pt(.68, .56), pt(.88, .86)]))
+        p.drawEllipse(pt(.29, .28), isz * 0.105, isz * 0.105)
+        cx, cy = x + sw - (5.0 if wide else 4.5), yy + bh / 2
+        hw = 2.6 if wide else 2.2
+        p.setPen(QPen(MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+        p.setBrush(Qt.NoBrush)
+        p.drawPolyline(QPolygonF([QPointF(cx - hw, cy - 1.2), QPointF(cx, cy + 1.4), QPointF(cx + hw, cy - 1.2)]))
+
+        # --- grupo: nombre | usuarios | iconos
+        gx = x + sw + 1
+        grp = QRectF(gx, yy, gw, bh)
+        path = self.field(p, grp, FIELD)
+        p.setPen(QPen(FIELD_LINE, FIELD_LINE_W))
+        p.setBrush(Qt.NoBrush)
+        p.drawPath(path)
+        edges, acc = [], grp.left()
+        for wv in [name_w, users] + ic_w:
+            edges.append((acc, acc + wv))
+            acc += wv
+        for a, b in edges[:-1]:
+            p.drawLine(QPointF(b, grp.top()), QPointF(b, grp.bottom()))
+        fm = QFontMetrics(NodeItem.F)
+        short = self._fit_text(fm, d.get("name", ""), name_w - 13.5)
+        p.setPen(TXT)
+        p.drawText(QRectF(edges[0][0] + 7.5, yy, name_w - 7.5, bh), AL, short)
+        p.drawText(QRectF(edges[1][0], yy, edges[1][1] - edges[1][0], bh), Qt.AlignCenter, str(d.get("users", 1)))
+        c = lambda i: QPointF((edges[i][0] + edges[i][1]) / 2, yy + bh / 2)
+        pen = QPen(TXT, 1.3, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin)
+
+        q = c(2)                                                     # escudo (usuario falso)
+        sh = QPainterPath()
+        sh.moveTo(q.x(), q.y() - 6.0)
+        sh.lineTo(q.x() + 5.0, q.y() - 4.2)
+        sh.lineTo(q.x() + 5.0, q.y() + 0.8)
+        sh.quadTo(q.x() + 5.0, q.y() + 4.0, q.x(), q.y() + 6.2)
+        sh.quadTo(q.x() - 5.0, q.y() + 4.0, q.x() - 5.0, q.y() + 0.8)
+        sh.lineTo(q.x() - 5.0, q.y() - 4.2)
+        sh.closeSubpath()
+        p.setPen(pen)
+        p.setBrush(Qt.NoBrush)
+        p.drawPath(sh)
+
+        q = c(3)                                                     # duplicar: hoja de atras + hoja con esquina doblada
+        p.setPen(pen)
+        p.setBrush(Qt.NoBrush)
+        p.drawRoundedRect(QRectF(q.x() - 6.0, q.y() - 6.0, 8.0, 9.5), 1.2, 1.2)
+        front = QPainterPath()
+        front.moveTo(q.x() - 3.5, q.y() - 3.0)
+        front.lineTo(q.x() + 2.0, q.y() - 3.0)
+        front.lineTo(q.x() + 6.0, q.y() + 1.0)
+        front.lineTo(q.x() + 6.0, q.y() + 6.5)
+        front.lineTo(q.x() - 3.5, q.y() + 6.5)
+        front.closeSubpath()
+        p.setBrush(FIELD)
+        p.drawPath(front)
+        p.setBrush(Qt.NoBrush)
+        p.drawPolyline(QPolygonF([QPointF(q.x() + 2.0, q.y() - 3.0), QPointF(q.x() + 2.0, q.y() + 1.0),
+                                  QPointF(q.x() + 6.0, q.y() + 1.0)]))
+
+        q = c(4)                                                     # carpeta (rellena, como en Blender)
+        p.setPen(Qt.NoPen)
+        p.setBrush(TXT)
+        p.drawRoundedRect(QRectF(q.x() - 7.5, q.y() - 5.5, 6.5, 3.5), 1.0, 1.0)
+        p.drawRoundedRect(QRectF(q.x() - 7.5, q.y() - 3.5, 15.0, 10.0), 1.2, 1.2)
+
+        q = c(5)                                                     # X (quitar imagen)
+        p.setPen(QPen(TXT, 1.4, Qt.SolidLine, Qt.RoundCap))
+        p.drawLine(QPointF(q.x() - 3.8, q.y() - 3.8), QPointF(q.x() + 3.8, q.y() + 3.8))
+        p.drawLine(QPointF(q.x() - 3.8, q.y() + 3.8), QPointF(q.x() + 3.8, q.y() - 3.8))
+
+    def paint_block(self, p, r):
+        kind, y, h = r["kind"], r["y"], r["h"]
+        x, fw = PAD, self.w - 2 * PAD
+        if kind == "wheel":
+            bar_w, sw_h = 12.0, 18.0
+            d = min(fw - bar_w - 10, h - sw_h - 10)
+            cx, cy = x + (fw - bar_w - 6) / 2, y + 4 + d / 2
+            cg = QConicalGradient(QPointF(cx, cy), 0)
+            for i in range(7):
+                cg.setColorAt(i / 6, QColor.fromHsvF((i % 6) / 6.0, 1.0, 1.0))
+            p.setPen(Qt.NoPen)
+            p.setBrush(QBrush(cg))
+            p.drawEllipse(QPointF(cx, cy), d / 2, d / 2)
+            rg = QRadialGradient(QPointF(cx, cy), d / 2)
+            rg.setColorAt(0, QColor(255, 255, 255, 255))
+            rg.setColorAt(1, QColor(255, 255, 255, 0))
+            p.setBrush(QBrush(rg))
+            p.drawEllipse(QPointF(cx, cy), d / 2, d / 2)
+            p.setPen(QPen(QColor("#999999"), 1.0))
+            p.setBrush(Qt.NoBrush)
+            p.drawEllipse(QPointF(cx, cy), 3.5, 3.5)
+            bar = QRectF(x + fw - bar_w, y + 4, bar_w, d)
+            lg = QLinearGradient(0, bar.top(), 0, bar.bottom())
+            lg.setColorAt(0, QColor("#ffffff"))
+            lg.setColorAt(1, QColor("#000000"))
+            bp = QPainterPath()
+            bp.addRoundedRect(bar, 2, 2)
+            p.fillPath(bp, QBrush(lg))
+            self.outline(p, bp)
+            p.fillRect(QRectF(bar.left() - 1, bar.top() + 3, bar_w + 2, 4), QColor("#cfcfcf"))
+            c = QColor("#b8b8b8")
+            try:
+                dv = self.spec["outputs"][0].get("default")
+                if isinstance(dv, list) and len(dv) >= 3:
+                    c = QColor.fromRgbF(lin2s(dv[0]), lin2s(dv[1]), lin2s(dv[2]))
+            except Exception:
+                pass
+            sw = QRectF(x, y + h - sw_h - 2, fw, sw_h)
+            path = self.field(p, sw, c)
+            self.outline(p, path)
+        elif kind in ("curve", "curve_rgb", "curve_xyz"):
+            bh = 18.0
+            labels = {"curve_rgb": ["C", "R", "G", "B"], "curve_xyz": ["X", "Y", "Z"]}.get(kind, [])
+            bx = x
+            for i, t in enumerate(labels):
+                self.mini_btn(p, QRectF(bx, y + 2, 20, bh), t, i == 0)
+                bx += 21
+            zx = x + fw - 3 * 21
+            for t in ("+", "-", "o"):
+                self.mini_btn(p, QRectF(zx, y + 2, 20, bh), t)
+                zx += 21
+            gr = QRectF(x, y + bh + 6, fw, h - bh - 6 - 4)
+            p.fillRect(gr, QColor("#424242"))
+            p.setPen(QPen(QColor("#575757"), 1.0))
+            for i in range(1, 4):
+                p.drawLine(QPointF(gr.left() + gr.width() * i / 4, gr.top()),
+                           QPointF(gr.left() + gr.width() * i / 4, gr.bottom()))
+                p.drawLine(QPointF(gr.left(), gr.top() + gr.height() * i / 4),
+                           QPointF(gr.right(), gr.top() + gr.height() * i / 4))
+            if kind == "curve_xyz":
+                p.setPen(QPen(QColor("#8f8f2e"), 1.0))
+                p.drawLine(QPointF(gr.center().x(), gr.top()), QPointF(gr.center().x(), gr.bottom()))
+                p.setPen(QPen(QColor("#a54545"), 1.0))
+                p.drawLine(QPointF(gr.left(), gr.center().y()), QPointF(gr.right(), gr.center().y()))
+            p.setPen(QPen(QColor("#0d0d0d"), 1.3))
+            p.drawLine(QPointF(gr.left(), gr.bottom()), QPointF(gr.right(), gr.top()))
+            p.setPen(QPen(FIELD_LINE, 1.0))
+            p.setBrush(Qt.NoBrush)
+            p.drawRect(gr)
+        elif kind == "ramp":
+            yy = y + 2
+            bx = x
+            for t in ("+", "-", "v"):
+                self.mini_btn(p, QRectF(bx, yy, 20, 18), t)
+                bx += 21
+            mw = (x + fw - bx - 3) / 2
+            self.mini_btn(p, QRectF(bx + 3, yy, mw - 2, 18), "RGB")
+            self.mini_btn(p, QRectF(bx + 3 + mw, yy, mw - 2, 18), "Linear")
+            yy += 22
+            gr = QRectF(x, yy, fw, 20)
+            lg = QLinearGradient(gr.left(), 0, gr.right(), 0)
+            lg.setColorAt(0, QColor("#000000"))
+            lg.setColorAt(1, QColor("#ffffff"))
+            gp = QPainterPath()
+            gp.addRoundedRect(gr, 2, 2)
+            p.fillPath(gp, QBrush(lg))
+            self.outline(p, gp)
+            for xx, cc in ((gr.left() + 5, "#000000"), (gr.right() - 5, "#ffffff")):
+                mk = QRectF(xx - 3.5, gr.bottom() - 3, 7, 10)
+                p.fillRect(mk, QColor(cc))
+                p.setPen(QPen(QColor("#cccccc"), 1.0))
+                p.setBrush(Qt.NoBrush)
+                p.drawRect(mk)
+            yy += 28
+            self.mini_btn(p, QRectF(x, yy, 38, 18), "0")
+            f2 = QRectF(x + 42, yy, fw - 42, 18)
+            path = self.field(p, f2, FIELD)
+            self.outline(p, path)
+            p.setPen(TXT)
+            p.drawText(f2.adjusted(8, 0, -8, 0), AL, "Pos")
+            p.drawText(f2.adjusted(8, 0, -8, 0), AR, "0.000")
+            yy += 22
+            path = self.field(p, QRectF(x, yy, fw, 18), QColor("#000000"))
+            self.outline(p, path)
+        elif kind == "imgsel":
+            self.paint_imgsel(p, x, y, fw)
+            
+            p.setPen(QPen(TXT, 1.2))
+            p.setBrush(Qt.NoBrush)
+            
+            
+            
+            
+        elif kind == "spheres":
+            sh = (h - 6) / 2
+            for i in range(2):
+                box = QRectF(x, y + i * (sh + 3), fw, sh)
+                path = self.field(p, box, QColor("#4a4a4a"))
+                self.outline(p, path)
+                rad = min(box.width(), box.height()) / 2 - 3
+                c = box.center()
+                rg = QRadialGradient(QPointF(c.x() - rad * 0.3, c.y() - rad * 0.3), rad * 1.4)
+                rg.setColorAt(0, QColor("#ffffff"))
+                rg.setColorAt(1, QColor("#5a5a5a") if i == 0 else QColor("#707070"))
+                p.setPen(Qt.NoPen)
+                p.setBrush(QBrush(rg))
+                p.drawEllipse(c, rad, rad)
+        elif kind == "groupsel":
+            f = QRectF(x, y + 2, fw, 18)
+            path = self.field(p, f, FIELD)
+            self.outline(p, path)
+            p.setPen(TXT)
+            p.drawText(f.adjusted(8, 0, -8, 0), AL, self.spec["label"])
+
+    # ---- interaccion
+    def _panel_at(self, pos):
+        for r in self.rows:
+            if r["k"] == "panel" and r["y"] <= pos.y() < r["y"] + r["h"] and 0 <= pos.x() <= self.w:
+                return r
+        return None
+
+    # ---- ancho (arrastrar los bordes izquierdo/derecho, como en Blender)
+    EDGE = 5.0
+
+    def width_limits(self):
+        lo, hi = WIDTH_LIMITS.get(self.spec["idname"], (80.0, 700.0))
+        return float(lo), float(hi)
+
+    def _edge_at(self, pos):
+        lo, hi = self.width_limits()
+        if hi - lo < 1.0 or not (0.0 <= pos.y() <= self.h):
+            return None
+        if abs(pos.x()) <= self.EDGE:
+            return "l"
+        if abs(pos.x() - self.w) <= self.EDGE:
+            return "r"
+        return None
+
+    def set_width(self, nw, rs=None):
+        lo, hi = self.width_limits()
+        nw = max(lo, min(hi, float(nw)))
+        if abs(nw - self.w) < 0.01:
+            return
+        self.w = nw
+        self.relayout()
+        if rs is not None and rs["edge"] == "l":
+            self.setPos(rs["x0"] + rs["w0"] - nw, self.pos().y())   # el borde derecho se queda quieto
+        sc = self.scene()
+        if sc is not None:
+            for l in sc.links:
+                if l.a.node is self or l.b.node is self:
+                    l.update_path()
+
+    def hoverMoveEvent(self, e):
+        if self._rs is None:
+            if self._edge_at(e.pos()) is not None:
+                self.setCursor(Qt.SizeHorCursor)
+            else:
+                self.unsetCursor()
+        super().hoverMoveEvent(e)
+
+    def hoverLeaveEvent(self, e):
+        if self._rs is None:
+            self.unsetCursor()
+        super().hoverLeaveEvent(e)
+
+    def mousePressEvent(self, e):
+        if e.button() == Qt.LeftButton:
+            edge = self._edge_at(e.pos())
+            if edge is not None and self.scene() is not None:
+                if not self.isSelected():
+                    self.scene().clearSelection()
+                    self.setSelected(True)
+                self._rs = dict(edge=edge, sx=e.scenePos().x(), w0=self.w, x0=self.pos().x())
+                e.accept()
+                return
+            fr = self._field_at(e.pos())
+            if fr is not None and self.scene() is not None:
+                if not self.isSelected():
+                    self.scene().clearSelection()
+                    self.setSelected(True)
+                self._press_field(fr, e)
+                e.accept()
+                return
+            r = self._panel_at(e.pos())
+            if r is not None:
+                self.panel_open[r["panel"]] = not self.panel_open[r["panel"]]
+                if self.scene() is not None:
+                    self.scene().sync()
+                e.accept()
+                return
+        super().mousePressEvent(e)
+
+    FIELD_KINDS = ("enum", "bool", "boolin", "num", "vec", "color", "str")
+
+    def _field_at(self, pos):
+        if not (PAD <= pos.x() <= self.w - PAD):
+            return None
+        for r in self.rows:
+            if r["k"] in self.FIELD_KINDS and r["y"] <= pos.y() < r["y"] + r["h"]:
+                return r
+        return None
+
+    def _num_get(self, r):
+        v = self.get(r)
+        return v[r["i"]] if r["k"] == "vec" else v
+
+    def _num_set(self, r, x):
+        if r["k"] == "vec":
+            self.get(r)[r["i"]] = x
+        else:
+            self.put(r, int(round(x)) if r.get("st") == "INT" else float(x))
+
+    def _press_field(self, r, e):
+        """Clic sobre un campo: casillas y botones segmentados al instante, numeros se arrastran,
+        menus/colores/textos se abren al soltar (como en Blender)."""
+        k = r["k"]
+        self._ed = dict(r=r, sx=e.screenPos().x(), moved=False, mode="noop")
+        if k in ("bool", "boolin"):
+            self.put(r, not self.get(r))
+            self.scene().sync()
+        elif k == "enum" and r.get("seg"):
+            n = len(r["items"])
+            fw = self.w - 2 * PAD
+            idx = max(0, min(n - 1, int((e.pos().x() - PAD) / (fw / n))))
+            self.put(r, r["items"][idx]["id"])
+            self.scene().sync()
+        elif k in ("num", "vec"):
+            self._ed.update(mode="num", v0=self._num_get(r))
+        else:
+            self._ed["mode"] = "dialog"
+
+    def _drag_num(self, ed, e, dx):
+        r = ed["r"]
+        lo, hi = r.get("lo"), r.get("hi")
+        has = isinstance(lo, (int, float)) and isinstance(hi, (int, float)) and hi > lo
+        mods = e.modifiers()
+        shift, ctrl = bool(mods & Qt.ShiftModifier), bool(mods & Qt.ControlModifier)
+        deg, isint = r.get("unit") == "deg", r.get("st") == "INT"
+        if r.get("fac") and has:
+            t = max(0.0, min(1.0, (e.pos().x() - PAD) / (self.w - 2 * PAD)))
+            nv = lo + t * (hi - lo)
+            if ctrl:
+                nv = round(nv * 10) / 10
+        else:
+            v0 = ed["v0"]
+            base = math.degrees(v0) if deg else float(v0)
+            if isint:
+                step = 0.1
+            elif deg:
+                step = 0.5
+            else:
+                a = abs(base)
+                step = 0.01 if a < 10 else 0.1 if a < 100 else 1.0
+            if shift:
+                step /= 10
+            nd = base + dx * step
+            if ctrl:
+                snap = 5.0 if deg else (1.0 if isint else 0.1)
+                nd = round(nd / snap) * snap
+            nv = math.radians(nd) if deg else nd
+        if has:
+            nv = max(lo, min(hi, nv))
+        self._num_set(r, nv)
+        self.update()
+
+    def mouseMoveEvent(self, e):
+        rs = self._rs
+        if rs is not None:
+            dx = e.scenePos().x() - rs["sx"]
+            self.set_width(rs["w0"] + dx if rs["edge"] == "r" else rs["w0"] - dx, rs)
+            e.accept()
+            return
+        ed = self._ed
+        if ed is None:
+            super().mouseMoveEvent(e)
+            return
+        dx = e.screenPos().x() - ed["sx"]
+        if abs(dx) >= 3:
+            ed["moved"] = True
+        if ed["mode"] == "num" and ed["moved"]:
+            self._drag_num(ed, e, dx)
+        e.accept()
+
+    def mouseReleaseEvent(self, e):
+        if self._rs is not None:
+            self._rs = None
+            if self.scene() is not None:
+                self.scene().sync()
+            e.accept()
+            return
+        ed = self._ed
+        if ed is None:
+            super().mouseReleaseEvent(e)
+            return
+        self._ed = None
+        if ed["mode"] in ("num", "dialog") and not ed["moved"]:
+            self.edit(ed["r"])
+        if ed["mode"] != "noop":
+            if self.scene() is not None:
+                self.scene().sync()
+            else:
+                self.relayout()
+        e.accept()
+
+    def mouseDoubleClickEvent(self, e):
+        if self._field_at(e.pos()) is not None:
+            e.accept()
+            return
+        pos = e.pos()
+        if self._panel_at(pos) is not None:
+            e.accept()
+            return
+        if PAD <= pos.x() <= self.w - PAD:
+            for r in self.rows:
+                if r["y"] <= pos.y() < r["y"] + r["h"] and self.edit(r):
+                    if self.scene() is not None:
+                        self.scene().sync()
+                    else:
+                        self.relayout()
+                    e.accept()
+                    return
+        super().mouseDoubleClickEvent(e)
+
+    def edit(self, r):
+        parent = self.scene().views()[0] if self.scene() and self.scene().views() else None
+        if r["k"] in ("out", "label", "panel", "block", "warn", "imgloaded"):
+            return False
+        k, v = r["k"], self.get(r)
+        if k == "enum":
+            names = [i["name"] for i in r["items"]]
+            cur = next((n for n, i in enumerate(r["items"]) if i["id"] == v), 0)
+            menu = QMenu(parent)
+            for nm in names:
+                a = menu.addAction(nm)
+                a.setCheckable(True)
+                a.setChecked(nm == names[cur])
+            act = menu.exec(QCursor.pos())
+            item, ok = (act.text(), True) if act is not None else (None, False)
+            if ok:
+                self.put(r, r["items"][names.index(item)]["id"])
+            return True
+        if k in ("bool", "boolin"):
+            self.put(r, not v)
+            return True
+        if k == "num":
+            deg = r.get("unit") == "deg"
+            if r["st"] == "INT":
+                n, ok = QInputDialog.getInt(parent, "Valor", r["name"], int(v), -2**31, 2**31 - 1)
+            else:
+                cur = math.degrees(float(v)) if deg else float(v)
+                n, ok = QInputDialog.getDouble(parent, "Valor", r["name"], cur, -1e9, 1e9, 4)
+                if ok and deg:
+                    n = math.radians(n)
+            if ok:
+                self.put(r, n)
+            return True
+        if k == "vec":
+            vdeg = r.get("unit") == "deg"
+            cur = math.degrees(float(v[r["i"]])) if vdeg else float(v[r["i"]])
+            n, ok = QInputDialog.getDouble(parent, "Valor", r["name"] or "Valor", cur, -1e9, 1e9, 4)
+            if ok and vdeg:
+                n = math.radians(n)
+            if ok:
+                v[r["i"]] = n
+            return True
+        if k == "color":
+            c = QColorDialog.getColor(QColor.fromRgbF(lin2s(v[0]), lin2s(v[1]), lin2s(v[2])), parent, "Color")
+            if c.isValid():
+                self.put(r, [s2lin(c.redF()), s2lin(c.greenF()), s2lin(c.blueF()), v[3] if len(v) > 3 else 1.0])
+            return True
+        if k == "str":
+            t, ok = QInputDialog.getText(parent, "Texto", r["name"], text=str(v or ""))
+            if ok:
+                self.put(r, t)
+            return True
+        return False
+
+
+# ------------------------------------------------------------ Reroute y Frame
+class RerouteSocket(SocketItem):
+    """Socket de un Reroute: la mitad izquierda del punto es la entrada y la derecha la salida.
+    El punto lo dibuja el propio Reroute."""
+
+    def shape(self):
+        path = QPainterPath()
+        h = SocketItem.HIT
+        path.addRect(QRectF(0 if self.is_out else -h, -h, h, 2 * h))
+        return path
+
+    def paint(self, p, opt, widget=None):
+        pass
+
+    def mousePressEvent(self, e):
+        if e.modifiers() & (Qt.ControlModifier | Qt.ShiftModifier):
+            e.ignore()      # Ctrl/Mayus + arrastrar mueve el Reroute en vez de sacar un cable
+            return
+        super().mousePressEvent(e)
+
+
+class RerouteItem(QGraphicsItem):
+    """Punto de paso de un cable (Reroute). Toma el color del tipo de socket al que se conecta."""
+    R = 5.5
+    is_reroute = True
+
+    def __init__(self, spec, cat=None):
+        super().__init__()
+        self.spec = copy.deepcopy(spec)
+        self.cat = None
+        self.w = self.h = 2 * self.R
+        self.vals, self.pvals = {}, {}
+        self.lin_in, self.lin_out = set(), set()
+        self.hide_unused = False
+        self.rows = []
+        self.eff = None          # tipo efectivo (None = sin conectar)
+        self.socks = {("in", "Input"): RerouteSocket(self, self.spec["inputs"][0], False),
+                      ("out", "Output"): RerouteSocket(self, self.spec["outputs"][0], True)}
+        self.setFlags(QGraphicsItem.ItemIsMovable | QGraphicsItem.ItemIsSelectable |
+                      QGraphicsItem.ItemSendsGeometryChanges)
+        self.setZValue(1)
+
+    def relayout(self):
+        pass
+
+    def update_type(self, links):
+        si, so = self.socks[("in", "Input")], self.socks[("out", "Output")]
+        t = next((l.a.spec.get("stype") for l in links if l.b is si), None)
+        if t is None:
+            t = next((l.b.spec.get("stype") for l in links if l.a is so and l.b is not None), None)
+        self.eff = t
+        si.spec["stype"] = so.spec["stype"] = t or "VALUE"
+
+    def boundingRect(self):
+        m = self.R + 4
+        return QRectF(-m, -m, 2 * m, 2 * m)
+
+    def shape(self):
+        path = QPainterPath()
+        path.addEllipse(QPointF(0, 0), self.R + 2, self.R + 2)
+        return path
+
+    def itemChange(self, change, value):
+        if change == QGraphicsItem.ItemPositionHasChanged and self.scene() is not None:
+            for l in self.scene().links:
+                if l.a.node is self or l.b.node is self:
+                    l.update_path()
+        return super().itemChange(change, value)
+
+    def paint(self, p, opt, widget=None):
+        p.setRenderHint(QPainter.Antialiasing)
+        if self.isSelected():
+            p.setPen(QPen(SEL, 2.0))
+            p.setBrush(Qt.NoBrush)
+            p.drawEllipse(QPointF(0, 0), self.R + 2.5, self.R + 2.5)
+        p.setPen(QPen(QColor(SOCK_LINE), SOCK_LINE_W))
+        p.setBrush(QBrush(QColor(SOCK.get(self.eff or "VALUE", "#a1a1a1"))))
+        p.drawEllipse(QPointF(0, 0), self.R, self.R)
+
+
+class FrameItem(QGraphicsItem):
+    """Frame: recuadro con etiqueta que agrupa nodos. Al moverlo arrastra los nodos que contiene;
+    se redimensiona desde la esquina inferior derecha y se renombra con doble clic."""
+    is_frame = True
+    GRIP = 16.0
+
+    def __init__(self, spec, cat=None):
+        super().__init__()
+        self.spec = copy.deepcopy(spec)
+        self.cat = None
+        self.w, self.h = 300.0, 200.0
+        self.label = "Frame"
+        self.lin_in, self.lin_out = set(), set()
+        self.socks = {}
+        self.rows = []
+        self._kids, self._prev, self._resizing = [], None, False
+        self.setFlags(QGraphicsItem.ItemIsMovable | QGraphicsItem.ItemIsSelectable |
+                      QGraphicsItem.ItemSendsGeometryChanges)
+        self.setZValue(-1)      # por debajo de los cables y de los nodos
+
+    def relayout(self):
+        pass
+
+    def boundingRect(self):
+        return QRectF(-3, -3, self.w + 6, self.h + 6)
+
+    def paint(self, p, opt, widget=None):
+        p.setRenderHint(QPainter.Antialiasing)
+        p.setRenderHint(QPainter.TextAntialiasing)
+        path = QPainterPath()
+        path.addRoundedRect(QRectF(0, 0, self.w, self.h), 4, 4)
+        p.fillPath(path, HEAD["frame_node"])
+        sel = self.isSelected()
+        p.setPen(QPen(SEL if sel else OUTLINE, 2.0 if sel else NODE_LINE_W))
+        p.setBrush(Qt.NoBrush)
+        p.drawPath(path)
+        if NodeItem.F is None:
+            NodeItem.F = make_font()
+        p.setFont(NodeItem.F)
+        p.setPen(TITLE)
+        p.drawText(QRectF(8, 4, self.w - 16, 20), Qt.AlignHCenter | Qt.AlignVCenter, self.label)
+        p.setPen(QPen(DIM, 1.0))        # asa de redimensionado
+        p.drawLine(QPointF(self.w - 12, self.h - 4), QPointF(self.w - 4, self.h - 12))
+        p.drawLine(QPointF(self.w - 8, self.h - 4), QPointF(self.w - 4, self.h - 8))
+
+    def _grab_kids(self):
+        sc = self.scene()
+        self._prev = QPointF(self.pos())
+        self._kids = []
+        if sc is None:
+            return
+        r = self.mapRectToScene(QRectF(0, 0, self.w, self.h))
+        for it in sc.items(r):
+            if isinstance(it, (NodeItem, RerouteItem)) and not it.isSelected():
+                body = (QRectF(-it.R, -it.R, 2 * it.R, 2 * it.R) if isinstance(it, RerouteItem)
+                        else QRectF(0, 0, it.w, it.h))
+                if r.contains(it.mapRectToScene(body)):
+                    self._kids.append(it)
+
+    def mousePressEvent(self, e):
+        if e.button() == Qt.LeftButton:
+            if e.pos().x() > self.w - self.GRIP and e.pos().y() > self.h - self.GRIP:
+                self._resizing = True
+                if self.scene() is not None and not self.isSelected():
+                    self.scene().clearSelection()
+                    self.setSelected(True)
+                e.accept()
+                return
+            self._grab_kids()
+        super().mousePressEvent(e)
+
+    def mouseMoveEvent(self, e):
+        if self._resizing:
+            self.prepareGeometryChange()
+            self.w, self.h = max(60.0, e.pos().x()), max(40.0, e.pos().y())
+            self.update()
+            e.accept()
+            return
+        super().mouseMoveEvent(e)
+
+    def mouseReleaseEvent(self, e):
+        self._resizing, self._kids = False, []
+        super().mouseReleaseEvent(e)
+
+    def mouseDoubleClickEvent(self, e):
+        parent = self.scene().views()[0] if self.scene() and self.scene().views() else None
+        t, ok = QInputDialog.getText(parent, "Frame", "Etiqueta", text=self.label)
+        if ok:
+            self.label = t
+            self.update()
+        e.accept()
+
+    def itemChange(self, change, value):
+        if change == QGraphicsItem.ItemPositionHasChanged and self._kids and self._prev is not None:
+            d = value - self._prev
+            self._prev = QPointF(value)
+            for k in self._kids:
+                k.setPos(k.pos() + d)
+        return super().itemChange(change, value)
+
+
+def make_node(spec, mode):
+    idn = spec["idname"]
+    if idn == "NodeFrame":
+        return FrameItem(spec)
+    if idn == "NodeReroute":
+        return RerouteItem(spec)
+    return NodeItem(spec, category(idn, mode))
+
+
+# ------------------------------------------------------------------ escena
+class NodeScene(QGraphicsScene):
+    def __init__(self, mode):
+        super().__init__()
+        self.mode = mode
+        self.links = []
+        self.temp = None
+        self.exporting = False
+        self.drag_src = None
+        self.setSceneRect(-50000, -50000, 100000, 100000)
+
+    def drawBackground(self, p, rect):
+        if self.exporting:
+            return
+        p.fillRect(rect, BG)
+        step = 20
+        if rect.width() / step > 300:
+            return
+        x0 = int(math.floor(rect.left() / step)) * step
+        y0 = int(math.floor(rect.top() / step)) * step
+        for x in range(x0, int(rect.right()) + step, step):
+            p.setPen(QPen(GRID_MAJOR if x % (step * 5) == 0 else GRID_MINOR, 0))
+            p.drawLine(QPointF(x, rect.top()), QPointF(x, rect.bottom()))
+        for y in range(y0, int(rect.bottom()) + step, step):
+            p.setPen(QPen(GRID_MAJOR if y % (step * 5) == 0 else GRID_MINOR, 0))
+            p.drawLine(QPointF(rect.left(), y), QPointF(rect.right(), y))
+
+    def nodes(self):
+        return [i for i in self.items() if isinstance(i, NodeItem)]
+
+    def sync(self):
+        nodes = self.nodes()
+        for n in nodes:
+            n.lin_in, n.lin_out = set(), set()
+        for l in self.links:
+            l.a.node.lin_out.add(l.a.spec["identifier"])
+            l.b.node.lin_in.add(l.b.spec["identifier"])
+        for n in nodes:
+            n.relayout()
+        self._sync_reroutes()
+        for l in self.links:
+            l.update_path()
+
+    def layout_items(self):
+        return [i for i in self.items() if isinstance(i, (RerouteItem, FrameItem))]
+
+    def _sync_reroutes(self):
+        """Cada Reroute toma el tipo de lo que tiene conectado; se repite para cadenas de Reroute."""
+        rer = [i for i in self.items() if isinstance(i, RerouteItem)]
+        for _ in range(len(rer) + 1):
+            for r in rer:
+                r.update_type(self.links)
+        for r in rer:
+            r.update()
+
+    def drag_begin(self, sock, pos):
+        src = sock
+        if not sock.is_out:
+            # arrastrar desde una entrada ya conectada despega el link (como en Blender)
+            old = next((l for l in self.links if l.b is sock), None)
+            if old is not None:
+                src = old.a
+                self.links.remove(old)
+                self.removeItem(old)
+                self.sync()
+        self.drag_src = src
+        self.temp = LinkItem(src, None)
+        self.addItem(self.temp)
+        self.temp.end = pos
+        self.temp.update_path()
+
+    def drag_update(self, pos):
+        if self.temp is not None:
+            self.temp.end = pos
+            self.temp.update_path()
+
+    def drag_end(self, src, pos):
+        if self.temp is not None:
+            self.removeItem(self.temp)
+            self.temp = None
+        r = 14.0   # tolerancia al soltar: engancha al socket mas cercano
+        near = [i for i in self.items(QRectF(pos.x() - r, pos.y() - r, 2 * r, 2 * r))
+                if isinstance(i, SocketItem)]
+        near.sort(key=lambda s: (s.scenePos() - pos).manhattanLength())
+        for it in near:
+            if isinstance(it, SocketItem) and it.is_out != src.is_out and it.node is not src.node:
+                o, i = (src, it) if src.is_out else (it, src)
+                self.connect_socks(o, i)
+                return
+
+    def connect_socks(self, o, i):
+        for l in list(self.links):
+            if l.b is i:
+                self.links.remove(l)
+                self.removeItem(l)
+        l = LinkItem(o, i)
+        self.addItem(l)
+        self.links.append(l)
+        self.sync()
+
+    def delete_selected(self):
+        for it in self.selectedItems():
+            if isinstance(it, (NodeItem, RerouteItem)):
+                for l in [l for l in self.links if l.a.node is it or l.b.node is it]:
+                    self.links.remove(l)
+                    self.removeItem(l)
+                self.removeItem(it)
+            elif isinstance(it, FrameItem):
+                self.removeItem(it)
+            elif isinstance(it, LinkItem) and it in self.links:
+                self.links.remove(it)
+                self.removeItem(it)
+        self.sync()
+
+
+class NodeView(QGraphicsView):
+    def __init__(self):
+        super().__init__()
+        self.setRenderHints(QPainter.Antialiasing | QPainter.TextAntialiasing)
+        self.setViewportUpdateMode(QGraphicsView.FullViewportUpdate)
+        self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
+        self.setResizeAnchor(QGraphicsView.AnchorUnderMouse)
+        self.setDragMode(QGraphicsView.RubberBandDrag)
+        self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self._pan = None
+
+    def wheelEvent(self, e):
+        f = 1.15 if e.angleDelta().y() > 0 else 1 / 1.15
+        self.scale(f, f)
+
+    def mousePressEvent(self, e):
+        if e.button() == Qt.MiddleButton:
+            self._pan = e.position()
+            self.setCursor(Qt.ClosedHandCursor)
+            e.accept()
+            return
+        super().mousePressEvent(e)
+
+    def mouseMoveEvent(self, e):
+        if self._pan is not None:
+            d = e.position() - self._pan
+            self._pan = e.position()
+            self.horizontalScrollBar().setValue(int(self.horizontalScrollBar().value() - d.x()))
+            self.verticalScrollBar().setValue(int(self.verticalScrollBar().value() - d.y()))
+            e.accept()
+            return
+        super().mouseMoveEvent(e)
+
+    def mouseReleaseEvent(self, e):
+        if e.button() == Qt.MiddleButton and self._pan is not None:
+            self._pan = None
+            self.unsetCursor()
+            e.accept()
+            return
+        super().mouseReleaseEvent(e)
+
+
+# Entradas del menu Add que Node Wrangler pone en Blender: no son tipos de nodo, crean nodos Image
+VIRTUAL_ADD = [{"idname": "_MultipleImages", "label": "Multiple Images"},
+               {"idname": "_ImageSequence", "label": "Image Sequence"}]
+IMAGE_NODE = {"compositor": "CompositorNodeImage", "shader": "ShaderNodeTexImage"}
+
+
+class AddDialog(QDialog):
+    def __init__(self, specs, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Añadir nodo")
+        self.resize(360, 480)
+        self.specs = sorted(specs, key=lambda s: s["label"].lower())
+        self.chosen = None
+        lay = QVBoxLayout(self)
+        self.edit = QLineEdit()
+        self.edit.setPlaceholderText("Buscar nodo...")
+        self.lst = QListWidget()
+        lay.addWidget(self.edit)
+        lay.addWidget(self.lst)
+        self.edit.textChanged.connect(self.refill)
+        self.edit.returnPressed.connect(self.accept)
+        self.lst.itemDoubleClicked.connect(lambda _i: self.accept())
+        self.refill("")
+
+    def refill(self, t):
+        self.lst.clear()
+        t = t.lower()
+        for s in self.specs:
+            if t in s["label"].lower() or t in s["idname"].lower():
+                it = QListWidgetItem(s["label"])
+                it.setData(Qt.UserRole, s["idname"])
+                self.lst.addItem(it)
+        if self.lst.count():
+            self.lst.setCurrentRow(0)
+
+    def accept(self):
+        it = self.lst.currentItem()
+        if it is not None:
+            self.chosen = it.data(Qt.UserRole)
+            super().accept()
+
+
+class Window(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Nodo Capture")
+        self.resize(1280, 800)
+        self.scenes = {m: NodeScene(m) for m in CATALOG}
+        self.view = NodeView()
+        self.setCentralWidget(self.view)
+        self.mode = QComboBox()
+        self.mode.addItem("Shader Editor", "shader")
+        self.mode.addItem("Compositor", "compositor")
+        self.mode.currentIndexChanged.connect(self.switch)
+        self.scale_spin = QSpinBox()
+        self.scale_spin.setRange(1, 16)
+        self.scale_spin.setValue(4)
+        self.scale_spin.setPrefix("Escala ×")
+        tb = self.addToolBar("main")
+        tb.setMovable(False)
+        tb.addWidget(self.mode)
+        self._act(tb, "Añadir nodo", "Shift+A", self.add_node)
+        self._act(tb, "Borrar", "Delete", lambda: self.cur.delete_selected())
+        self._act(tb, "Ocultar sin conectar", "Ctrl+H", self.toggle_hide)
+        tb.addSeparator()
+        tb.addWidget(self.scale_spin)
+        self._act(tb, "Exportar PNG", "Ctrl+E", lambda: self.export("png", False))
+        self._act(tb, "PNG transparente", "Ctrl+Shift+E", lambda: self.export("png", True))
+        self._act(tb, "Exportar SVG", "Ctrl+Alt+E", lambda: self.export("svg", False))
+        self.switch()
+
+    def _act(self, tb, text, key, fn):
+        a = QAction(text, self)
+        a.setShortcut(key)
+        a.setToolTip(f"{text} ({key})")
+        a.triggered.connect(lambda _c=False: fn())
+        tb.addAction(a)
+        self.addAction(a)
+
+    @property
+    def cur(self):
+        return self.scenes[self.mode.currentData()]
+
+    def switch(self, _i=0):
+        self.view.setScene(self.cur)
+
+    def add_node(self):
+        sc = self.cur
+        vp = self.view.viewport()
+        local = vp.mapFromGlobal(QCursor.pos())
+        pt = local if vp.rect().contains(local) else vp.rect().center()
+        pos = self.view.mapToScene(pt)
+        dlg = AddDialog(CATALOG[sc.mode] + VIRTUAL_ADD, self)
+        if not dlg.exec() or not dlg.chosen:
+            return
+        if dlg.chosen in ("_MultipleImages", "_ImageSequence"):
+            spec = next(s for s in CATALOG[sc.mode] if s["idname"] == IMAGE_NODE[sc.mode])
+            node = make_node(spec, sc.mode)
+            node.setPos(pos)
+            if dlg.chosen == "_MultipleImages" and sc.mode == "compositor":
+                node.load_image("Multiple Images.png", MULTI_IMG_USERS)   # un solo nodo, como Node Wrangler
+            sc.clearSelection()
+            sc.addItem(node)
+            node.setSelected(True)
+        else:
+            spec = next(s for s in CATALOG[sc.mode] if s["idname"] == dlg.chosen)
+            node = make_node(spec, sc.mode)
+            node.setPos(pos)
+            sc.clearSelection()
+            sc.addItem(node)
+            node.setSelected(True)
+
+    def toggle_hide(self):
+        sc = self.cur
+        for n in sc.selectedItems():
+            if isinstance(n, NodeItem):
+                n.hide_unused = not n.hide_unused
+        sc.sync()
+
+    def export(self, kind, transparent, path=None):
+        sc = self.cur
+        if not sc.nodes() and not sc.layout_items():
+            return
+        rect = sc.itemsBoundingRect().adjusted(-24, -24, 24, 24)
+        if path is None:
+            flt = "PNG (*.png)" if kind == "png" else "SVG (*.svg)"
+            path, _ = QFileDialog.getSaveFileName(self, "Exportar", str(Path.home() / f"nodos.{kind}"), flt)
+            if not path:
+                return
+        scale = self.scale_spin.value()
+        sel = sc.selectedItems()
+        sc.clearSelection()
+        sc.exporting = True
+        try:
+            if kind == "png":
+                img = QImage(max(1, int(rect.width() * scale)), max(1, int(rect.height() * scale)),
+                             QImage.Format_ARGB32)
+                img.fill(Qt.transparent if transparent else BG)
+                p = QPainter(img)
+                p.setRenderHint(QPainter.Antialiasing)
+                p.setRenderHint(QPainter.TextAntialiasing)
+                p.setRenderHint(QPainter.SmoothPixmapTransform)
+                sc.render(p, QRectF(img.rect()), rect)
+                p.end()
+                img.save(path)
+            else:
+                g = QSvgGenerator()
+                g.setFileName(path)
+                g.setSize(QSize(int(rect.width()), int(rect.height())))
+                g.setViewBox(QRectF(0, 0, rect.width(), rect.height()))
+                p = QPainter(g)
+                p.setRenderHint(QPainter.Antialiasing)
+                if not transparent:
+                    p.fillRect(QRectF(0, 0, rect.width(), rect.height()), BG)
+                sc.render(p, QRectF(0, 0, rect.width(), rect.height()), rect)
+                p.end()
+        finally:
+            sc.exporting = False
+            for it in sel:
+                it.setSelected(True)
+
+
+def apply_dark(app):
+    app.setStyle("Fusion")
+    pal = QPalette()
+    for role, c in ((QPalette.Window, "#2b2b2b"), (QPalette.WindowText, "#e6e6e6"),
+                    (QPalette.Base, "#1e1e1e"), (QPalette.AlternateBase, "#2b2b2b"),
+                    (QPalette.Text, "#e6e6e6"), (QPalette.Button, "#3a3a3a"),
+                    (QPalette.ButtonText, "#e6e6e6"), (QPalette.Highlight, "#4772b3"),
+                    (QPalette.HighlightedText, "#ffffff")):
+        pal.setColor(role, QColor(c))
+    app.setPalette(pal)
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    apply_dark(app)
+    w = Window()
+    import themes
+    themes.install(w)
+    w.show()
+    sys.exit(app.exec())

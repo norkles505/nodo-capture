@@ -1,0 +1,620 @@
+{
+ "ShaderNodeAttribute": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 170.0,
+  "label": "Attribute"
+ },
+ "FunctionNodeInputBool": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 50.0,
+  "label": "Boolean"
+ },
+ "ShaderNodeRGB": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 152.0,
+  "label": "Color"
+ },
+ "FunctionNodeInputInt": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 50.0,
+  "label": "Integer"
+ },
+ "FunctionNodeInputMenu": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 50.0,
+  "label": "Menu"
+ },
+ "ShaderNodeValue": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 50.0,
+  "label": "Value"
+ },
+ "FunctionNodeInputVector": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 90.0,
+  "label": "Vector"
+ },
+ "ShaderNodeAmbientOcclusion": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 215.0,
+  "label": "Ambient Occlusion"
+ },
+ "ShaderNodeBevel": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 121.0,
+  "label": "Bevel"
+ },
+ "ShaderNodeCameraData": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 94.0,
+  "label": "Camera Data"
+ },
+ "ShaderNodeVertexColor": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 101.0,
+  "label": "Color Attribute"
+ },
+ "ShaderNodeHairInfo": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 160.0,
+  "label": "Curves Info"
+ },
+ "ShaderNodeFresnel": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 97.0,
+  "label": "Fresnel"
+ },
+ "ShaderNodeNewGeometry": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 226.0,
+  "label": "Geometry"
+ },
+ "ShaderNodeLayerWeight": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 119.0,
+  "label": "Layer Weight"
+ },
+ "ShaderNodeLightPath": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 358.0,
+  "label": "Light Path"
+ },
+ "ShaderNodeObjectInfo": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 160.0,
+  "label": "Object Info"
+ },
+ "ShaderNodeParticleInfo": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 204.0,
+  "label": "Particle Info"
+ },
+ "ShaderNodePointInfo": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 94.0,
+  "label": "Point Info"
+ },
+ "ShaderNodeRaycast": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 248.0,
+  "label": "Raycast"
+ },
+ "GeometryNodeInputSceneTime": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 72.0,
+  "label": "Scene Time"
+ },
+ "ShaderNodeTangent": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 104.0,
+  "label": "Tangent"
+ },
+ "ShaderNodeTexCoord": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 236.0,
+  "label": "Texture Coordinate"
+ },
+ "ShaderNodeUVMap": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 104.0,
+  "label": "UV Map"
+ },
+ "ShaderNodeVolumeInfo": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 116.0,
+  "label": "Volume Info"
+ },
+ "ShaderNodeWireframe": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 99.0,
+  "label": "Wireframe"
+ },
+ "ShaderNodeOutputAOV": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 96.0,
+  "label": "AOV Output"
+ },
+ "ShaderNodeOutputMaterial": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 140.0,
+  "label": "Material Output"
+ },
+ "ShaderNodeAddShader": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 97.0,
+  "label": "Add Shader"
+ },
+ "ShaderNodeMixShader": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 119.0,
+  "label": "Mix Shader"
+ },
+ "ShaderNodeBsdfDiffuse": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 121.0,
+  "label": "Diffuse BSDF"
+ },
+ "ShaderNodeEmission": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 99.0,
+  "label": "Emission"
+ },
+ "ShaderNodeBsdfGlass": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 182.0,
+  "label": "Glass BSDF"
+ },
+ "ShaderNodeBsdfAnisotropic": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 211.0,
+  "label": "Glossy BSDF"
+ },
+ "ShaderNodeHoldout": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 50.0,
+  "label": "Holdout"
+ },
+ "ShaderNodeBsdfMetallic": {
+  "width": 240.0,
+  "w": 240.0,
+  "h": 273.0,
+  "label": "Metallic BSDF"
+ },
+ "ShaderNodeBsdfPrincipled": {
+  "width": 240.0,
+  "w": 240.0,
+  "h": 362.0,
+  "label": "Principled BSDF"
+ },
+ "ShaderNodeBsdfRefraction": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 167.0,
+  "label": "Refraction BSDF"
+ },
+ "ShaderNodeEeveeSpecular": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 253.0,
+  "label": "Specular BSDF"
+ },
+ "ShaderNodeSubsurfaceScattering": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 295.0,
+  "label": "Subsurface Scattering"
+ },
+ "ShaderNodeBsdfTranslucent": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 99.0,
+  "label": "Translucent BSDF"
+ },
+ "ShaderNodeBsdfTransparent": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 77.0,
+  "label": "Transparent BSDF"
+ },
+ "ShaderNodeVolumePrincipled": {
+  "width": 240.0,
+  "w": 240.0,
+  "h": 319.0,
+  "label": "Principled Volume"
+ },
+ "ShaderNodeVolumeAbsorption": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 99.0,
+  "label": "Volume Absorption"
+ },
+ "ShaderNodeVolumeScatter": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 145.0,
+  "label": "Volume Scatter"
+ },
+ "ShaderNodeVolumeCoefficients": {
+  "width": 240.0,
+  "w": 240.0,
+  "h": 428.0,
+  "label": "Volume Coefficients"
+ },
+ "ShaderNodeBump": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 187.0,
+  "label": "Bump"
+ },
+ "ShaderNodeDisplacement": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 165.0,
+  "label": "Displacement"
+ },
+ "ShaderNodeNormalMap": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 196.0,
+  "label": "Normal Map"
+ },
+ "ShaderNodeVectorDisplacement": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 143.0,
+  "label": "Vector Displacement"
+ },
+ "ShaderNodeBlackbody": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 75.0,
+  "label": "Blackbody"
+ },
+ "ShaderNodeBrightContrast": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 119.0,
+  "label": "Brightness/Contrast"
+ },
+ "ShaderNodeValToRGB": {
+  "width": 240.0,
+  "w": 240.0,
+  "h": 206.0,
+  "label": "Color Ramp"
+ },
+ "ShaderNodeGamma": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 70.0,
+  "label": "Gamma"
+ },
+ "ShaderNodeHueSaturation": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 163.0,
+  "label": "Hue/Saturation/Value"
+ },
+ "ShaderNodeInvert": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 97.0,
+  "label": "Invert Color"
+ },
+ "ShaderNodeLightFalloff": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 141.0,
+  "label": "Light Falloff"
+ },
+ "ShaderNodeMix": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 220.0,
+  "label": "Mix"
+ },
+ "ShaderNodeRGBCurve": {
+  "width": 240.0,
+  "w": 240.0,
+  "h": 286.0,
+  "label": "RGB Curves"
+ },
+ "ShaderNodeWavelength": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 75.0,
+  "label": "Wavelength"
+ },
+ "ShaderNodeCombineColor": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 143.0,
+  "label": "Combine Color"
+ },
+ "ShaderNodeSeparateColor": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 143.0,
+  "label": "Separate Color"
+ },
+ "ShaderNodeRGBToBW": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 75.0,
+  "label": "RGB to BW"
+ },
+ "ShaderNodeShaderToRGB": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 97.0,
+  "label": "Shader to RGB"
+ },
+ "ShaderNodeTexImage": {
+  "width": 240.0,
+  "w": 240.0,
+  "h": 271.0,
+  "label": "Image Texture"
+ },
+ "ShaderNodeTexBrick": {
+  "width": 180.0,
+  "w": 180.0,
+  "h": 384.0,
+  "label": "Brick Texture"
+ },
+ "ShaderNodeTexChecker": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 163.0,
+  "label": "Checker Texture"
+ },
+ "ShaderNodeTexEnvironment": {
+  "width": 240.0,
+  "w": 240.0,
+  "h": 149.0,
+  "label": "Environment Texture"
+ },
+ "ShaderNodeTexGabor": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 233.0,
+  "label": "Gabor Texture"
+ },
+ "ShaderNodeTexGradient": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 121.0,
+  "label": "Gradient Texture"
+ },
+ "ShaderNodeTexIES": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 146.0,
+  "label": "IES Texture"
+ },
+ "ShaderNodeTexMagic": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 165.0,
+  "label": "Magic Texture"
+ },
+ "ShaderNodeTexNoise": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 281.0,
+  "label": "Noise Texture"
+ },
+ "ShaderNodeTexSky": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 309.0,
+  "label": "Sky Texture"
+ },
+ "ShaderNodeTexVoronoi": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 328.0,
+  "label": "Voronoi Texture"
+ },
+ "ShaderNodeTexWave": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 303.0,
+  "label": "Wave Texture"
+ },
+ "ShaderNodeTexWhiteNoise": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 123.0,
+  "label": "White Noise Texture"
+ },
+ "ShaderNodeClamp": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 143.0,
+  "label": "Clamp"
+ },
+ "ShaderNodeFloatCurve": {
+  "width": 240.0,
+  "w": 240.0,
+  "h": 286.0,
+  "label": "Float Curve"
+ },
+ "ShaderNodeMapRange": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 239.0,
+  "label": "Map Range"
+ },
+ "ShaderNodeMath": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 148.0,
+  "label": "Math"
+ },
+ "ShaderNodeCombineXYZ": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 119.0,
+  "label": "Combine XYZ"
+ },
+ "ShaderNodeSeparateXYZ": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 181.0,
+  "label": "Separate XYZ"
+ },
+ "ShaderNodeMapping": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 413.0,
+  "label": "Mapping"
+ },
+ "ShaderNodeNormal": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 201.0,
+  "label": "Normal"
+ },
+ "ShaderNodeRadialTiling": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 251.0,
+  "label": "Radial Tiling"
+ },
+ "ShaderNodeVectorCurve": {
+  "width": 240.0,
+  "w": 240.0,
+  "h": 348.0,
+  "label": "Vector Curves"
+ },
+ "ShaderNodeVectorMath": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 247.0,
+  "label": "Vector Math"
+ },
+ "ShaderNodeVectorRotate": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 289.0,
+  "label": "Vector Rotate"
+ },
+ "ShaderNodeGroup": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 114.0,
+  "label": "Combine Cylindrical"
+ },
+ "ShaderNodeVectorTransform": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 211.0,
+  "label": "Vector Transform"
+ },
+ "GeometryNodeRepeatInput": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 92.0,
+  "label": "Repeat Input"
+ },
+ "GeometryNodeRepeatOutput": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 48.0,
+  "label": "Repeat Output"
+ },
+ "NodeImplicitConversion": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 74.0,
+  "label": "Implicit Conversion"
+ },
+ "NodeClosureInput": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 50.0,
+  "label": "Closure Input"
+ },
+ "NodeClosureOutput": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 75.0,
+  "label": "Closure Output"
+ },
+ "NodeEvaluateClosure": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 118.0,
+  "label": "Evaluate Closure"
+ },
+ "NodeCombineBundle": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 70.0,
+  "label": "Combine Bundle"
+ },
+ "NodeSeparateBundle": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 75.0,
+  "label": "Separate Bundle"
+ },
+ "NodeJoinBundle": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 48.0,
+  "label": "Join Bundle"
+ },
+ "GeometryNodeMenuSwitch": {
+  "width": 140.0,
+  "w": 140.0,
+  "h": 162.0,
+  "label": "Menu Switch"
+ },
+ "NodeFrame": {
+  "width": 160.0,
+  "w": 160.0,
+  "h": 100.0,
+  "label": "Frame"
+ },
+ "NodeReroute": {
+  "width": 10.0,
+  "w": 10.0,
+  "h": 10.0,
+  "label": "Reroute"
+ }
+}

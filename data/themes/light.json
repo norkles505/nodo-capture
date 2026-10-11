@@ -1,0 +1,18 @@
+{
+  "name": "Claro",
+  "ui": {"window": "#d9d9d9", "text": "#1a1a1a", "base": "#f2f2f2", "button": "#cfcfcf", "highlight": "#4772b3"},
+  "theme": {
+    "grid": "#8f8f8f",
+    "node_backdrop": "#bdbdbd",
+    "node_outline": "#5a5a5a",
+    "wire": "#000000",
+    "wire_select": "#ffffff"
+  },
+  "widgets": {
+    "wcol_regular": {"inner": "#d9d9d9", "outline": "#7a7a7a", "text": "#1a1a1a"},
+    "wcol_menu": {"inner": "#cdcdcd"},
+    "wcol_numslider": {"item": "#7aa6dc"},
+    "wcol_option": {"inner_sel": "#4772b3"}
+  },
+  "extra": {"bg": "#a6a6a6", "grid_minor": "#9f9f9f", "title": "#f5f5f5", "dim": "#6a6a6a"}
+}

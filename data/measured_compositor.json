@@ -1,0 +1,10212 @@
+[
+{
+"idname": "CompositorNodeImage",
+"label": "Image",
+"w": 140.0,
+"h": 181.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"use_cyclic": false,
+"use_auto_refresh": true,
+"layer": "",
+"has_layers": false,
+"view": "",
+"has_views": false
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeImage",
+"label": "Image",
+"w": 140.0,
+"h": 311.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"use_cyclic": false,
+"use_auto_refresh": true,
+"layer": "",
+"has_layers": false,
+"view": "",
+"has_views": false
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInputBool",
+"label": "Boolean",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"boolean": false
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Boolean",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeRGB",
+"label": "Color",
+"w": 140.0,
+"h": 152.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "GeometryNodeInputFont",
+"label": "Font",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Font",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInputInt",
+"label": "Integer",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Integer",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInputIntVector",
+"label": "Integer Vector",
+"w": 140.0,
+"h": 90.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInputMenu",
+"label": "Menu",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"value": ""
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Menu",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeNormal",
+"label": "Normal",
+"w": 140.0,
+"h": 119.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "GeometryNodeInputObject",
+"label": "Object",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Object",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInputRotation",
+"label": "Rotation",
+"w": 140.0,
+"h": 90.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInputString",
+"label": "String",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeValue",
+"label": "Value",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInputVector",
+"label": "Vector",
+"w": 140.0,
+"h": 90.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeBlankImage",
+"label": "Blank Image",
+"w": 140.0,
+"h": 139.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT_VECTOR"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeBokehImage",
+"label": "Bokeh Image",
+"w": 160.0,
+"h": 163.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Flaps",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Angle",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Roundness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Catadioptric Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Color Shift",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeImage",
+"label": "Image",
+"w": 140.0,
+"h": 101.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"use_cyclic": false,
+"use_auto_refresh": true,
+"layer": "",
+"has_layers": false,
+"view": "",
+"has_views": false
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeImageInfo",
+"label": "Image Info",
+"w": 140.0,
+"h": 163.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Dimensions",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Resolution",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Location",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeImageCoordinates",
+"label": "Image Coordinates",
+"w": 140.0,
+"h": 119.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Uniform",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Normalized",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Pixel",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeMask",
+"label": "Mask",
+"w": 140.0,
+"h": 138.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Size Source",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Size X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Size Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Feather",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Motion Blur",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Samples",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Shutter",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Mask",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeMovieClip",
+"label": "Movie Clip",
+"w": 140.0,
+"h": 189.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Offset X",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Offset Y",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Angle",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeStringToImage",
+"label": "String To Image",
+"w": 140.0,
+"h": 154.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [
+true,
+true
+],
+"in": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Font",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "FONT"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Horizontal Alignment",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Vertical Alignment",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Wrap",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Width",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "GeometryNodeInputActiveCamera",
+"label": "Active Camera",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Active Camera",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "GeometryNodeCameraInfo",
+"label": "Camera Info",
+"w": 140.0,
+"h": 246.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Camera",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "OBJECT"
+}
+],
+"out": [
+{
+"n": "Projection Matrix",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Focal Length",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Sensor",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Shift",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Clip Start",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Clip End",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Focus Distance",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Is Orthographic",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Orthographic Scale",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "GeometryNodeObjectInfo",
+"label": "Object Info",
+"w": 140.0,
+"h": 147.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"transform_space": "ORIGINAL"
+},
+"panels": [],
+"in": [
+{
+"n": "Object",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "OBJECT"
+},
+{
+"n": "As Instance",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Transform",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Location",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Geometry",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeRLayers",
+"label": "Render Layers",
+"w": 240.0,
+"h": 126.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"layer": "ViewLayer"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeSceneTime",
+"label": "Scene Time",
+"w": 140.0,
+"h": 72.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Seconds",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Frame",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeTime",
+"label": "Time Curve",
+"w": 200.0,
+"h": 286.0,
+"width": 200.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Start Frame",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "End Frame",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+}
+],
+"out": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "NodeEnableOutput",
+"label": "Enable Output",
+"w": 140.0,
+"h": 96.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INTERFACE",
+"bl_icon": "NONE",
+"data_type": "FLOAT"
+},
+"panels": [],
+"in": [
+{
+"n": "Enable",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeViewer",
+"label": "Viewer",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "OUTPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": []
+},
+{
+"idname": "GeometryNodeWarning",
+"label": "Warning",
+"w": 140.0,
+"h": 96.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INTERFACE",
+"bl_icon": "NONE",
+"warning_type": "ERROR"
+},
+"panels": [],
+"in": [
+{
+"n": "Show",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "BOOLEAN"
+},
+{
+"n": "Message",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+}
+],
+"out": [
+{
+"n": "Show",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeOutputFile",
+"label": "File Output",
+"w": 140.0,
+"h": 99.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "OUTPUT",
+"bl_icon": "NONE",
+"save_as_render": true,
+"use_file_extension": true
+},
+"panels": [],
+"in": [
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "CUSTOM"
+}
+],
+"out": []
+},
+{
+"idname": "CompositorNodeBrightContrast",
+"label": "Brightness/Contrast",
+"w": 140.0,
+"h": 92.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Brightness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Contrast",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodePremulKey",
+"label": "Alpha Convert",
+"w": 140.0,
+"h": 70.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeColorBalance",
+"label": "Color Balance",
+"w": 140.0,
+"h": 224.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [
+false,
+false
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Lift",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Lift",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Gamma",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gamma",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Gain",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gain",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Offset",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Offset",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Power",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Power",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Slope",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Slope",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Temperature",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Tint",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Temperature",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Tint",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeColorCorrection",
+"label": "Color Correction",
+"w": 140.0,
+"h": 190.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [
+true,
+true,
+true,
+true,
+true,
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Mask",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Saturation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Contrast",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gamma",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gain",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Offset",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Saturation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Contrast",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gamma",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gain",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Offset",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Saturation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Contrast",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gamma",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gain",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Offset",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Saturation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Contrast",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gamma",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gain",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Offset",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Midtones Start",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Midtones End",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Red",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Green",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Blue",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeExposure",
+"label": "Exposure",
+"w": 140.0,
+"h": 70.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Exposure",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeGamma",
+"label": "Gamma",
+"w": 140.0,
+"h": 70.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Gamma",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeHueCorrect",
+"label": "Hue Correct",
+"w": 320.0,
+"h": 286.0,
+"width": 320.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeHueSat",
+"label": "Hue/Saturation/Value",
+"w": 140.0,
+"h": 136.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Hue",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Saturation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeCurveRGB",
+"label": "RGB Curves",
+"w": 200.0,
+"h": 355.0,
+"width": 200.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Black Level",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "White Level",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeTonemap",
+"label": "Tonemap",
+"w": 140.0,
+"h": 158.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Key",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Balance",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gamma",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Intensity",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Contrast",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Light Adaptation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Chromatic Adaptation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeAlphaOver",
+"label": "Alpha Over",
+"w": 140.0,
+"h": 163.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Background",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Foreground",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Straight Alpha",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeSetAlpha",
+"label": "Set Alpha",
+"w": 140.0,
+"h": 92.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeCombineColor",
+"label": "Combine Color",
+"w": 140.0,
+"h": 165.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"mode": "RGB",
+"ycc_mode": "ITUBT709"
+},
+"panels": [],
+"in": [
+{
+"n": "Red",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Green",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Blue",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeSeparateColor",
+"label": "Separate Color",
+"w": 140.0,
+"h": 165.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"mode": "RGB",
+"ycc_mode": "ITUBT709"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Red",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Green",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Blue",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeZcombine",
+"label": "Depth Combine",
+"w": 140.0,
+"h": 207.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "A",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Depth A",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "B",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Depth B",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Use Alpha",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Anti-Alias",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Depth",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMix",
+"label": "Mix",
+"w": 140.0,
+"h": 220.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE",
+"data_type": "RGBA",
+"factor_mode": "UNIFORM",
+"blend_type": "MIX",
+"clamp_factor": true,
+"clamp_result": false
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Factor",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "A",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "B",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBlackbody",
+"label": "Blackbody",
+"w": 160.0,
+"h": 75.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Temperature",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeValToRGB",
+"label": "Color Ramp",
+"w": 240.0,
+"h": 206.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeConvertColorSpace",
+"label": "Convert Colorspace",
+"w": 160.0,
+"h": 124.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"from_color_space": "scene_linear",
+"to_color_space": "scene_linear"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeConvertToDisplay",
+"label": "Convert to Display",
+"w": 240.0,
+"h": 171.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Invert",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeInvert",
+"label": "Invert Color",
+"w": 140.0,
+"h": 114.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Invert Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Invert Alpha",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeRGBToBW",
+"label": "RGB to BW",
+"w": 140.0,
+"h": 75.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Val",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeKuwahara",
+"label": "Kuwahara",
+"w": 160.0,
+"h": 158.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Uniformity",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Sharpness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Eccentricity",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "High Precision",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodePixelate",
+"label": "Pixelate",
+"w": 140.0,
+"h": 70.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodePosterize",
+"label": "Posterize",
+"w": 140.0,
+"h": 70.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Steps",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeBilateralblur",
+"label": "Bilateral Blur",
+"w": 140.0,
+"h": 114.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Determinator",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Threshold",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeBlur",
+"label": "Blur",
+"w": 140.0,
+"h": 178.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extend Bounds",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Separable",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeBokehBlur",
+"label": "Bokeh Blur",
+"w": 160.0,
+"h": 136.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Bokeh",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Mask",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Extend Bounds",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeDefocus",
+"label": "Defocus",
+"w": 140.0,
+"h": 287.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE",
+"bokeh": "CIRCLE",
+"use_zbuffer": false
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Z",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeDBlur",
+"label": "Directional Blur",
+"w": 140.0,
+"h": 248.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [
+false
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Samples",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Center",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Amount",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Direction",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeVecBlur",
+"label": "Vector Blur",
+"w": 140.0,
+"h": 218.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Speed",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Depth",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Samples",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Shutter",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeAntiAliasing",
+"label": "Anti-Aliasing",
+"w": 180.0,
+"h": 114.0,
+"width": 180.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Threshold",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Contrast Limit",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Corner Rounding",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeConvolve",
+"label": "Convolve",
+"w": 140.0,
+"h": 114.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Kernel Data Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Kernel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VALUE"
+},
+{
+"n": "Kernel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Normalize Kernel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeDenoise",
+"label": "Denoise",
+"w": 140.0,
+"h": 158.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Albedo",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "HDR",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Prefilter",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Quality",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeDespeckle",
+"label": "Despeckle",
+"w": 140.0,
+"h": 114.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Color Threshold",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Neighbor Threshold",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeDilateErode",
+"label": "Dilate/Erode",
+"w": 140.0,
+"h": 121.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Mask",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Falloff Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Falloff",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Mask",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeMaskToSDF",
+"label": "Mask To SDF",
+"w": 140.0,
+"h": 97.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Mask",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "SDF",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Nearest Pixel",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeInpaint",
+"label": "Inpaint",
+"w": 140.0,
+"h": 70.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeFilter",
+"label": "Filter",
+"w": 140.0,
+"h": 92.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeGlare",
+"label": "Glare",
+"w": 140.0,
+"h": 386.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [
+true,
+true,
+false,
+false
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Quality",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Threshold",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Smoothness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Clamp",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Maximum",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Strength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Saturation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Tint",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Streaks",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Streaks Angle",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Iterations",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Fade",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Color Modulation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Diagonal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Sun Position",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Jitter",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Kernel Data Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Kernel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VALUE"
+},
+{
+"n": "Kernel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Glare",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Highlights",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeChannelMatte",
+"label": "Channel Key",
+"w": 140.0,
+"h": 180.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Minimum",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Maximum",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Color Space",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "RGB Key Channel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "HSV Key Channel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "YUV Key Channel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "YCbCr Key Channel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Limit Method",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "RGB Limit Channel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "HSV Limit Channel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "YUV Limit Channel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "YCbCr Limit Channel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Matte",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeChromaMatte",
+"label": "Chroma Key",
+"w": 160.0,
+"h": 158.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Key Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Minimum",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Maximum",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Falloff",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Matte",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeColorMatte",
+"label": "Color Key",
+"w": 160.0,
+"h": 158.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Key Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Hue",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Saturation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Matte",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeColorSpill",
+"label": "Color Spill",
+"w": 160.0,
+"h": 200.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Spill Channel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Limit Method",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Limit Channel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Limit Strength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Use Spill Strength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Strength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeDiffMatte",
+"label": "Difference Key",
+"w": 140.0,
+"h": 163.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image 1",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Image 2",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Tolerance",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Falloff",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Matte",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeDistanceMatte",
+"label": "Distance Key",
+"w": 160.0,
+"h": 158.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Key Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Color Space",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Tolerance",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Falloff",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Matte",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeKeying",
+"label": "Keying",
+"w": 160.0,
+"h": 234.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [
+true,
+true,
+true,
+true,
+true,
+true,
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Key Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Blur Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Balance",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Black Level",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "White Level",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Tolerance",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Garbage Matte",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Core Matte",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Blur Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Dilate Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Feather Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Feather Falloff",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Strength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Balance",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Matte",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Edges",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeKeyingScreen",
+"label": "Keying Screen",
+"w": 140.0,
+"h": 99.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Smoothness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Screen",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeLumaMatte",
+"label": "Luminance Key",
+"w": 140.0,
+"h": 114.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Minimum",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Maximum",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Matte",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeCryptomatteV2",
+"label": "Cryptomatte",
+"w": 240.0,
+"h": 233.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE",
+"source": "RENDER",
+"layer_name": "ViewLayer.CryptoObject",
+"use_cyclic": false,
+"use_auto_refresh": false,
+"layer": "",
+"has_layers": false,
+"view": "",
+"has_views": false
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Matte",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Pick",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeCryptomatte",
+"label": "Cryptomatte (Legacy)",
+"w": 140.0,
+"h": 249.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Crypto 00",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Crypto 01",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Crypto 02",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Matte",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Pick",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeBoxMask",
+"label": "Box Mask",
+"w": 140.0,
+"h": 269.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Operation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Mask",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Position",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Mask",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeEllipseMask",
+"label": "Ellipse Mask",
+"w": 140.0,
+"h": 269.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Operation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Mask",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Position",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Mask",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeDoubleEdgeMask",
+"label": "Double Edge Mask",
+"w": 160.0,
+"h": 141.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "MATTE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Outer Mask",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Inner Mask",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Image Edges",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Only Inside Outer",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Mask",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeIDMask",
+"label": "ID Mask",
+"w": 140.0,
+"h": 119.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "ID value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Index",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Anti-Alias",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodePlaneTrackDeform",
+"label": "Plane Track Deform",
+"w": 140.0,
+"h": 114.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Motion Blur",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Samples",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Shutter",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Plane",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeStabilize",
+"label": "Stabilize 2D",
+"w": 140.0,
+"h": 138.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Frame",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "INT"
+},
+{
+"n": "Invert",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Interpolation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeTrackPos",
+"label": "Track Position",
+"w": 140.0,
+"h": 145.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Mode",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Frame",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+}
+],
+"out": [
+{
+"n": "X",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Y",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Speed",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexBrick",
+"label": "Brick Texture",
+"w": 180.0,
+"h": 384.0,
+"width": 180.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Color1",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Color2",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Mortar",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Mortar Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Mortar Smooth",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Bias",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Brick Width",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Row Height",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexChecker",
+"label": "Checker Texture",
+"w": 140.0,
+"h": 163.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Color1",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Color2",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexGabor",
+"label": "Gabor Texture",
+"w": 140.0,
+"h": 233.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"gabor_type": "2D"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Frequency",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Anisotropy",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Orientation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Orientation",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Phase",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Intensity",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexGradient",
+"label": "Gradient Texture",
+"w": 140.0,
+"h": 121.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"gradient_type": "LINEAR"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexMagic",
+"label": "Magic Texture",
+"w": 140.0,
+"h": 165.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Distortion",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexNoise",
+"label": "Noise Texture",
+"w": 160.0,
+"h": 281.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"noise_dimensions": "2D",
+"noise_type": "FBM",
+"normalize": true
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "W",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Detail",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Lacunarity",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Offset",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gain",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Distortion",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexVoronoi",
+"label": "Voronoi Texture",
+"w": 160.0,
+"h": 328.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"voronoi_dimensions": "2D",
+"distance": "EUCLIDEAN",
+"feature": "F1",
+"normalize": false
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "W",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Detail",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Lacunarity",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Smoothness",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Exponent",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Randomness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Distance",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Position",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "W",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Radius",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexWave",
+"label": "Wave Texture",
+"w": 160.0,
+"h": 303.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"wave_type": "BANDS",
+"bands_direction": "X",
+"rings_direction": "X",
+"wave_profile": "SIN"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Distortion",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Detail",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Detail Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Detail Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Phase Offset",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexWhiteNoise",
+"label": "White Noise Texture",
+"w": 140.0,
+"h": 123.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"noise_dimensions": "2D"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "W",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeRotate",
+"label": "Rotate",
+"w": 140.0,
+"h": 90.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Angle",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Interpolation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeScale",
+"label": "Scale",
+"w": 140.0,
+"h": 134.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Frame Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Interpolation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeTransform",
+"label": "Transform",
+"w": 140.0,
+"h": 156.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Angle",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Interpolation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeTranslate",
+"label": "Translate",
+"w": 140.0,
+"h": 112.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Interpolation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeCornerPin",
+"label": "Corner Pin",
+"w": 140.0,
+"h": 346.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Upper Left",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Upper Right",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Lower Left",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Lower Right",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Interpolation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Plane",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeCrop",
+"label": "Crop",
+"w": 140.0,
+"h": 158.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Width",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Height",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Alpha Crop",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeDisplace",
+"label": "Displace",
+"w": 140.0,
+"h": 132.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Displacement",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Interpolation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeFlip",
+"label": "Flip",
+"w": 140.0,
+"h": 92.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Flip X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Flip Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeMapUV",
+"label": "Map UV",
+"w": 140.0,
+"h": 152.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "UV",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Interpolation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Extension Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeLensdist",
+"label": "Lens Distortion",
+"w": 140.0,
+"h": 158.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Distortion",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Dispersion",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Jitter",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Fit",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeMovieDistortion",
+"label": "Movie Distortion",
+"w": 140.0,
+"h": 121.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeClamp",
+"label": "Clamp",
+"w": 140.0,
+"h": 143.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"clamp_type": "MINMAX"
+},
+"panels": [],
+"in": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Min",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Max",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeFloatCurve",
+"label": "Float Curve",
+"w": 240.0,
+"h": 286.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMapRange",
+"label": "Map Range",
+"w": 140.0,
+"h": 239.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"clamp": true,
+"interpolation_type": "LINEAR",
+"data_type": "FLOAT"
+},
+"panels": [],
+"in": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "From Min",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "From Max",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "To Min",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "To Max",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Steps",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Vector",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "From Min",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "From Max",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "To Min",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "To Max",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Steps",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Vector",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMath",
+"label": "Math",
+"w": 140.0,
+"h": 148.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"operation": "ADD",
+"use_clamp": false
+},
+"panels": [],
+"in": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Value",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeCombineXYZ",
+"label": "Combine XYZ",
+"w": 140.0,
+"h": 119.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Z",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMix",
+"label": "Mix",
+"w": 140.0,
+"h": 319.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"data_type": "VECTOR",
+"factor_mode": "UNIFORM",
+"blend_type": "MIX",
+"clamp_factor": true,
+"clamp_result": false
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Factor",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "A",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "B",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeSeparateXYZ",
+"label": "Separate XYZ",
+"w": 140.0,
+"h": 181.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "X",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Y",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Z",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeRadialTiling",
+"label": "Radial Tiling",
+"w": 140.0,
+"h": 251.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"normalize": false
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Sides",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Roundness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Segment Coordinates",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Segment ID",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Segment Width",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Segment Rotation",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVectorCurve",
+"label": "Vector Curves",
+"w": 240.0,
+"h": 348.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVectorMath",
+"label": "Vector Math",
+"w": 140.0,
+"h": 247.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"operation": "ADD"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Vector",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Scale",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Value",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVectorRotate",
+"label": "Vector Rotate",
+"w": 140.0,
+"h": 289.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"rotation_type": "AXIS_ANGLE",
+"invert": false
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Center",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Axis",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Angle",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Rotation",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeCombineMatrix",
+"label": "Combine Matrix",
+"w": 140.0,
+"h": 128.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [
+true,
+true,
+true,
+true
+],
+"in": [
+{
+"n": "Column 1 Row 1",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 1 Row 2",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 1 Row 3",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 1 Row 4",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 2 Row 1",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 2 Row 2",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 2 Row 3",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 2 Row 4",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 3 Row 1",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 3 Row 2",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 3 Row 3",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 3 Row 4",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 4 Row 1",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 4 Row 2",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 4 Row 3",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Column 4 Row 4",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Matrix",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeMatrixDeterminant",
+"label": "Matrix Determinant",
+"w": 140.0,
+"h": 75.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Matrix",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MATRIX"
+}
+],
+"out": [
+{
+"n": "Determinant",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInvertMatrix",
+"label": "Invert Matrix",
+"w": 140.0,
+"h": 70.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Matrix",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MATRIX"
+}
+],
+"out": [
+{
+"n": "Matrix",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Invertible",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeMatrixMultiply",
+"label": "Multiply Matrices",
+"w": 140.0,
+"h": 97.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Matrix",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MATRIX"
+},
+{
+"n": "Matrix",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MATRIX"
+}
+],
+"out": [
+{
+"n": "Matrix",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeProjectPoint",
+"label": "Project Point",
+"w": 140.0,
+"h": 132.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Transform",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MATRIX"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeSeparateMatrix",
+"label": "Separate Matrix",
+"w": 140.0,
+"h": 130.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [
+true,
+true,
+true,
+true
+],
+"in": [
+{
+"n": "Matrix",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MATRIX"
+}
+],
+"out": [
+{
+"n": "Column 1 Row 1",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 1 Row 2",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 1 Row 3",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 1 Row 4",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 2 Row 1",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 2 Row 2",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 2 Row 3",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 2 Row 4",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 3 Row 1",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 3 Row 2",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 3 Row 3",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 3 Row 4",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 4 Row 1",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 4 Row 2",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 4 Row 3",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Column 4 Row 4",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeTransformDirection",
+"label": "Transform Direction",
+"w": 140.0,
+"h": 132.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Direction",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Transform",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MATRIX"
+}
+],
+"out": [
+{
+"n": "Direction",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeTransformPoint",
+"label": "Transform Point",
+"w": 140.0,
+"h": 132.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Transform",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MATRIX"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeTransposeMatrix",
+"label": "Transpose Matrix",
+"w": 140.0,
+"h": 48.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Matrix",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MATRIX"
+}
+],
+"out": [
+{
+"n": "Matrix",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeAlignRotationToVector",
+"label": "Align Rotation to Vector",
+"w": 140.0,
+"h": 205.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"axis": "Z",
+"pivot_axis": "AUTO"
+},
+"panels": [],
+"in": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "ROTATION"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeAxesToRotation",
+"label": "Axes to Rotation",
+"w": 140.0,
+"h": 270.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"primary_axis": "Z",
+"secondary_axis": "X"
+},
+"panels": [],
+"in": [
+{
+"n": "Primary Axis",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Secondary Axis",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeAxisAngleToRotation",
+"label": "Axis Angle to Rotation",
+"w": 140.0,
+"h": 159.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Axis",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Angle",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeEulerToRotation",
+"label": "Euler to Rotation",
+"w": 140.0,
+"h": 137.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Euler",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInvertRotation",
+"label": "Invert Rotation",
+"w": 140.0,
+"h": 110.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+}
+],
+"out": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMix",
+"label": "Mix",
+"w": 140.0,
+"h": 292.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"data_type": "ROTATION",
+"factor_mode": "UNIFORM",
+"blend_type": "MIX",
+"clamp_factor": true,
+"clamp_result": false
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Factor",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "A",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+},
+{
+"n": "B",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeRotateRotation",
+"label": "Rotate Rotation",
+"w": 140.0,
+"h": 220.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"rotation_space": "GLOBAL"
+},
+"panels": [],
+"in": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+},
+{
+"n": "Rotate By",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+}
+],
+"out": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeRotateVector",
+"label": "Rotate Vector",
+"w": 140.0,
+"h": 194.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeRotationToAxisAngle",
+"label": "Rotation to Axis Angle",
+"w": 140.0,
+"h": 159.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+}
+],
+"out": [
+{
+"n": "Axis",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Angle",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeRotationToEuler",
+"label": "Rotation to Euler",
+"w": 140.0,
+"h": 137.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+}
+],
+"out": [
+{
+"n": "Euler",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeRotationToQuaternion",
+"label": "Rotation to Quaternion",
+"w": 140.0,
+"h": 203.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+}
+],
+"out": [
+{
+"n": "W",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "X",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Y",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Z",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeQuaternionToRotation",
+"label": "Quaternion to Rotation",
+"w": 140.0,
+"h": 141.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "W",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Z",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeFormatString",
+"label": "Format String",
+"w": 140.0,
+"h": 70.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Format",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "CUSTOM"
+}
+],
+"out": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeMatchString",
+"label": "Match String",
+"w": 140.0,
+"h": 119.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Operation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Key",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeReplaceString",
+"label": "Replace String",
+"w": 140.0,
+"h": 92.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Find",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Replace",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+}
+],
+"out": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeReverseString",
+"label": "Reverse String",
+"w": 140.0,
+"h": 48.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+}
+],
+"out": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeSetStringCase",
+"label": "Set String Case",
+"w": 140.0,
+"h": 70.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Case",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeSliceString",
+"label": "Slice String",
+"w": 140.0,
+"h": 92.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Position",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Length",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+}
+],
+"out": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeTrimString",
+"label": "Trim String",
+"w": 140.0,
+"h": 112.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Characters",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Whitespace",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Start",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "End",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeFindInString",
+"label": "Find in String",
+"w": 140.0,
+"h": 141.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Search",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Mode",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "First Found",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Count",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeStringLength",
+"label": "String Length",
+"w": 140.0,
+"h": 75.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+}
+],
+"out": [
+{
+"n": "Length",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeStringToValue",
+"label": "String to Value",
+"w": 140.0,
+"h": 123.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"data_type": "FLOAT"
+},
+"panels": [],
+"in": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Base",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Length",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeValueToString",
+"label": "Value to String",
+"w": 140.0,
+"h": 123.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"data_type": "FLOAT"
+},
+"panels": [],
+"in": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Decimals",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Base",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Padding",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+}
+],
+"out": [
+{
+"n": "String",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInputSpecialCharacters",
+"label": "Special Characters",
+"w": 140.0,
+"h": 72.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Line Break",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Tab",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeLevels",
+"label": "Levels",
+"w": 140.0,
+"h": 163.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Channel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+}
+],
+"out": [
+{
+"n": "Mean",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Standard Deviation",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Minimum",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Maximum",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeNormalize",
+"label": "Normalize",
+"w": 140.0,
+"h": 48.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "NodeImplicitConversion",
+"label": "Implicit Conversion",
+"w": 140.0,
+"h": 74.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"data_type": "RGBA"
+},
+"panels": [],
+"in": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "GeometryNodeSwitch",
+"label": "Switch",
+"w": 140.0,
+"h": 143.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"input_type": "FLOAT"
+},
+"panels": [],
+"in": [
+{
+"n": "Switch",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "False",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "True",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Output",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "GeometryNodeIndexSwitch",
+"label": "Index Switch",
+"w": 140.0,
+"h": 165.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"data_type": "RGBA"
+},
+"panels": [],
+"in": [
+{
+"n": "Index",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "0",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "1",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "CUSTOM"
+}
+],
+"out": [
+{
+"n": "Output",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "GeometryNodeMenuSwitch",
+"label": "Menu Switch",
+"w": 140.0,
+"h": 162.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"data_type": "RGBA"
+},
+"panels": [],
+"in": [
+{
+"n": "Menu",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "A",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "B",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "CUSTOM"
+}
+],
+"out": [
+{
+"n": "Output",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "A",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "B",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeSwitchView",
+"label": "Switch View",
+"w": 140.0,
+"h": 97.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "left",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "right",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeRelativeToPixel",
+"label": "Relative To Pixel",
+"w": 140.0,
+"h": 146.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"data_type": "FLOAT",
+"reference_dimension": "X"
+},
+"panels": [],
+"in": [
+{
+"n": "Value",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Value",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeGroup",
+"label": "Group",
+"w": 140.0,
+"h": 56.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "GROUP",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": []
+},
+{
+"idname": "CompositorNodeGroup",
+"label": "Group",
+"w": 240.0,
+"h": 136.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Contrast",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Tone",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Saturation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeGroup",
+"label": "Group",
+"w": 240.0,
+"h": 178.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Highlights",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Factor Highlights",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Shadows",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Factor Shadows",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Balance",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Smoothness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeGroup",
+"label": "Group",
+"w": 200.0,
+"h": 202.0,
+"width": 200.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Contrast",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Color Boost",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Clarity",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Detail",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Sharpen",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Preserve Colors",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeGroup",
+"label": "Group",
+"w": 240.0,
+"h": 136.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "FILTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Radius",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Threshold",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeGroup",
+"label": "Group",
+"w": 200.0,
+"h": 114.0,
+"width": 200.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Type",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Axis",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Center",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Samples",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Fit",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeGroup",
+"label": "Group",
+"w": 220.0,
+"h": 136.0,
+"width": 220.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE"
+},
+"panels": [
+false
+],
+"in": [
+{
+"n": "Input",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Preset",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Film Gauge",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Style",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "Animated",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "ISO",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Softness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Acutance",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Coarseness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Patchiness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Saturation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Luma bias",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Texture Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeGroup",
+"label": "Group",
+"w": 240.0,
+"h": 136.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Luminance Noise",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Chroma Noise",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Animated",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeGroup",
+"label": "Group",
+"w": 140.0,
+"h": 156.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "DISTORT",
+"bl_icon": "NONE"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Feather",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Corner Roundness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Offset",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Angle",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Image",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Mask",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "CompositorNodeGroup",
+"label": "Group",
+"w": 240.0,
+"h": 158.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Offset",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Step",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "Speed",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Cyclic",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Cycle Length",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+}
+],
+"out": [
+{
+"n": "Frame",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+}
+]

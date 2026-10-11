@@ -1,0 +1,242 @@
+{
+ "idname": "CompositorNodeCombineColor",
+ "label": "Combine Color",
+ "width": 140.0,
+ "inputs": [
+  {
+   "name": "Red",
+   "identifier": "Red",
+   "type": "NodeSocketFloatFactor",
+   "stype": "VALUE",
+   "hide_value": false,
+   "enabled": true,
+   "default": 0.0
+  },
+  {
+   "name": "Green",
+   "identifier": "Green",
+   "type": "NodeSocketFloatFactor",
+   "stype": "VALUE",
+   "hide_value": false,
+   "enabled": true,
+   "default": 0.0
+  },
+  {
+   "name": "Blue",
+   "identifier": "Blue",
+   "type": "NodeSocketFloatFactor",
+   "stype": "VALUE",
+   "hide_value": false,
+   "enabled": true,
+   "default": 0.0
+  },
+  {
+   "name": "Alpha",
+   "identifier": "Alpha",
+   "type": "NodeSocketFloatFactor",
+   "stype": "VALUE",
+   "hide_value": false,
+   "enabled": true,
+   "default": 1.0
+  }
+ ],
+ "outputs": [
+  {
+   "name": "Image",
+   "identifier": "Image",
+   "type": "NodeSocketColor",
+   "stype": "RGBA",
+   "hide_value": false,
+   "enabled": true,
+   "default": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ ],
+ "props": [
+  {
+   "id": "mode",
+   "name": "Mode",
+   "type": "ENUM",
+   "value": "RGB",
+   "items": [
+    {
+     "id": "RGB",
+     "name": "RGB"
+    },
+    {
+     "id": "HSV",
+     "name": "HSV"
+    },
+    {
+     "id": "HSL",
+     "name": "HSL"
+    },
+    {
+     "id": "YCC",
+     "name": "YCbCr"
+    },
+    {
+     "id": "YUV",
+     "name": "YUV"
+    }
+   ]
+  },
+  {
+   "id": "ycc_mode",
+   "name": "Color Space",
+   "type": "ENUM",
+   "value": "ITUBT709",
+   "items": [
+    {
+     "id": "ITUBT601",
+     "name": "ITU 601"
+    },
+    {
+     "id": "ITUBT709",
+     "name": "ITU 709"
+    },
+    {
+     "id": "JFIF",
+     "name": "JPEG"
+    }
+   ]
+  }
+ ]
+}
+{
+ "idname": "CompositorNodeRGB",
+ "label": "Color",
+ "width": 140.0,
+ "inputs": [],
+ "outputs": [
+  {
+   "name": "Color",
+   "identifier": "Color",
+   "type": "NodeSocketColor",
+   "stype": "RGBA",
+   "hide_value": false,
+   "enabled": true,
+   "default": [
+    0.5,
+    0.5,
+    0.5,
+    1.0
+   ]
+  }
+ ],
+ "props": []
+}
+{
+ "idname": "CompositorNodeSeparateColor",
+ "label": "Separate Color",
+ "width": 140.0,
+ "inputs": [
+  {
+   "name": "Image",
+   "identifier": "Image",
+   "type": "NodeSocketColor",
+   "stype": "RGBA",
+   "hide_value": false,
+   "enabled": true,
+   "default": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ ],
+ "outputs": [
+  {
+   "name": "Red",
+   "identifier": "Red",
+   "type": "NodeSocketFloat",
+   "stype": "VALUE",
+   "hide_value": false,
+   "enabled": true,
+   "default": 0.0
+  },
+  {
+   "name": "Green",
+   "identifier": "Green",
+   "type": "NodeSocketFloat",
+   "stype": "VALUE",
+   "hide_value": false,
+   "enabled": true,
+   "default": 0.0
+  },
+  {
+   "name": "Blue",
+   "identifier": "Blue",
+   "type": "NodeSocketFloat",
+   "stype": "VALUE",
+   "hide_value": false,
+   "enabled": true,
+   "default": 0.0
+  },
+  {
+   "name": "Alpha",
+   "identifier": "Alpha",
+   "type": "NodeSocketFloat",
+   "stype": "VALUE",
+   "hide_value": false,
+   "enabled": true,
+   "default": 0.0
+  }
+ ],
+ "props": [
+  {
+   "id": "mode",
+   "name": "Mode",
+   "type": "ENUM",
+   "value": "RGB",
+   "items": [
+    {
+     "id": "RGB",
+     "name": "RGB"
+    },
+    {
+     "id": "HSV",
+     "name": "HSV"
+    },
+    {
+     "id": "HSL",
+     "name": "HSL"
+    },
+    {
+     "id": "YCC",
+     "name": "YCbCr"
+    },
+    {
+     "id": "YUV",
+     "name": "YUV"
+    }
+   ]
+  },
+  {
+   "id": "ycc_mode",
+   "name": "Color Space",
+   "type": "ENUM",
+   "value": "ITUBT709",
+   "items": [
+    {
+     "id": "ITUBT601",
+     "name": "ITU 601"
+    },
+    {
+     "id": "ITUBT709",
+     "name": "ITU 709"
+    },
+    {
+     "id": "JFIF",
+     "name": "JPEG"
+    }
+   ]
+  }
+ ]
+}
+IDS: CompositorNodeColorBalance, CompositorNodeColorCorrection, CompositorNodeColorMatte, CompositorNodeColorSpill, CompositorNodeCombineColor, CompositorNodeConvertColorSpace, CompositorNodeGlare, CompositorNodeSeparateColor

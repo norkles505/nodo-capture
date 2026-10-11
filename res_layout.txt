@@ -1,0 +1,10 @@
+compositor tiene Frame/Reroute: True
+shader tiene Frame/Reroute: True
+clases: RerouteItem NodeItem
+cables: 3 | tipo r1: VALUE | tipo r2: VALUE
+resultado Math atraviesa reroutes: {'Value': 0.5}
+SHADER -> reroute que ya alimenta un valor, cables: 3 -> 3 (si no cambia o se rechaza es correcto)
+frame arrastra hijos: 3 hijos | todos se movieron igual: False | bsdf (fuera) sin mover: True
+render ok: 1680 x 900
+tras borrar r2 y frame -> cables: 1 | layout items: 1
+RESULTADO: OK

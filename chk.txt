@@ -1,0 +1,12 @@
+﻿
+FullName                                                                      LastWriteTime        Length
+--------                                                                      -------------        ------
+C:\Users\HP\Desktop\modelar\erkis\planos\proyectos\Creacion de tablas\main.py 5/2/2026 7:11:59 PM     129
+C:\Users\HP\Desktop\modelar\erkis\planos\proyectos\proyecto\main_qt.py        5/3/2026 12:51:39 AM    695
+C:\Users\HP\Desktop\proyectos\drawengine\ui\main_window.py                    8/6/2026 6:29:06 PM   99048
+C:\Users\HP\Desktop\proyectos\drawengine\main.py                              8/6/2026 6:29:10 PM     744
+C:\Users\HP\Desktop\proyectos\nodo capture\main.py                            10/8/2026 1:48:36 PM  73807
+C:\Users\HP\Desktop\proyectos\nodo capture\main_func.py                       10/8/2026 1:31:59 PM   7896
+
+
+

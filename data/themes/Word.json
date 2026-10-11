@@ -1,0 +1,121 @@
+{
+  "name": "Word",
+  "theme": {
+    "grid": "#ffffff",
+    "node_outline": "#000000ff",
+    "node_selected": "#2b579a",
+    "node_active": "#f2a900",
+    "wire": "#000000ff",
+    "wire_inner": "#717171",
+    "wire_select": "#2b579ab3",
+    "node_backdrop": "#fffefdff",
+    "converter_node": "#3ca1d8",
+    "color_node": "#c4d21e",
+    "group_node": "#374725",
+    "group_socket_node": "#1d1d1d",
+    "frame_node": "#0f0f0fcc",
+    "matte_node": "#5a3838",
+    "distor_node": "#3e5a5b",
+    "input_node": "#82354c",
+    "output_node": "#db7d94",
+    "filter_node": "#412b51",
+    "vector_node": "#3c3c83",
+    "texture_node": "#ff7d00",
+    "shader_node": "#23c819",
+    "script_node": "#203c3c",
+    "geometry_node": "#1d725e",
+    "attribute_node": "#3b4b90",
+    "simulation_zone": "#66416233",
+    "repeat_zone": "#76512f33",
+    "foreach_geometry_element_zone": "#33527f33",
+    "closure_zone": "#7d7d3a33"
+  },
+  "widgets": {
+    "wcol_regular": {
+      "outline": "#c8c6c4ff",
+      "inner": "#ffffffff",
+      "inner_sel": "#2b579aff",
+      "item": "#2b579aff",
+      "text": "#000000",
+      "text_sel": "#ffffff",
+      "roundness": "0.15"
+    },
+    "wcol_radio": {
+      "outline": "#c8c6c4ff",
+      "inner": "#ffffffff",
+      "inner_sel": "#2b579aff",
+      "item": "#2b579aff",
+      "text": "#201f1e",
+      "text_sel": "#ffffff",
+      "roundness": "0.15"
+    },
+    "wcol_text": {
+      "outline": "#080808ff",
+      "inner": "#ffffffff",
+      "inner_sel": "#2b579aff",
+      "item": "#2b579aff",
+      "text": "#201f1e",
+      "text_sel": "#ffffff",
+      "roundness": "0.15"
+    },
+    "wcol_option": {
+      "outline": "#020202ff",
+      "inner": "#ffffffff",
+      "inner_sel": "#2b579aff",
+      "item": "#ffffffff",
+      "text": "#020202",
+      "text_sel": "#000000",
+      "roundness": "0.15"
+    },
+    "wcol_toggle": {
+      "outline": "#c8c6c4ff",
+      "inner": "#ffffffff",
+      "inner_sel": "#2b579aff",
+      "item": "#2b579aff",
+      "text": "#201f1e",
+      "text_sel": "#ffffff",
+      "roundness": "0.15"
+    },
+    "wcol_num": {
+      "outline": "#c8c6c4ff",
+      "inner": "#ffffffff",
+      "inner_sel": "#2b579aff",
+      "item": "#2b579aff",
+      "text": "#000000",
+      "text_sel": "#ffffff",
+      "roundness": "0.15"
+    },
+    "wcol_numslider": {
+      "outline": "#000000ff",
+      "inner": "#ffffffff",
+      "inner_sel": "#ffffffff",
+      "item": "#3c79d7ff",
+      "text": "#201f1e",
+      "text_sel": "#000000",
+      "roundness": "0.15"
+    },
+    "wcol_menu": {
+      "outline": "#000000ff",
+      "inner": "#ffffffff",
+      "inner_sel": "#2b579aff",
+      "item": "#2b579aff",
+      "text": "#201f1e",
+      "text_sel": "#ffffff",
+      "roundness": "0.15"
+    }
+  },
+  "extra": {
+    "curving": 4.0,
+    "bg": "#ffffff",
+    "title": "#000000",
+    "link_line": "#000000",
+    "grid_minor": "#f8f8f8",
+    "dim": "#6a6a6a"
+  },
+  "ui": {
+    "window": "#d9d9d9",
+    "text": "#1a1a1a",
+    "base": "#f2f2f2",
+    "button": "#cfcfcf"
+  }
+}

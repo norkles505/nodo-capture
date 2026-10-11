@@ -1,0 +1,6638 @@
+[
+{
+"idname": "ShaderNodeAttribute",
+"label": "Attribute",
+"w": 140.0,
+"h": 170.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"attribute_type": "GEOMETRY"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeAttribute",
+"label": "Attribute",
+"w": 140.0,
+"h": 170.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"attribute_type": "GEOMETRY"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeAttribute",
+"label": "Attribute",
+"w": 140.0,
+"h": 170.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"attribute_type": "GEOMETRY"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInputBool",
+"label": "Boolean",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"boolean": false
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Boolean",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeRGB",
+"label": "Color",
+"w": 140.0,
+"h": 152.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInputInt",
+"label": "Integer",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Integer",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInputMenu",
+"label": "Menu",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"value": ""
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Menu",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeValue",
+"label": "Value",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "FunctionNodeInputVector",
+"label": "Vector",
+"w": 140.0,
+"h": 90.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeAmbientOcclusion",
+"label": "Ambient Occlusion",
+"w": 140.0,
+"h": 215.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"inside": false,
+"only_local": false
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Distance",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "AO",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeAttribute",
+"label": "Attribute",
+"w": 140.0,
+"h": 170.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"attribute_type": "GEOMETRY"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBevel",
+"label": "Bevel",
+"w": 140.0,
+"h": 121.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Radius",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeCameraData",
+"label": "Camera Data",
+"w": 140.0,
+"h": 94.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "View Vector",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "View Z Depth",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "View Distance",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVertexColor",
+"label": "Color Attribute",
+"w": 140.0,
+"h": 101.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeHairInfo",
+"label": "Curves Info",
+"w": 140.0,
+"h": 160.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Is Strand",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Intercept",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Length",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Thickness",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Tangent Normal",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Random",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeFresnel",
+"label": "Fresnel",
+"w": 140.0,
+"h": 97.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "IOR",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeNewGeometry",
+"label": "Geometry",
+"w": 140.0,
+"h": 226.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Position",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Tangent",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "True Normal",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Incoming",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Parametric",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Backfacing",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Pointiness",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Random Per Island",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeLayerWeight",
+"label": "Layer Weight",
+"w": 140.0,
+"h": 119.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Blend",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Fresnel",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Facing",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeLightPath",
+"label": "Light Path",
+"w": 140.0,
+"h": 358.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Is Camera Ray",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Is Shadow Ray",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Is Diffuse Ray",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Is Glossy Ray",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Is Singular Ray",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Is Reflection Ray",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Is Transmission Ray",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Is Volume Scatter Ray",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Ray Length",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Ray Depth",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Diffuse Depth",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Glossy Depth",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Transparent Depth",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Transmission Depth",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Portal Depth",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeObjectInfo",
+"label": "Object Info",
+"w": 140.0,
+"h": 160.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Location",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Object Index",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Material Index",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Random",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeParticleInfo",
+"label": "Particle Info",
+"w": 140.0,
+"h": 204.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Index",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Random",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Age",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Lifetime",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Location",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Velocity",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Angular Velocity",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodePointInfo",
+"label": "Point Info",
+"w": 140.0,
+"h": 94.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Position",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Radius",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Random",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeRaycast",
+"label": "Raycast",
+"w": 140.0,
+"h": 248.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"only_local": false
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Position",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Direction",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Length",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "CUSTOM"
+}
+],
+"out": [
+{
+"n": "Is Hit",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Self Hit",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Hit Distance",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Hit Position",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Hit Normal",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "GeometryNodeInputSceneTime",
+"label": "Scene Time",
+"w": 140.0,
+"h": 72.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Seconds",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Frame",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTangent",
+"label": "Tangent",
+"w": 160.0,
+"h": 104.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"direction_type": "RADIAL",
+"axis": "Z"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Tangent",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexCoord",
+"label": "Texture Coordinate",
+"w": 140.0,
+"h": 236.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"from_instancer": false
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Generated",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "UV",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Object",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Camera",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Window",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Reflection",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeUVMap",
+"label": "UV Map",
+"w": 160.0,
+"h": 104.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"from_instancer": false
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "UV",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVolumeInfo",
+"label": "Volume Info",
+"w": 140.0,
+"h": 116.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Density",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Flame",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Temperature",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeWireframe",
+"label": "Wireframe",
+"w": 140.0,
+"h": 99.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INPUT",
+"bl_icon": "NONE",
+"use_pixel_size": false
+},
+"panels": [],
+"in": [
+{
+"n": "Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeOutputAOV",
+"label": "AOV Output",
+"w": 140.0,
+"h": 96.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "OUTPUT",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": []
+},
+{
+"idname": "ShaderNodeOutputMaterial",
+"label": "Material Output",
+"w": 140.0,
+"h": 140.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "OUTPUT",
+"bl_icon": "NONE",
+"is_active_output": true,
+"target": "ALL"
+},
+"panels": [],
+"in": [
+{
+"n": "Surface",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "SHADER"
+},
+{
+"n": "Volume",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "SHADER"
+},
+{
+"n": "Displacement",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Thickness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VALUE"
+}
+],
+"out": []
+},
+{
+"idname": "ShaderNodeAddShader",
+"label": "Add Shader",
+"w": 140.0,
+"h": 97.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Shader",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "SHADER"
+},
+{
+"n": "Shader",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "SHADER"
+}
+],
+"out": [
+{
+"n": "Shader",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMixShader",
+"label": "Mix Shader",
+"w": 140.0,
+"h": 119.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Shader",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "SHADER"
+},
+{
+"n": "Shader",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "SHADER"
+}
+],
+"out": [
+{
+"n": "Shader",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBsdfDiffuse",
+"label": "Diffuse BSDF",
+"w": 160.0,
+"h": 121.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "BSDF",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeEmission",
+"label": "Emission",
+"w": 140.0,
+"h": 99.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Strength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Emission",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBsdfGlass",
+"label": "Glass BSDF",
+"w": 160.0,
+"h": 182.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE",
+"distribution": "MULTI_GGX"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "IOR",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Thin Film Thickness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Thin Film IOR",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "BSDF",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBsdfAnisotropic",
+"label": "Glossy BSDF",
+"w": 160.0,
+"h": 211.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE",
+"distribution": "MULTI_GGX"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Anisotropy",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Tangent",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "BSDF",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeHoldout",
+"label": "Holdout",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Holdout",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBsdfMetallic",
+"label": "Metallic BSDF",
+"w": 240.0,
+"h": 273.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE",
+"distribution": "MULTI_GGX",
+"fresnel_type": "F82"
+},
+"panels": [
+true
+],
+"in": [
+{
+"n": "Base Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Edge Tint",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "IOR",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Extinction",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Anisotropy",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Tangent",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Thin Film Thickness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Thin Film IOR",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "BSDF",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBsdfPrincipled",
+"label": "Principled BSDF",
+"w": 240.0,
+"h": 362.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE",
+"distribution": "MULTI_GGX",
+"subsurface_method": "RANDOM_WALK"
+},
+"panels": [
+true,
+true,
+true,
+true,
+true,
+true,
+true,
+true
+],
+"in": [
+{
+"n": "Base Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Metallic",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "IOR",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Thin Wall",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BOOLEAN"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Diffuse Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Subsurface Weight",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Subsurface Radius",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Subsurface Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Subsurface IOR",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Subsurface Anisotropy",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Specular IOR Level",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Specular Tint",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Anisotropic",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Anisotropic Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Tangent",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Transmission Weight",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Coat Weight",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Coat Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Coat IOR",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Coat Tint",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Coat Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Sheen Weight",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Sheen Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Sheen Tint",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Emission Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Emission Strength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Thin Film Thickness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Thin Film IOR",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "BSDF",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBsdfRefraction",
+"label": "Refraction BSDF",
+"w": 160.0,
+"h": 167.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE",
+"distribution": "BECKMANN"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "IOR",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "BSDF",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeEeveeSpecular",
+"label": "Specular BSDF",
+"w": 140.0,
+"h": 253.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Base Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Specular",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Emissive Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Transparency",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Clear Coat",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Clear Coat Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Clear Coat Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "BSDF",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeSubsurfaceScattering",
+"label": "Subsurface Scattering",
+"w": 160.0,
+"h": 295.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE",
+"falloff": "RANDOM_WALK"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Radius",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "IOR",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Anisotropy",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "BSSRDF",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBsdfTranslucent",
+"label": "Translucent BSDF",
+"w": 140.0,
+"h": 99.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "BSDF",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBsdfTransparent",
+"label": "Transparent BSDF",
+"w": 140.0,
+"h": 77.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "BSDF",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVolumePrincipled",
+"label": "Principled Volume",
+"w": 240.0,
+"h": 319.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Color Attribute",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Density",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Density Attribute",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Anisotropy",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Absorption Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Emission Strength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Emission Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Blackbody Intensity",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Blackbody Tint",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Temperature",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Temperature Attribute",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "STRING"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Volume",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVolumeAbsorption",
+"label": "Volume Absorption",
+"w": 140.0,
+"h": 99.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Density",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Volume",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVolumeScatter",
+"label": "Volume Scatter",
+"w": 160.0,
+"h": 145.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE",
+"phase": "HENYEY_GREENSTEIN"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Density",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Anisotropy",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "IOR",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Backscatter",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Alpha",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Diameter",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Volume",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVolumeCoefficients",
+"label": "Volume Coefficients",
+"w": 240.0,
+"h": 428.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "SHADER",
+"bl_icon": "NONE",
+"phase": "HENYEY_GREENSTEIN"
+},
+"panels": [
+false,
+false,
+false
+],
+"in": [
+{
+"n": "Weight",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Absorption Coefficients",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Scatter Coefficients",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Anisotropy",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "IOR",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Backscatter",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Alpha",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Diameter",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Emission Coefficients",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Volume",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBump",
+"label": "Bump",
+"w": 140.0,
+"h": 187.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"invert": false
+},
+"panels": [],
+"in": [
+{
+"n": "Strength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Distance",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Filter Width",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Height",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeDisplacement",
+"label": "Displacement",
+"w": 140.0,
+"h": 165.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"space": "OBJECT"
+},
+"panels": [],
+"in": [
+{
+"n": "Height",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Midlevel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Displacement",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeNormalMap",
+"label": "Normal Map",
+"w": 160.0,
+"h": 196.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"space": "TANGENT",
+"convention": "OPENGL",
+"base": "DISPLACED"
+},
+"panels": [],
+"in": [
+{
+"n": "Strength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVectorDisplacement",
+"label": "Vector Displacement",
+"w": 140.0,
+"h": 143.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"space": "TANGENT"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Midlevel",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Displacement",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBlackbody",
+"label": "Blackbody",
+"w": 160.0,
+"h": 75.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Temperature",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeBrightContrast",
+"label": "Brightness/Contrast",
+"w": 140.0,
+"h": 119.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Brightness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Contrast",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeValToRGB",
+"label": "Color Ramp",
+"w": 240.0,
+"h": 206.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeGamma",
+"label": "Gamma",
+"w": 140.0,
+"h": 70.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "RGBA"
+},
+{
+"n": "Gamma",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeHueSaturation",
+"label": "Hue/Saturation/Value",
+"w": 160.0,
+"h": 163.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Hue",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Saturation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeInvert",
+"label": "Invert Color",
+"w": 140.0,
+"h": 97.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeLightFalloff",
+"label": "Light Falloff",
+"w": 160.0,
+"h": 141.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Strength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Smooth",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Quadratic",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Linear",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Constant",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMix",
+"label": "Mix",
+"w": 140.0,
+"h": 220.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE",
+"data_type": "RGBA",
+"factor_mode": "UNIFORM",
+"blend_type": "MIX",
+"clamp_factor": true,
+"clamp_result": false
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Factor",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "A",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "B",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeRGBCurve",
+"label": "RGB Curves",
+"w": 240.0,
+"h": 286.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "COLOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeWavelength",
+"label": "Wavelength",
+"w": 160.0,
+"h": 75.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Wavelength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeCombineColor",
+"label": "Combine Color",
+"w": 140.0,
+"h": 143.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"mode": "RGB"
+},
+"panels": [],
+"in": [
+{
+"n": "Red",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Green",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Blue",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeSeparateColor",
+"label": "Separate Color",
+"w": 140.0,
+"h": 143.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"mode": "RGB"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Red",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Green",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Blue",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeRGBToBW",
+"label": "RGB to BW",
+"w": 140.0,
+"h": 75.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Val",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeShaderToRGB",
+"label": "Shader to RGB",
+"w": 140.0,
+"h": 97.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Shader",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "SHADER"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexImage",
+"label": "Image Texture",
+"w": 240.0,
+"h": 271.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"projection": "FLAT",
+"interpolation": "Linear",
+"extension": "REPEAT"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexImage",
+"label": "Image Texture",
+"w": 240.0,
+"h": 271.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"projection": "FLAT",
+"interpolation": "Linear",
+"extension": "REPEAT"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexImage",
+"label": "Image Texture",
+"w": 240.0,
+"h": 401.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"projection": "FLAT",
+"interpolation": "Linear",
+"extension": "REPEAT"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexBrick",
+"label": "Brick Texture",
+"w": 180.0,
+"h": 384.0,
+"width": 180.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Color1",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Color2",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Mortar",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Mortar Size",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Mortar Smooth",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Bias",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Brick Width",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Row Height",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexChecker",
+"label": "Checker Texture",
+"w": 140.0,
+"h": 163.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Color1",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Color2",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexEnvironment",
+"label": "Environment Texture",
+"w": 240.0,
+"h": 149.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"projection": "EQUIRECTANGULAR",
+"interpolation": "Linear"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexGabor",
+"label": "Gabor Texture",
+"w": 140.0,
+"h": 233.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"gabor_type": "2D"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Frequency",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Anisotropy",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Orientation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Orientation",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Phase",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Intensity",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexGradient",
+"label": "Gradient Texture",
+"w": 140.0,
+"h": 121.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"gradient_type": "LINEAR"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexIES",
+"label": "IES Texture",
+"w": 140.0,
+"h": 146.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"mode": "INTERNAL"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Strength",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexImage",
+"label": "Image Texture",
+"w": 240.0,
+"h": 196.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"projection": "FLAT",
+"interpolation": "Linear",
+"extension": "REPEAT"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Alpha",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexMagic",
+"label": "Magic Texture",
+"w": 140.0,
+"h": 165.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Distortion",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexNoise",
+"label": "Noise Texture",
+"w": 160.0,
+"h": 281.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"noise_dimensions": "3D",
+"noise_type": "FBM",
+"normalize": true
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "W",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Detail",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Lacunarity",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Offset",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Gain",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Distortion",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexSky",
+"label": "Sky Texture",
+"w": 160.0,
+"h": 309.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"sky_type": "MULTIPLE_SCATTERING",
+"sun_disc": true
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexVoronoi",
+"label": "Voronoi Texture",
+"w": 160.0,
+"h": 328.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"voronoi_dimensions": "3D",
+"distance": "EUCLIDEAN",
+"feature": "F1",
+"normalize": false
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "W",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Detail",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Lacunarity",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Smoothness",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Exponent",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Randomness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Distance",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Position",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "W",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Radius",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexWave",
+"label": "Wave Texture",
+"w": 160.0,
+"h": 303.0,
+"width": 160.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"wave_type": "BANDS",
+"bands_direction": "X",
+"rings_direction": "X",
+"wave_profile": "SIN"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Distortion",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Detail",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Detail Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Detail Roughness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Phase Offset",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeTexWhiteNoise",
+"label": "White Noise Texture",
+"w": 140.0,
+"h": 123.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "TEXTURE",
+"bl_icon": "NONE",
+"noise_dimensions": "3D"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "W",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Color",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeClamp",
+"label": "Clamp",
+"w": 140.0,
+"h": 143.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"clamp_type": "MINMAX"
+},
+"panels": [],
+"in": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Min",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Max",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeFloatCurve",
+"label": "Float Curve",
+"w": 240.0,
+"h": 286.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMapRange",
+"label": "Map Range",
+"w": 140.0,
+"h": 239.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"clamp": true,
+"interpolation_type": "LINEAR",
+"data_type": "FLOAT"
+},
+"panels": [],
+"in": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "From Min",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "From Max",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "To Min",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "To Max",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Steps",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Vector",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "From Min",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "From Max",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "To Min",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "To Max",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Steps",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Vector",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMath",
+"label": "Math",
+"w": 140.0,
+"h": 148.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"operation": "ADD",
+"use_clamp": false
+},
+"panels": [],
+"in": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Value",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMix",
+"label": "Mix",
+"w": 140.0,
+"h": 170.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"data_type": "FLOAT",
+"factor_mode": "UNIFORM",
+"blend_type": "MIX",
+"clamp_factor": true,
+"clamp_result": false
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Factor",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "A",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "B",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeCombineXYZ",
+"label": "Combine XYZ",
+"w": 140.0,
+"h": 119.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "X",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Y",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Z",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMapRange",
+"label": "Map Range",
+"w": 140.0,
+"h": 487.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"clamp": true,
+"interpolation_type": "LINEAR",
+"data_type": "FLOAT_VECTOR"
+},
+"panels": [],
+"in": [
+{
+"n": "Value",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "From Min",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "From Max",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "To Min",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "To Max",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Steps",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "From Min",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "From Max",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "To Min",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "To Max",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Steps",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMix",
+"label": "Mix",
+"w": 140.0,
+"h": 319.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"data_type": "VECTOR",
+"factor_mode": "UNIFORM",
+"blend_type": "MIX",
+"clamp_factor": true,
+"clamp_result": false
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Factor",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "A",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "B",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "A",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+},
+{
+"n": "B",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "ROTATION"
+}
+],
+"out": [
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+},
+{
+"n": "Result",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeSeparateXYZ",
+"label": "Separate XYZ",
+"w": 140.0,
+"h": 181.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "X",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Y",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Z",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeMapping",
+"label": "Mapping",
+"w": 140.0,
+"h": 413.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"vector_type": "POINT"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Location",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Rotation",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Scale",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeNormal",
+"label": "Normal",
+"w": 140.0,
+"h": 201.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Normal",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Dot",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeRadialTiling",
+"label": "Radial Tiling",
+"w": 140.0,
+"h": 251.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"normalize": false
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Sides",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Roundness",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Segment Coordinates",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Segment ID",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Segment Width",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Segment Rotation",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVectorCurve",
+"label": "Vector Curves",
+"w": 240.0,
+"h": 348.0,
+"width": 240.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Factor",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVectorMath",
+"label": "Vector Math",
+"w": 140.0,
+"h": 247.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"operation": "ADD"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Vector",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Scale",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Value",
+"en": false,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVectorRotate",
+"label": "Vector Rotate",
+"w": 140.0,
+"h": 289.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"rotation_type": "AXIS_ANGLE",
+"invert": false
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+},
+{
+"n": "Center",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Axis",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+},
+{
+"n": "Angle",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Rotation",
+"en": false,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeGroup",
+"label": "Group",
+"w": 140.0,
+"h": 114.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "R",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Phi",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Z",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeGroup",
+"label": "Group",
+"w": 140.0,
+"h": 114.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "R",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Phi",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Z",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeVectorTransform",
+"label": "Vector Transform",
+"w": 140.0,
+"h": 211.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "VECTOR",
+"bl_icon": "NONE",
+"vector_type": "VECTOR",
+"convert_from": "WORLD",
+"convert_to": "OBJECT"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeGroup",
+"label": "Group",
+"w": 140.0,
+"h": 114.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "R",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Phi",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Theta",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeGroup",
+"label": "Group",
+"w": 140.0,
+"h": 114.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "R",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Phi",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Z",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeGroup",
+"label": "Group",
+"w": 140.0,
+"h": 114.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "R",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Phi",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Theta",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "GeometryNodeRepeatInput",
+"label": "Repeat Input",
+"w": 140.0,
+"h": 92.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INTERFACE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Iterations",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "INT"
+},
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "CUSTOM"
+}
+],
+"out": [
+{
+"n": "Iteration",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "GeometryNodeRepeatOutput",
+"label": "Repeat Output",
+"w": 140.0,
+"h": 48.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INTERFACE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "CUSTOM"
+}
+],
+"out": [
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "NodeImplicitConversion",
+"label": "Implicit Conversion",
+"w": 140.0,
+"h": 74.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"data_type": "RGBA"
+},
+"panels": [],
+"in": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+}
+],
+"out": [
+{
+"n": "Value",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "NodeClosureInput",
+"label": "Closure Input",
+"w": 140.0,
+"h": 50.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INTERFACE",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": [
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "NodeClosureOutput",
+"label": "Closure Output",
+"w": 140.0,
+"h": 75.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "INTERFACE",
+"bl_icon": "NONE",
+"define_signature": false
+},
+"panels": [],
+"in": [
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "CUSTOM"
+}
+],
+"out": [
+{
+"n": "Closure",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "NodeEvaluateClosure",
+"label": "Evaluate Closure",
+"w": 140.0,
+"h": 118.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"define_signature": false
+},
+"panels": [
+false
+],
+"in": [
+{
+"n": "Closure",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "CLOSURE"
+},
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "CUSTOM"
+}
+],
+"out": [
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "NodeCombineBundle",
+"label": "Combine Bundle",
+"w": 140.0,
+"h": 70.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"define_signature": false
+},
+"panels": [],
+"in": [
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "CUSTOM"
+}
+],
+"out": [
+{
+"n": "Bundle",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "NodeSeparateBundle",
+"label": "Separate Bundle",
+"w": 140.0,
+"h": 75.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"define_signature": false
+},
+"panels": [],
+"in": [
+{
+"n": "Bundle",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BUNDLE"
+}
+],
+"out": [
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "NodeJoinBundle",
+"label": "Join Bundle",
+"w": 140.0,
+"h": 48.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Bundle",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "BUNDLE"
+}
+],
+"out": [
+{
+"n": "Bundle",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "GeometryNodeMenuSwitch",
+"label": "Menu Switch",
+"w": 140.0,
+"h": 162.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE",
+"data_type": "RGBA"
+},
+"panels": [],
+"in": [
+{
+"n": "Menu",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "MENU"
+},
+{
+"n": "A",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "B",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "RGBA"
+},
+{
+"n": "",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "CUSTOM"
+}
+],
+"out": [
+{
+"n": "Output",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "A",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "B",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeGroup",
+"label": "Group",
+"w": 140.0,
+"h": 56.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "GROUP",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [],
+"out": []
+},
+{
+"idname": "ShaderNodeGroup",
+"label": "Group",
+"w": 140.0,
+"h": 140.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "R",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Phi",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Z",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeGroup",
+"label": "Group",
+"w": 140.0,
+"h": 140.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "R",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Phi",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+},
+{
+"n": "Theta",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": false,
+"t": "VALUE"
+}
+],
+"out": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeGroup",
+"label": "Group",
+"w": 140.0,
+"h": 140.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "R",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Phi",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Z",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+},
+{
+"idname": "ShaderNodeGroup",
+"label": "Group",
+"w": 140.0,
+"h": 140.0,
+"width": 140.0,
+"hide": false,
+"props": {
+"warning_propagation": "ALL",
+"color_tag": "CONVERTER",
+"bl_icon": "NONE"
+},
+"panels": [],
+"in": [
+{
+"n": "Vector",
+"en": true,
+"hide": false,
+"lk": false,
+"hv": true,
+"t": "VECTOR"
+}
+],
+"out": [
+{
+"n": "R",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Phi",
+"en": true,
+"hide": false,
+"lk": false
+},
+{
+"n": "Theta",
+"en": true,
+"hide": false,
+"lk": false
+}
+]
+}
+]

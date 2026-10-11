@@ -1,0 +1,1 @@
+ABORTADO: 'p.setPen(QPen(TXT, 1.3, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))' aparece 0 veces. main.py sin cambios.

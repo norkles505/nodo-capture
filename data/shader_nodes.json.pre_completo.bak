@@ -1,0 +1,8906 @@
+[
+ {
+  "idname": "ShaderNodeAddShader",
+  "label": "Add Shader",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Shader",
+    "identifier": "Shader",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   },
+   {
+    "name": "Shader",
+    "identifier": "Shader_001",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Shader",
+    "identifier": "Shader",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeAmbientOcclusion",
+  "label": "Ambient Occlusion",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Distance",
+    "identifier": "Distance",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "AO",
+    "identifier": "AO",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "samples",
+    "name": "Samples",
+    "type": "INT",
+    "value": 16
+   },
+   {
+    "id": "inside",
+    "name": "Inside",
+    "type": "BOOLEAN",
+    "value": false
+   },
+   {
+    "id": "only_local",
+    "name": "Only Local",
+    "type": "BOOLEAN",
+    "value": false
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeAttribute",
+  "label": "Attribute",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Alpha",
+    "identifier": "Alpha",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "attribute_type",
+    "name": "Attribute Type",
+    "type": "ENUM",
+    "value": "GEOMETRY",
+    "items": [
+     {
+      "id": "GEOMETRY",
+      "name": "Geometry"
+     },
+     {
+      "id": "OBJECT",
+      "name": "Object"
+     },
+     {
+      "id": "INSTANCER",
+      "name": "Instancer"
+     },
+     {
+      "id": "VIEW_LAYER",
+      "name": "View Layer"
+     }
+    ]
+   },
+   {
+    "id": "attribute_name",
+    "name": "Attribute Name",
+    "type": "STRING",
+    "value": ""
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeBackground",
+  "label": "Background",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Strength",
+    "identifier": "Strength",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Background",
+    "identifier": "Background",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeBevel",
+  "label": "Bevel",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Radius",
+    "identifier": "Radius",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.05000000074505806
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "samples",
+    "name": "Samples",
+    "type": "INT",
+    "value": 4
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeBlackbody",
+  "label": "Blackbody",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Temperature",
+    "identifier": "Temperature",
+    "type": "NodeSocketFloatColorTemperature",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 6500.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeBrightContrast",
+  "label": "Brightness/Contrast",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Brightness",
+    "identifier": "Bright",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Contrast",
+    "identifier": "Contrast",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeBsdfAnisotropic",
+  "label": "Glossy BSDF",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Roughness",
+    "identifier": "Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Anisotropy",
+    "identifier": "Anisotropy",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Rotation",
+    "identifier": "Rotation",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Tangent",
+    "identifier": "Tangent",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "distribution",
+    "name": "Distribution",
+    "type": "ENUM",
+    "value": "MULTI_GGX",
+    "items": [
+     {
+      "id": "BECKMANN",
+      "name": "Beckmann"
+     },
+     {
+      "id": "GGX",
+      "name": "GGX"
+     },
+     {
+      "id": "ASHIKHMIN_SHIRLEY",
+      "name": "Ashikhmin-Shirley"
+     },
+     {
+      "id": "MULTI_GGX",
+      "name": "Multiscatter GGX"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeBsdfDiffuse",
+  "label": "Diffuse BSDF",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Roughness",
+    "identifier": "Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeBsdfGlass",
+  "label": "Glass BSDF",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Roughness",
+    "identifier": "Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "IOR",
+    "identifier": "IOR",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.5
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   },
+   {
+    "name": "Thin Film Thickness",
+    "identifier": "Thin Film Thickness",
+    "type": "NodeSocketFloatWavelength",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Thin Film IOR",
+    "identifier": "Thin Film IOR",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.3300000429153442
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "distribution",
+    "name": "Distribution",
+    "type": "ENUM",
+    "value": "MULTI_GGX",
+    "items": [
+     {
+      "id": "BECKMANN",
+      "name": "Beckmann"
+     },
+     {
+      "id": "GGX",
+      "name": "GGX"
+     },
+     {
+      "id": "MULTI_GGX",
+      "name": "Multiscatter GGX"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeBsdfHair",
+  "label": "Hair BSDF",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Offset",
+    "identifier": "Offset",
+    "type": "NodeSocketFloatAngle",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "RoughnessU",
+    "identifier": "RoughnessU",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.10000000149011612
+   },
+   {
+    "name": "RoughnessV",
+    "identifier": "RoughnessV",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Tangent",
+    "identifier": "Tangent",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "component",
+    "name": "Component",
+    "type": "ENUM",
+    "value": "Reflection",
+    "items": [
+     {
+      "id": "Reflection",
+      "name": "Reflection"
+     },
+     {
+      "id": "Transmission",
+      "name": "Transmission"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeBsdfHairPrincipled",
+  "label": "Principled Hair BSDF",
+  "width": 240.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.01751299947500229,
+     0.005762999877333641,
+     0.002059000078588724,
+     1.0
+    ]
+   },
+   {
+    "name": "Melanin",
+    "identifier": "Melanin",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.800000011920929
+   },
+   {
+    "name": "Melanin Redness",
+    "identifier": "Melanin Redness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 1.0
+   },
+   {
+    "name": "Tint",
+    "identifier": "Tint",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Absorption Coefficient",
+    "identifier": "Absorption Coefficient",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.24553099274635315,
+     0.5199999809265137,
+     1.3650000095367432
+    ]
+   },
+   {
+    "name": "Aspect Ratio",
+    "identifier": "Aspect Ratio",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.8500000238418579
+   },
+   {
+    "name": "Roughness",
+    "identifier": "Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.30000001192092896
+   },
+   {
+    "name": "Radial Roughness",
+    "identifier": "Radial Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.30000001192092896
+   },
+   {
+    "name": "Coat",
+    "identifier": "Coat",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "IOR",
+    "identifier": "IOR",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.5499999523162842
+   },
+   {
+    "name": "Offset",
+    "identifier": "Offset",
+    "type": "NodeSocketFloatAngle",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.03490658476948738
+   },
+   {
+    "name": "Random Color",
+    "identifier": "Random Color",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   },
+   {
+    "name": "Random Roughness",
+    "identifier": "Random Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Random",
+    "identifier": "Random",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": true,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   },
+   {
+    "name": "Reflection",
+    "identifier": "R lobe",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 1.0
+   },
+   {
+    "name": "Transmission",
+    "identifier": "TT lobe",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 1.0
+   },
+   {
+    "name": "Secondary Reflection",
+    "identifier": "TRT lobe",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 1.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "model",
+    "name": "Scattering model",
+    "type": "ENUM",
+    "value": "CHIANG",
+    "items": [
+     {
+      "id": "CHIANG",
+      "name": "Chiang"
+     },
+     {
+      "id": "HUANG",
+      "name": "Huang"
+     }
+    ]
+   },
+   {
+    "id": "parametrization",
+    "name": "Color Parametrization",
+    "type": "ENUM",
+    "value": "COLOR",
+    "items": [
+     {
+      "id": "ABSORPTION",
+      "name": "Absorption Coefficient"
+     },
+     {
+      "id": "MELANIN",
+      "name": "Melanin Concentration"
+     },
+     {
+      "id": "COLOR",
+      "name": "Direct Coloring"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeBsdfMetallic",
+  "label": "Metallic BSDF",
+  "width": 240.0,
+  "inputs": [
+   {
+    "name": "Base Color",
+    "identifier": "Base Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.6169999837875366,
+     0.5770000219345093,
+     0.5400000214576721,
+     1.0
+    ]
+   },
+   {
+    "name": "Edge Tint",
+    "identifier": "Edge Tint",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.6949999928474426,
+     0.7260000109672546,
+     0.7699999809265137,
+     1.0
+    ]
+   },
+   {
+    "name": "IOR",
+    "identifier": "IOR",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     2.756999969482422,
+     2.513000011444092,
+     2.2309999465942383
+    ]
+   },
+   {
+    "name": "Extinction",
+    "identifier": "Extinction",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     3.867000102996826,
+     3.4040000438690186,
+     3.009000062942505
+    ]
+   },
+   {
+    "name": "Roughness",
+    "identifier": "Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Anisotropy",
+    "identifier": "Anisotropy",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Rotation",
+    "identifier": "Rotation",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Tangent",
+    "identifier": "Tangent",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   },
+   {
+    "name": "Thin Film Thickness",
+    "identifier": "Thin Film Thickness",
+    "type": "NodeSocketFloatWavelength",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Thin Film IOR",
+    "identifier": "Thin Film IOR",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.3300000429153442
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "distribution",
+    "name": "Distribution",
+    "type": "ENUM",
+    "value": "MULTI_GGX",
+    "items": [
+     {
+      "id": "BECKMANN",
+      "name": "Beckmann"
+     },
+     {
+      "id": "GGX",
+      "name": "GGX"
+     },
+     {
+      "id": "MULTI_GGX",
+      "name": "Multiscatter GGX"
+     }
+    ]
+   },
+   {
+    "id": "fresnel_type",
+    "name": "Fresnel Type",
+    "type": "ENUM",
+    "value": "F82",
+    "items": [
+     {
+      "id": "PHYSICAL_CONDUCTOR",
+      "name": "Physical Conductor"
+     },
+     {
+      "id": "F82",
+      "name": "F82 Tint"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeBsdfPrincipled",
+  "label": "Principled BSDF",
+  "width": 240.0,
+  "inputs": [
+   {
+    "name": "Base Color",
+    "identifier": "Base Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Metallic",
+    "identifier": "Metallic",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Roughness",
+    "identifier": "Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "IOR",
+    "identifier": "IOR",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.5
+   },
+   {
+    "name": "Alpha",
+    "identifier": "Alpha",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Thin Wall",
+    "identifier": "Thin Wall",
+    "type": "NodeSocketBool",
+    "stype": "BOOLEAN",
+    "hide_value": false,
+    "enabled": true,
+    "default": false
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   },
+   {
+    "name": "Diffuse Roughness",
+    "identifier": "Diffuse Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Subsurface Weight",
+    "identifier": "Subsurface Weight",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Subsurface Radius",
+    "identifier": "Subsurface Radius",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     0.20000000298023224,
+     0.10000000149011612
+    ]
+   },
+   {
+    "name": "Subsurface Scale",
+    "identifier": "Subsurface Scale",
+    "type": "NodeSocketFloatDistance",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.004999999888241291
+   },
+   {
+    "name": "Subsurface IOR",
+    "identifier": "Subsurface IOR",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 1.399999976158142
+   },
+   {
+    "name": "Subsurface Anisotropy",
+    "identifier": "Subsurface Anisotropy",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Specular IOR Level",
+    "identifier": "Specular IOR Level",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Specular Tint",
+    "identifier": "Specular Tint",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Anisotropic",
+    "identifier": "Anisotropic",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Anisotropic Rotation",
+    "identifier": "Anisotropic Rotation",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Tangent",
+    "identifier": "Tangent",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Transmission Weight",
+    "identifier": "Transmission Weight",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Coat Weight",
+    "identifier": "Coat Weight",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Coat Roughness",
+    "identifier": "Coat Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.029999999329447746
+   },
+   {
+    "name": "Coat IOR",
+    "identifier": "Coat IOR",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.5
+   },
+   {
+    "name": "Coat Tint",
+    "identifier": "Coat Tint",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Coat Normal",
+    "identifier": "Coat Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Sheen Weight",
+    "identifier": "Sheen Weight",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Sheen Roughness",
+    "identifier": "Sheen Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Sheen Tint",
+    "identifier": "Sheen Tint",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Emission Color",
+    "identifier": "Emission Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Emission Strength",
+    "identifier": "Emission Strength",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Thin Film Thickness",
+    "identifier": "Thin Film Thickness",
+    "type": "NodeSocketFloatWavelength",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Thin Film IOR",
+    "identifier": "Thin Film IOR",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.3300000429153442
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "distribution",
+    "name": "Distribution",
+    "type": "ENUM",
+    "value": "MULTI_GGX",
+    "items": [
+     {
+      "id": "GGX",
+      "name": "GGX"
+     },
+     {
+      "id": "MULTI_GGX",
+      "name": "Multiscatter GGX"
+     }
+    ]
+   },
+   {
+    "id": "subsurface_method",
+    "name": "Subsurface Method",
+    "type": "ENUM",
+    "value": "RANDOM_WALK",
+    "items": [
+     {
+      "id": "BURLEY",
+      "name": "Christensen-Burley"
+     },
+     {
+      "id": "RANDOM_WALK",
+      "name": "Random Walk"
+     },
+     {
+      "id": "RANDOM_WALK_SKIN",
+      "name": "Random Walk (Skin)"
+     },
+     {
+      "id": "RANDOM_WALK_LEGACY",
+      "name": "Random Walk (Legacy)"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeBsdfRayPortal",
+  "label": "Ray Portal BSDF",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Position",
+    "identifier": "Position",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Direction",
+    "identifier": "Direction",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeBsdfRefraction",
+  "label": "Refraction BSDF",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Roughness",
+    "identifier": "Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "IOR",
+    "identifier": "IOR",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.4500000476837158
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "distribution",
+    "name": "Distribution",
+    "type": "ENUM",
+    "value": "BECKMANN",
+    "items": [
+     {
+      "id": "BECKMANN",
+      "name": "Beckmann"
+     },
+     {
+      "id": "GGX",
+      "name": "GGX"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeBsdfSheen",
+  "label": "Sheen BSDF",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Roughness",
+    "identifier": "Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "distribution",
+    "name": "Distribution",
+    "type": "ENUM",
+    "value": "MICROFIBER",
+    "items": [
+     {
+      "id": "ASHIKHMIN",
+      "name": "Ashikhmin"
+     },
+     {
+      "id": "MICROFIBER",
+      "name": "Microfiber"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeBsdfToon",
+  "label": "Toon BSDF",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Size",
+    "identifier": "Size",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Smooth",
+    "identifier": "Smooth",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "component",
+    "name": "Component",
+    "type": "ENUM",
+    "value": "DIFFUSE",
+    "items": [
+     {
+      "id": "DIFFUSE",
+      "name": "Diffuse"
+     },
+     {
+      "id": "GLOSSY",
+      "name": "Glossy"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeBsdfTranslucent",
+  "label": "Translucent BSDF",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeBsdfTransparent",
+  "label": "Transparent BSDF",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeBump",
+  "label": "Bump",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Strength",
+    "identifier": "Strength",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Distance",
+    "identifier": "Distance",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0010000000474974513
+   },
+   {
+    "name": "Filter Width",
+    "identifier": "Filter Width",
+    "type": "NodeSocketFloatPixel",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.10000000149011612
+   },
+   {
+    "name": "Height",
+    "identifier": "Height",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": true,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "invert",
+    "name": "Invert",
+    "type": "BOOLEAN",
+    "value": false
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeCameraData",
+  "label": "Camera Data",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "View Vector",
+    "identifier": "View Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "View Z Depth",
+    "identifier": "View Z Depth",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "View Distance",
+    "identifier": "View Distance",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeClamp",
+  "label": "Clamp",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Min",
+    "identifier": "Min",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Max",
+    "identifier": "Max",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Result",
+    "identifier": "Result",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "clamp_type",
+    "name": "Clamp Type",
+    "type": "ENUM",
+    "value": "MINMAX",
+    "items": [
+     {
+      "id": "MINMAX",
+      "name": "Min Max"
+     },
+     {
+      "id": "RANGE",
+      "name": "Range"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeCombineColor",
+  "label": "Combine Color",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Red",
+    "identifier": "Red",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Green",
+    "identifier": "Green",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Blue",
+    "identifier": "Blue",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "mode",
+    "name": "Mode",
+    "type": "ENUM",
+    "value": "RGB",
+    "items": [
+     {
+      "id": "RGB",
+      "name": "RGB"
+     },
+     {
+      "id": "HSV",
+      "name": "HSV"
+     },
+     {
+      "id": "HSL",
+      "name": "HSL"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeCombineXYZ",
+  "label": "Combine XYZ",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "X",
+    "identifier": "X",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Y",
+    "identifier": "Y",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Z",
+    "identifier": "Z",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeDisplacement",
+  "label": "Displacement",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Height",
+    "identifier": "Height",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Midlevel",
+    "identifier": "Midlevel",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Scale",
+    "identifier": "Scale",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.009999999776482582
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Displacement",
+    "identifier": "Displacement",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "space",
+    "name": "Space",
+    "type": "ENUM",
+    "value": "OBJECT",
+    "items": [
+     {
+      "id": "OBJECT",
+      "name": "Object Space"
+     },
+     {
+      "id": "WORLD",
+      "name": "World Space"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeEeveeSpecular",
+  "label": "Specular BSDF",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Base Color",
+    "identifier": "Base Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Specular",
+    "identifier": "Specular",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.029999999329447746,
+     0.029999999329447746,
+     0.029999999329447746,
+     1.0
+    ]
+   },
+   {
+    "name": "Roughness",
+    "identifier": "Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.20000000298023224
+   },
+   {
+    "name": "Emissive Color",
+    "identifier": "Emissive Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Transparency",
+    "identifier": "Transparency",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Clear Coat",
+    "identifier": "Clear Coat",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Clear Coat Roughness",
+    "identifier": "Clear Coat Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Clear Coat Normal",
+    "identifier": "Clear Coat Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSDF",
+    "identifier": "BSDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeEmission",
+  "label": "Emission",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Strength",
+    "identifier": "Strength",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Emission",
+    "identifier": "Emission",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeFloatCurve",
+  "label": "Float Curve",
+  "width": 240.0,
+  "inputs": [
+   {
+    "name": "Factor",
+    "identifier": "Factor",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeFresnel",
+  "label": "Fresnel",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "IOR",
+    "identifier": "IOR",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.5
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeGamma",
+  "label": "Gamma",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Gamma",
+    "identifier": "Gamma",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeGroup",
+  "label": "Group",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [],
+  "props": [
+   {
+    "id": "node_tree",
+    "name": "Node Tree",
+    "type": "POINTER",
+    "value": null
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeHairInfo",
+  "label": "Curves Info",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Is Strand",
+    "identifier": "Is Strand",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Intercept",
+    "identifier": "Intercept",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Length",
+    "identifier": "Length",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Thickness",
+    "identifier": "Thickness",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Tangent Normal",
+    "identifier": "Tangent Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Random",
+    "identifier": "Random",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeHoldout",
+  "label": "Holdout",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Holdout",
+    "identifier": "Holdout",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeHueSaturation",
+  "label": "Hue/Saturation/Value",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Hue",
+    "identifier": "Hue",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Saturation",
+    "identifier": "Saturation",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeInvert",
+  "label": "Invert Color",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeLayerWeight",
+  "label": "Layer Weight",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Blend",
+    "identifier": "Blend",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Fresnel",
+    "identifier": "Fresnel",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Facing",
+    "identifier": "Facing",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeLightFalloff",
+  "label": "Light Falloff",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Strength",
+    "identifier": "Strength",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 100.0
+   },
+   {
+    "name": "Smooth",
+    "identifier": "Smooth",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Quadratic",
+    "identifier": "Quadratic",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Linear",
+    "identifier": "Linear",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Constant",
+    "identifier": "Constant",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeLightPath",
+  "label": "Light Path",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Is Camera Ray",
+    "identifier": "Is Camera Ray",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Is Shadow Ray",
+    "identifier": "Is Shadow Ray",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Is Diffuse Ray",
+    "identifier": "Is Diffuse Ray",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Is Glossy Ray",
+    "identifier": "Is Glossy Ray",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Is Singular Ray",
+    "identifier": "Is Singular Ray",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Is Reflection Ray",
+    "identifier": "Is Reflection Ray",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Is Transmission Ray",
+    "identifier": "Is Transmission Ray",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Is Volume Scatter Ray",
+    "identifier": "Is Volume Scatter Ray",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Ray Length",
+    "identifier": "Ray Length",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Ray Depth",
+    "identifier": "Ray Depth",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Diffuse Depth",
+    "identifier": "Diffuse Depth",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Glossy Depth",
+    "identifier": "Glossy Depth",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Transparent Depth",
+    "identifier": "Transparent Depth",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Transmission Depth",
+    "identifier": "Transmission Depth",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Portal Depth",
+    "identifier": "Portal Depth",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeMapRange",
+  "label": "Map Range",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "From Min",
+    "identifier": "From Min",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "From Max",
+    "identifier": "From Max",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "To Min",
+    "identifier": "To Min",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "To Max",
+    "identifier": "To Max",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Steps",
+    "identifier": "Steps",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 4.0
+   },
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "From Min",
+    "identifier": "From_Min_FLOAT3",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "From Max",
+    "identifier": "From_Max_FLOAT3",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "To Min",
+    "identifier": "To_Min_FLOAT3",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "To Max",
+    "identifier": "To_Max_FLOAT3",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Steps",
+    "identifier": "Steps_FLOAT3",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     4.0,
+     4.0,
+     4.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Result",
+    "identifier": "Result",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "clamp",
+    "name": "Clamp",
+    "type": "BOOLEAN",
+    "value": true
+   },
+   {
+    "id": "interpolation_type",
+    "name": "Interpolation Type",
+    "type": "ENUM",
+    "value": "LINEAR",
+    "items": [
+     {
+      "id": "LINEAR",
+      "name": "Linear"
+     },
+     {
+      "id": "STEPPED",
+      "name": "Stepped Linear"
+     },
+     {
+      "id": "SMOOTHSTEP",
+      "name": "Smooth Step"
+     },
+     {
+      "id": "SMOOTHERSTEP",
+      "name": "Smoother Step"
+     }
+    ]
+   },
+   {
+    "id": "data_type",
+    "name": "Data Type",
+    "type": "ENUM",
+    "value": "FLOAT",
+    "items": [
+     {
+      "id": "FLOAT",
+      "name": "Float"
+     },
+     {
+      "id": "FLOAT_VECTOR",
+      "name": "Vector"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeMapping",
+  "label": "Mapping",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Location",
+    "identifier": "Location",
+    "type": "NodeSocketVectorTranslation",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Rotation",
+    "identifier": "Rotation",
+    "type": "NodeSocketVectorEuler",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Scale",
+    "identifier": "Scale",
+    "type": "NodeSocketVectorXYZ",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "vector_type",
+    "name": "Type",
+    "type": "ENUM",
+    "value": "POINT",
+    "items": [
+     {
+      "id": "POINT",
+      "name": "Point"
+     },
+     {
+      "id": "TEXTURE",
+      "name": "Texture"
+     },
+     {
+      "id": "VECTOR",
+      "name": "Vector"
+     },
+     {
+      "id": "NORMAL",
+      "name": "Normal"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeMath",
+  "label": "Math",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Value",
+    "identifier": "Value_001",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Value",
+    "identifier": "Value_002",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.5
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "operation",
+    "name": "Operation",
+    "type": "ENUM",
+    "value": "ADD",
+    "items": [
+     {
+      "id": "ADD",
+      "name": "Add"
+     },
+     {
+      "id": "SUBTRACT",
+      "name": "Subtract"
+     },
+     {
+      "id": "MULTIPLY",
+      "name": "Multiply"
+     },
+     {
+      "id": "DIVIDE",
+      "name": "Divide"
+     },
+     {
+      "id": "MULTIPLY_ADD",
+      "name": "Multiply Add"
+     },
+     {
+      "id": "POWER",
+      "name": "Power"
+     },
+     {
+      "id": "LOGARITHM",
+      "name": "Logarithm"
+     },
+     {
+      "id": "SQRT",
+      "name": "Square Root"
+     },
+     {
+      "id": "INVERSE_SQRT",
+      "name": "Inverse Square Root"
+     },
+     {
+      "id": "ABSOLUTE",
+      "name": "Absolute"
+     },
+     {
+      "id": "EXPONENT",
+      "name": "Exponent"
+     },
+     {
+      "id": "MINIMUM",
+      "name": "Minimum"
+     },
+     {
+      "id": "MAXIMUM",
+      "name": "Maximum"
+     },
+     {
+      "id": "LESS_THAN",
+      "name": "Less Than"
+     },
+     {
+      "id": "GREATER_THAN",
+      "name": "Greater Than"
+     },
+     {
+      "id": "SIGN",
+      "name": "Sign"
+     },
+     {
+      "id": "COMPARE",
+      "name": "Compare"
+     },
+     {
+      "id": "SMOOTH_MIN",
+      "name": "Smooth Minimum"
+     },
+     {
+      "id": "SMOOTH_MAX",
+      "name": "Smooth Maximum"
+     },
+     {
+      "id": "ROUND",
+      "name": "Round"
+     },
+     {
+      "id": "FLOOR",
+      "name": "Floor"
+     },
+     {
+      "id": "CEIL",
+      "name": "Ceil"
+     },
+     {
+      "id": "TRUNC",
+      "name": "Truncate"
+     },
+     {
+      "id": "FRACT",
+      "name": "Fraction"
+     },
+     {
+      "id": "MODULO",
+      "name": "Truncated Modulo"
+     },
+     {
+      "id": "FLOORED_MODULO",
+      "name": "Floored Modulo"
+     },
+     {
+      "id": "WRAP",
+      "name": "Wrap"
+     },
+     {
+      "id": "SNAP",
+      "name": "Snap"
+     },
+     {
+      "id": "PINGPONG",
+      "name": "Ping-Pong"
+     },
+     {
+      "id": "SINE",
+      "name": "Sine"
+     },
+     {
+      "id": "COSINE",
+      "name": "Cosine"
+     },
+     {
+      "id": "TANGENT",
+      "name": "Tangent"
+     },
+     {
+      "id": "ARCSINE",
+      "name": "Arcsine"
+     },
+     {
+      "id": "ARCCOSINE",
+      "name": "Arccosine"
+     },
+     {
+      "id": "ARCTANGENT",
+      "name": "Arctangent"
+     },
+     {
+      "id": "ARCTAN2",
+      "name": "Arctan2"
+     },
+     {
+      "id": "SINH",
+      "name": "Hyperbolic Sine"
+     },
+     {
+      "id": "COSH",
+      "name": "Hyperbolic Cosine"
+     },
+     {
+      "id": "TANH",
+      "name": "Hyperbolic Tangent"
+     },
+     {
+      "id": "RADIANS",
+      "name": "To Radians"
+     },
+     {
+      "id": "DEGREES",
+      "name": "To Degrees"
+     }
+    ]
+   },
+   {
+    "id": "use_clamp",
+    "name": "Clamp",
+    "type": "BOOLEAN",
+    "value": false
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeMix",
+  "label": "Mix",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Factor",
+    "identifier": "Factor_Float",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Factor",
+    "identifier": "Factor_Vector",
+    "type": "NodeSocketVectorFactor",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.5,
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "name": "A",
+    "identifier": "A_Float",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "B",
+    "identifier": "B_Float",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "A",
+    "identifier": "A_Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "B",
+    "identifier": "B_Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "A",
+    "identifier": "A_Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.5,
+     0.5,
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "name": "B",
+    "identifier": "B_Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.5,
+     0.5,
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "name": "A",
+    "identifier": "A_Rotation",
+    "type": "NodeSocketRotation",
+    "stype": "ROTATION",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "B",
+    "identifier": "B_Rotation",
+    "type": "NodeSocketRotation",
+    "stype": "ROTATION",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Result",
+    "identifier": "Result_Float",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Result",
+    "identifier": "Result_Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Result",
+    "identifier": "Result_Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Result",
+    "identifier": "Result_Rotation",
+    "type": "NodeSocketRotation",
+    "stype": "ROTATION",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "data_type",
+    "name": "Data Type",
+    "type": "ENUM",
+    "value": "FLOAT",
+    "items": [
+     {
+      "id": "FLOAT",
+      "name": "Float"
+     },
+     {
+      "id": "VECTOR",
+      "name": "Vector"
+     },
+     {
+      "id": "RGBA",
+      "name": "Color"
+     },
+     {
+      "id": "ROTATION",
+      "name": "Rotation"
+     }
+    ]
+   },
+   {
+    "id": "factor_mode",
+    "name": "Factor Mode",
+    "type": "ENUM",
+    "value": "UNIFORM",
+    "items": [
+     {
+      "id": "UNIFORM",
+      "name": "Uniform"
+     },
+     {
+      "id": "NON_UNIFORM",
+      "name": "Non-Uniform"
+     }
+    ]
+   },
+   {
+    "id": "blend_type",
+    "name": "Blending Mode",
+    "type": "ENUM",
+    "value": "MIX",
+    "items": [
+     {
+      "id": "MIX",
+      "name": "Mix"
+     },
+     {
+      "id": "DARKEN",
+      "name": "Darken"
+     },
+     {
+      "id": "MULTIPLY",
+      "name": "Multiply"
+     },
+     {
+      "id": "BURN",
+      "name": "Color Burn"
+     },
+     {
+      "id": "LIGHTEN",
+      "name": "Lighten"
+     },
+     {
+      "id": "SCREEN",
+      "name": "Screen"
+     },
+     {
+      "id": "DODGE",
+      "name": "Color Dodge"
+     },
+     {
+      "id": "ADD",
+      "name": "Add"
+     },
+     {
+      "id": "OVERLAY",
+      "name": "Overlay"
+     },
+     {
+      "id": "SOFT_LIGHT",
+      "name": "Soft Light"
+     },
+     {
+      "id": "LINEAR_LIGHT",
+      "name": "Linear Light"
+     },
+     {
+      "id": "DIFFERENCE",
+      "name": "Difference"
+     },
+     {
+      "id": "EXCLUSION",
+      "name": "Exclusion"
+     },
+     {
+      "id": "SUBTRACT",
+      "name": "Subtract"
+     },
+     {
+      "id": "DIVIDE",
+      "name": "Divide"
+     },
+     {
+      "id": "HUE",
+      "name": "Hue"
+     },
+     {
+      "id": "SATURATION",
+      "name": "Saturation"
+     },
+     {
+      "id": "COLOR",
+      "name": "Color"
+     },
+     {
+      "id": "VALUE",
+      "name": "Value"
+     }
+    ]
+   },
+   {
+    "id": "clamp_factor",
+    "name": "Clamp Factor",
+    "type": "BOOLEAN",
+    "value": true
+   },
+   {
+    "id": "clamp_result",
+    "name": "Clamp Result",
+    "type": "BOOLEAN",
+    "value": false
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeMixRGB",
+  "label": "Mix (Legacy)",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Color1",
+    "identifier": "Color1",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.5,
+     0.5,
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "name": "Color2",
+    "identifier": "Color2",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.5,
+     0.5,
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "blend_type",
+    "name": "Blending Mode",
+    "type": "ENUM",
+    "value": "MIX",
+    "items": [
+     {
+      "id": "MIX",
+      "name": "Mix"
+     },
+     {
+      "id": "DARKEN",
+      "name": "Darken"
+     },
+     {
+      "id": "MULTIPLY",
+      "name": "Multiply"
+     },
+     {
+      "id": "BURN",
+      "name": "Color Burn"
+     },
+     {
+      "id": "LIGHTEN",
+      "name": "Lighten"
+     },
+     {
+      "id": "SCREEN",
+      "name": "Screen"
+     },
+     {
+      "id": "DODGE",
+      "name": "Color Dodge"
+     },
+     {
+      "id": "ADD",
+      "name": "Add"
+     },
+     {
+      "id": "OVERLAY",
+      "name": "Overlay"
+     },
+     {
+      "id": "SOFT_LIGHT",
+      "name": "Soft Light"
+     },
+     {
+      "id": "LINEAR_LIGHT",
+      "name": "Linear Light"
+     },
+     {
+      "id": "DIFFERENCE",
+      "name": "Difference"
+     },
+     {
+      "id": "EXCLUSION",
+      "name": "Exclusion"
+     },
+     {
+      "id": "SUBTRACT",
+      "name": "Subtract"
+     },
+     {
+      "id": "DIVIDE",
+      "name": "Divide"
+     },
+     {
+      "id": "HUE",
+      "name": "Hue"
+     },
+     {
+      "id": "SATURATION",
+      "name": "Saturation"
+     },
+     {
+      "id": "COLOR",
+      "name": "Color"
+     },
+     {
+      "id": "VALUE",
+      "name": "Value"
+     }
+    ]
+   },
+   {
+    "id": "use_alpha",
+    "name": "Alpha",
+    "type": "BOOLEAN",
+    "value": false
+   },
+   {
+    "id": "use_clamp",
+    "name": "Clamp",
+    "type": "BOOLEAN",
+    "value": false
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeMixShader",
+  "label": "Mix Shader",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Shader",
+    "identifier": "Shader",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   },
+   {
+    "name": "Shader",
+    "identifier": "Shader_001",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Shader",
+    "identifier": "Shader",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeNewGeometry",
+  "label": "Geometry",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Position",
+    "identifier": "Position",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Tangent",
+    "identifier": "Tangent",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "True Normal",
+    "identifier": "True Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Incoming",
+    "identifier": "Incoming",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Parametric",
+    "identifier": "Parametric",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Backfacing",
+    "identifier": "Backfacing",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Pointiness",
+    "identifier": "Pointiness",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Random Per Island",
+    "identifier": "Random Per Island",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeNormal",
+  "label": "Normal",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVectorDirection",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVectorDirection",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Dot",
+    "identifier": "Dot",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeNormalMap",
+  "label": "Normal Map",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Strength",
+    "identifier": "Strength",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.5,
+     0.5,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "space",
+    "name": "Space",
+    "type": "ENUM",
+    "value": "TANGENT",
+    "items": [
+     {
+      "id": "TANGENT",
+      "name": "Tangent Space"
+     },
+     {
+      "id": "OBJECT",
+      "name": "Object Space"
+     },
+     {
+      "id": "WORLD",
+      "name": "World Space"
+     },
+     {
+      "id": "BLENDER_OBJECT",
+      "name": "Blender Object Space"
+     },
+     {
+      "id": "BLENDER_WORLD",
+      "name": "Blender World Space"
+     }
+    ]
+   },
+   {
+    "id": "uv_map",
+    "name": "UV Map",
+    "type": "STRING",
+    "value": ""
+   },
+   {
+    "id": "convention",
+    "name": "Mode",
+    "type": "ENUM",
+    "value": "OPENGL",
+    "items": [
+     {
+      "id": "OPENGL",
+      "name": "OpenGL"
+     },
+     {
+      "id": "DIRECTX",
+      "name": "DirectX"
+     }
+    ]
+   },
+   {
+    "id": "base",
+    "name": "Base",
+    "type": "ENUM",
+    "value": "DISPLACED",
+    "items": [
+     {
+      "id": "ORIGINAL",
+      "name": "Original Base"
+     },
+     {
+      "id": "DISPLACED",
+      "name": "Displaced Base"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeObjectInfo",
+  "label": "Object Info",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Location",
+    "identifier": "Location",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Alpha",
+    "identifier": "Alpha",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Object Index",
+    "identifier": "Object Index",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Material Index",
+    "identifier": "Material Index",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Random",
+    "identifier": "Random",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeOutputAOV",
+  "label": "AOV Output",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "outputs": [],
+  "props": [
+   {
+    "id": "aov_name",
+    "name": "Name",
+    "type": "STRING",
+    "value": ""
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeOutputLight",
+  "label": "Light Output",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Surface",
+    "identifier": "Surface",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "outputs": [],
+  "props": [
+   {
+    "id": "is_active_output",
+    "name": "Active Output",
+    "type": "BOOLEAN",
+    "value": true
+   },
+   {
+    "id": "target",
+    "name": "Target",
+    "type": "ENUM",
+    "value": "ALL",
+    "items": [
+     {
+      "id": "ALL",
+      "name": "All"
+     },
+     {
+      "id": "EEVEE",
+      "name": "EEVEE"
+     },
+     {
+      "id": "CYCLES",
+      "name": "Cycles"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeOutputLineStyle",
+  "label": "Line Style Output",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     0.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Color Fac",
+    "identifier": "Color Fac",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Alpha",
+    "identifier": "Alpha",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Alpha Fac",
+    "identifier": "Alpha Fac",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   }
+  ],
+  "outputs": [],
+  "props": [
+   {
+    "id": "is_active_output",
+    "name": "Active Output",
+    "type": "BOOLEAN",
+    "value": true
+   },
+   {
+    "id": "target",
+    "name": "Target",
+    "type": "ENUM",
+    "value": "ALL",
+    "items": [
+     {
+      "id": "ALL",
+      "name": "All"
+     },
+     {
+      "id": "EEVEE",
+      "name": "EEVEE"
+     },
+     {
+      "id": "CYCLES",
+      "name": "Cycles"
+     }
+    ]
+   },
+   {
+    "id": "blend_type",
+    "name": "Blending Mode",
+    "type": "ENUM",
+    "value": "MIX",
+    "items": [
+     {
+      "id": "MIX",
+      "name": "Mix"
+     },
+     {
+      "id": "DARKEN",
+      "name": "Darken"
+     },
+     {
+      "id": "MULTIPLY",
+      "name": "Multiply"
+     },
+     {
+      "id": "BURN",
+      "name": "Color Burn"
+     },
+     {
+      "id": "LIGHTEN",
+      "name": "Lighten"
+     },
+     {
+      "id": "SCREEN",
+      "name": "Screen"
+     },
+     {
+      "id": "DODGE",
+      "name": "Color Dodge"
+     },
+     {
+      "id": "ADD",
+      "name": "Add"
+     },
+     {
+      "id": "OVERLAY",
+      "name": "Overlay"
+     },
+     {
+      "id": "SOFT_LIGHT",
+      "name": "Soft Light"
+     },
+     {
+      "id": "LINEAR_LIGHT",
+      "name": "Linear Light"
+     },
+     {
+      "id": "DIFFERENCE",
+      "name": "Difference"
+     },
+     {
+      "id": "EXCLUSION",
+      "name": "Exclusion"
+     },
+     {
+      "id": "SUBTRACT",
+      "name": "Subtract"
+     },
+     {
+      "id": "DIVIDE",
+      "name": "Divide"
+     },
+     {
+      "id": "HUE",
+      "name": "Hue"
+     },
+     {
+      "id": "SATURATION",
+      "name": "Saturation"
+     },
+     {
+      "id": "COLOR",
+      "name": "Color"
+     },
+     {
+      "id": "VALUE",
+      "name": "Value"
+     }
+    ]
+   },
+   {
+    "id": "use_alpha",
+    "name": "Alpha",
+    "type": "BOOLEAN",
+    "value": false
+   },
+   {
+    "id": "use_clamp",
+    "name": "Clamp",
+    "type": "BOOLEAN",
+    "value": false
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeOutputMaterial",
+  "label": "Material Output",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Surface",
+    "identifier": "Surface",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   },
+   {
+    "name": "Volume",
+    "identifier": "Volume",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   },
+   {
+    "name": "Displacement",
+    "identifier": "Displacement",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Thickness",
+    "identifier": "Thickness",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": true,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "outputs": [],
+  "props": [
+   {
+    "id": "is_active_output",
+    "name": "Active Output",
+    "type": "BOOLEAN",
+    "value": false
+   },
+   {
+    "id": "target",
+    "name": "Target",
+    "type": "ENUM",
+    "value": "ALL",
+    "items": [
+     {
+      "id": "ALL",
+      "name": "All"
+     },
+     {
+      "id": "EEVEE",
+      "name": "EEVEE"
+     },
+     {
+      "id": "CYCLES",
+      "name": "Cycles"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeOutputWorld",
+  "label": "World Output",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Surface",
+    "identifier": "Surface",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   },
+   {
+    "name": "Volume",
+    "identifier": "Volume",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "outputs": [],
+  "props": [
+   {
+    "id": "is_active_output",
+    "name": "Active Output",
+    "type": "BOOLEAN",
+    "value": true
+   },
+   {
+    "id": "target",
+    "name": "Target",
+    "type": "ENUM",
+    "value": "ALL",
+    "items": [
+     {
+      "id": "ALL",
+      "name": "All"
+     },
+     {
+      "id": "EEVEE",
+      "name": "EEVEE"
+     },
+     {
+      "id": "CYCLES",
+      "name": "Cycles"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeParticleInfo",
+  "label": "Particle Info",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Index",
+    "identifier": "Index",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Random",
+    "identifier": "Random",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Age",
+    "identifier": "Age",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Lifetime",
+    "identifier": "Lifetime",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Location",
+    "identifier": "Location",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Size",
+    "identifier": "Size",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Velocity",
+    "identifier": "Velocity",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Angular Velocity",
+    "identifier": "Angular Velocity",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodePointInfo",
+  "label": "Point Info",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Position",
+    "identifier": "Position",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Radius",
+    "identifier": "Radius",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Random",
+    "identifier": "Random",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeRGB",
+  "label": "Color",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.5,
+     0.5,
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeRGBCurve",
+  "label": "RGB Curves",
+  "width": 240.0,
+  "inputs": [
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeRGBToBW",
+  "label": "RGB to BW",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.5,
+     0.5,
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Val",
+    "identifier": "Val",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeRadialTiling",
+  "label": "Radial Tiling",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector2D",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Sides",
+    "identifier": "Sides",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 5.0
+   },
+   {
+    "name": "Roundness",
+    "identifier": "Roundness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Segment Coordinates",
+    "identifier": "Segment Coordinates",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Segment ID",
+    "identifier": "Segment ID",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Segment Width",
+    "identifier": "Segment Width",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Segment Rotation",
+    "identifier": "Segment Rotation",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "normalize",
+    "name": "Normalize",
+    "type": "BOOLEAN",
+    "value": false
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeRaycast",
+  "label": "Raycast",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Position",
+    "identifier": "Position",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Direction",
+    "identifier": "Direction",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Length",
+    "identifier": "Length",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "",
+    "identifier": "__extend__",
+    "type": "NodeSocketVirtual",
+    "stype": "CUSTOM",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Is Hit",
+    "identifier": "Is Hit",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Self Hit",
+    "identifier": "Self Hit",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Hit Distance",
+    "identifier": "Hit Distance",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Hit Position",
+    "identifier": "Hit Position",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Hit Normal",
+    "identifier": "Hit Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "",
+    "identifier": "__extend__",
+    "type": "NodeSocketVirtual",
+    "stype": "CUSTOM",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "only_local",
+    "name": "Only Local",
+    "type": "BOOLEAN",
+    "value": false
+   },
+   {
+    "id": "active_index",
+    "name": "Active Item Index",
+    "type": "INT",
+    "value": 0
+   },
+   {
+    "id": "active_item",
+    "name": "Active Item Index",
+    "type": "POINTER",
+    "value": null
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeScript",
+  "label": "Script",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [],
+  "props": [
+   {
+    "id": "script",
+    "name": "Script",
+    "type": "POINTER",
+    "value": null
+   },
+   {
+    "id": "filepath",
+    "name": "File Path",
+    "type": "STRING",
+    "value": ""
+   },
+   {
+    "id": "mode",
+    "name": "Script Source",
+    "type": "ENUM",
+    "value": "INTERNAL",
+    "items": [
+     {
+      "id": "INTERNAL",
+      "name": "Internal"
+     },
+     {
+      "id": "EXTERNAL",
+      "name": "External"
+     }
+    ]
+   },
+   {
+    "id": "use_auto_update",
+    "name": "Auto Update",
+    "type": "BOOLEAN",
+    "value": false
+   },
+   {
+    "id": "bytecode",
+    "name": "Bytecode",
+    "type": "STRING",
+    "value": ""
+   },
+   {
+    "id": "bytecode_hash",
+    "name": "Bytecode Hash",
+    "type": "STRING",
+    "value": ""
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeSeparateColor",
+  "label": "Separate Color",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Red",
+    "identifier": "Red",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Green",
+    "identifier": "Green",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Blue",
+    "identifier": "Blue",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "mode",
+    "name": "Mode",
+    "type": "ENUM",
+    "value": "RGB",
+    "items": [
+     {
+      "id": "RGB",
+      "name": "RGB"
+     },
+     {
+      "id": "HSV",
+      "name": "HSV"
+     },
+     {
+      "id": "HSL",
+      "name": "HSL"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeSeparateXYZ",
+  "label": "Separate XYZ",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "X",
+    "identifier": "X",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Y",
+    "identifier": "Y",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Z",
+    "identifier": "Z",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeShaderToRGB",
+  "label": "Shader to RGB",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Shader",
+    "identifier": "Shader",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Alpha",
+    "identifier": "Alpha",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeSqueeze",
+  "label": "Squeeze Value (Legacy)",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Width",
+    "identifier": "Width",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Center",
+    "identifier": "Center",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeSubsurfaceScattering",
+  "label": "Subsurface Scattering",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Scale",
+    "identifier": "Scale",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.004999999888241291
+   },
+   {
+    "name": "Radius",
+    "identifier": "Radius",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     0.20000000298023224,
+     0.10000000149011612
+    ]
+   },
+   {
+    "name": "IOR",
+    "identifier": "IOR",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.399999976158142
+   },
+   {
+    "name": "Roughness",
+    "identifier": "Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Anisotropy",
+    "identifier": "Anisotropy",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "BSSRDF",
+    "identifier": "BSSRDF",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "falloff",
+    "name": "Method",
+    "type": "ENUM",
+    "value": "RANDOM_WALK",
+    "items": [
+     {
+      "id": "BURLEY",
+      "name": "Christensen-Burley"
+     },
+     {
+      "id": "RANDOM_WALK",
+      "name": "Random Walk"
+     },
+     {
+      "id": "RANDOM_WALK_SKIN",
+      "name": "Random Walk (Skin)"
+     },
+     {
+      "id": "RANDOM_WALK_LEGACY",
+      "name": "Random Walk (Legacy)"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTangent",
+  "label": "Tangent",
+  "width": 160.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Tangent",
+    "identifier": "Tangent",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "direction_type",
+    "name": "Direction",
+    "type": "ENUM",
+    "value": "RADIAL",
+    "items": [
+     {
+      "id": "RADIAL",
+      "name": "Radial"
+     },
+     {
+      "id": "UV_MAP",
+      "name": "UV Map"
+     }
+    ]
+   },
+   {
+    "id": "axis",
+    "name": "Axis",
+    "type": "ENUM",
+    "value": "Z",
+    "items": [
+     {
+      "id": "X",
+      "name": "X"
+     },
+     {
+      "id": "Y",
+      "name": "Y"
+     },
+     {
+      "id": "Z",
+      "name": "Z"
+     }
+    ]
+   },
+   {
+    "id": "uv_map",
+    "name": "UV Map",
+    "type": "STRING",
+    "value": ""
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexBrick",
+  "label": "Brick Texture",
+  "width": 180.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Color1",
+    "identifier": "Color1",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Color2",
+    "identifier": "Color2",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.20000000298023224,
+     0.20000000298023224,
+     0.20000000298023224,
+     1.0
+    ]
+   },
+   {
+    "name": "Mortar",
+    "identifier": "Mortar",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Scale",
+    "identifier": "Scale",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 5.0
+   },
+   {
+    "name": "Mortar Size",
+    "identifier": "Mortar Size",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.019999999552965164
+   },
+   {
+    "name": "Mortar Smooth",
+    "identifier": "Mortar Smooth",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.10000000149011612
+   },
+   {
+    "name": "Bias",
+    "identifier": "Bias",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Brick Width",
+    "identifier": "Brick Width",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Row Height",
+    "identifier": "Row Height",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.25
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "offset_frequency",
+    "name": "Offset Frequency",
+    "type": "INT",
+    "value": 2
+   },
+   {
+    "id": "squash_frequency",
+    "name": "Squash Frequency",
+    "type": "INT",
+    "value": 2
+   },
+   {
+    "id": "offset",
+    "name": "Offset Amount",
+    "type": "FLOAT",
+    "value": 0.5
+   },
+   {
+    "id": "squash",
+    "name": "Squash Amount",
+    "type": "FLOAT",
+    "value": 1.0
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexChecker",
+  "label": "Checker Texture",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Color1",
+    "identifier": "Color1",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Color2",
+    "identifier": "Color2",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.20000000298023224,
+     0.20000000298023224,
+     0.20000000298023224,
+     1.0
+    ]
+   },
+   {
+    "name": "Scale",
+    "identifier": "Scale",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 5.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeTexCoord",
+  "label": "Texture Coordinate",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Generated",
+    "identifier": "Generated",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Normal",
+    "identifier": "Normal",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "UV",
+    "identifier": "UV",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Object",
+    "identifier": "Object",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Camera",
+    "identifier": "Camera",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Window",
+    "identifier": "Window",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Reflection",
+    "identifier": "Reflection",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "object",
+    "name": "Object",
+    "type": "POINTER",
+    "value": null
+   },
+   {
+    "id": "from_instancer",
+    "name": "From Instancer",
+    "type": "BOOLEAN",
+    "value": false
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexEnvironment",
+  "label": "Environment Texture",
+  "width": 240.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "image",
+    "name": "Image",
+    "type": "POINTER",
+    "value": null
+   },
+   {
+    "id": "projection",
+    "name": "Projection",
+    "type": "ENUM",
+    "value": "EQUIRECTANGULAR",
+    "items": [
+     {
+      "id": "EQUIRECTANGULAR",
+      "name": "Equirectangular"
+     },
+     {
+      "id": "MIRROR_BALL",
+      "name": "Mirror Ball"
+     }
+    ]
+   },
+   {
+    "id": "interpolation",
+    "name": "Interpolation",
+    "type": "ENUM",
+    "value": "Linear",
+    "items": [
+     {
+      "id": "Linear",
+      "name": "Linear"
+     },
+     {
+      "id": "Closest",
+      "name": "Closest"
+     },
+     {
+      "id": "Cubic",
+      "name": "Cubic"
+     },
+     {
+      "id": "Smart",
+      "name": "Smart"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexGabor",
+  "label": "Gabor Texture",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Scale",
+    "identifier": "Scale",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 5.0
+   },
+   {
+    "name": "Frequency",
+    "identifier": "Frequency",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 2.0
+   },
+   {
+    "name": "Anisotropy",
+    "identifier": "Anisotropy",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Orientation",
+    "identifier": "Orientation 2D",
+    "type": "NodeSocketFloatAngle",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.7853981852531433
+   },
+   {
+    "name": "Orientation",
+    "identifier": "Orientation 3D",
+    "type": "NodeSocketVectorDirection",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     1.4142135381698608,
+     1.4142135381698608,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Phase",
+    "identifier": "Phase",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Intensity",
+    "identifier": "Intensity",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "gabor_type",
+    "name": "Type",
+    "type": "ENUM",
+    "value": "2D",
+    "items": [
+     {
+      "id": "2D",
+      "name": "2D"
+     },
+     {
+      "id": "3D",
+      "name": "3D"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexGradient",
+  "label": "Gradient Texture",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "gradient_type",
+    "name": "Gradient Type",
+    "type": "ENUM",
+    "value": "LINEAR",
+    "items": [
+     {
+      "id": "LINEAR",
+      "name": "Linear"
+     },
+     {
+      "id": "QUADRATIC",
+      "name": "Quadratic"
+     },
+     {
+      "id": "EASING",
+      "name": "Easing"
+     },
+     {
+      "id": "DIAGONAL",
+      "name": "Diagonal"
+     },
+     {
+      "id": "SPHERICAL",
+      "name": "Spherical"
+     },
+     {
+      "id": "QUADRATIC_SPHERE",
+      "name": "Quadratic Sphere"
+     },
+     {
+      "id": "RADIAL",
+      "name": "Radial"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexIES",
+  "label": "IES Texture",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Strength",
+    "identifier": "Strength",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "ies",
+    "name": "IES Text",
+    "type": "POINTER",
+    "value": null
+   },
+   {
+    "id": "filepath",
+    "name": "File Path",
+    "type": "STRING",
+    "value": ""
+   },
+   {
+    "id": "mode",
+    "name": "Source",
+    "type": "ENUM",
+    "value": "INTERNAL",
+    "items": [
+     {
+      "id": "INTERNAL",
+      "name": "Internal"
+     },
+     {
+      "id": "EXTERNAL",
+      "name": "External"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexImage",
+  "label": "Image Texture",
+  "width": 240.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Alpha",
+    "identifier": "Alpha",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "image",
+    "name": "Image",
+    "type": "POINTER",
+    "value": null
+   },
+   {
+    "id": "projection",
+    "name": "Projection",
+    "type": "ENUM",
+    "value": "FLAT",
+    "items": [
+     {
+      "id": "FLAT",
+      "name": "Flat"
+     },
+     {
+      "id": "BOX",
+      "name": "Box"
+     },
+     {
+      "id": "SPHERE",
+      "name": "Sphere"
+     },
+     {
+      "id": "TUBE",
+      "name": "Tube"
+     }
+    ]
+   },
+   {
+    "id": "interpolation",
+    "name": "Interpolation",
+    "type": "ENUM",
+    "value": "Linear",
+    "items": [
+     {
+      "id": "Linear",
+      "name": "Linear"
+     },
+     {
+      "id": "Closest",
+      "name": "Closest"
+     },
+     {
+      "id": "Cubic",
+      "name": "Cubic"
+     },
+     {
+      "id": "Smart",
+      "name": "Smart"
+     }
+    ]
+   },
+   {
+    "id": "projection_blend",
+    "name": "Projection Blend",
+    "type": "FLOAT",
+    "value": 0.0
+   },
+   {
+    "id": "extension",
+    "name": "Extension",
+    "type": "ENUM",
+    "value": "REPEAT",
+    "items": [
+     {
+      "id": "REPEAT",
+      "name": "Repeat"
+     },
+     {
+      "id": "EXTEND",
+      "name": "Extend"
+     },
+     {
+      "id": "CLIP",
+      "name": "Clip"
+     },
+     {
+      "id": "MIRROR",
+      "name": "Mirror"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexMagic",
+  "label": "Magic Texture",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Scale",
+    "identifier": "Scale",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 5.0
+   },
+   {
+    "name": "Distortion",
+    "identifier": "Distortion",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "turbulence_depth",
+    "name": "Depth",
+    "type": "INT",
+    "value": 2
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexNoise",
+  "label": "Noise Texture",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "W",
+    "identifier": "W",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   },
+   {
+    "name": "Scale",
+    "identifier": "Scale",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 5.0
+   },
+   {
+    "name": "Detail",
+    "identifier": "Detail",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 2.0
+   },
+   {
+    "name": "Roughness",
+    "identifier": "Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Lacunarity",
+    "identifier": "Lacunarity",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 2.0
+   },
+   {
+    "name": "Offset",
+    "identifier": "Offset",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   },
+   {
+    "name": "Gain",
+    "identifier": "Gain",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 1.0
+   },
+   {
+    "name": "Distortion",
+    "identifier": "Distortion",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "noise_dimensions",
+    "name": "Dimensions",
+    "type": "ENUM",
+    "value": "3D",
+    "items": [
+     {
+      "id": "1D",
+      "name": "1D"
+     },
+     {
+      "id": "2D",
+      "name": "2D"
+     },
+     {
+      "id": "3D",
+      "name": "3D"
+     },
+     {
+      "id": "4D",
+      "name": "4D"
+     }
+    ]
+   },
+   {
+    "id": "noise_type",
+    "name": "Type",
+    "type": "ENUM",
+    "value": "FBM",
+    "items": [
+     {
+      "id": "MULTIFRACTAL",
+      "name": "Multifractal"
+     },
+     {
+      "id": "RIDGED_MULTIFRACTAL",
+      "name": "Ridged Multifractal"
+     },
+     {
+      "id": "HYBRID_MULTIFRACTAL",
+      "name": "Hybrid Multifractal"
+     },
+     {
+      "id": "FBM",
+      "name": "fBM"
+     },
+     {
+      "id": "HETERO_TERRAIN",
+      "name": "Hetero Terrain"
+     }
+    ]
+   },
+   {
+    "id": "normalize",
+    "name": "Normalize",
+    "type": "BOOLEAN",
+    "value": true
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexSky",
+  "label": "Sky Texture",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "sky_type",
+    "name": "Sky Type",
+    "type": "ENUM",
+    "value": "MULTIPLE_SCATTERING",
+    "items": [
+     {
+      "id": "SINGLE_SCATTERING",
+      "name": "Single Scattering"
+     },
+     {
+      "id": "MULTIPLE_SCATTERING",
+      "name": "Multiple Scattering"
+     },
+     {
+      "id": "PREETHAM",
+      "name": "Preetham"
+     },
+     {
+      "id": "HOSEK_WILKIE",
+      "name": "Hosek / Wilkie"
+     }
+    ]
+   },
+   {
+    "id": "sun_disc",
+    "name": "Sun Disc",
+    "type": "BOOLEAN",
+    "value": true
+   },
+   {
+    "id": "sun_size",
+    "name": "Sun Size",
+    "type": "FLOAT",
+    "value": 0.009512044489383698
+   },
+   {
+    "id": "sun_intensity",
+    "name": "Sun Intensity",
+    "type": "FLOAT",
+    "value": 1.0
+   },
+   {
+    "id": "sun_elevation",
+    "name": "Sun Elevation",
+    "type": "FLOAT",
+    "value": 0.2617993950843811
+   },
+   {
+    "id": "sun_rotation",
+    "name": "Sun Rotation",
+    "type": "FLOAT",
+    "value": 0.0
+   },
+   {
+    "id": "altitude",
+    "name": "Altitude",
+    "type": "FLOAT",
+    "value": 100.0
+   },
+   {
+    "id": "air_density",
+    "name": "Air",
+    "type": "FLOAT",
+    "value": 1.0
+   },
+   {
+    "id": "aerosol_density",
+    "name": "Aerosols",
+    "type": "FLOAT",
+    "value": 1.0
+   },
+   {
+    "id": "ozone_density",
+    "name": "Ozone",
+    "type": "FLOAT",
+    "value": 1.0
+   },
+   {
+    "id": "sun_direction",
+    "name": "Sun Direction",
+    "type": "FLOAT",
+    "value": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "id": "turbidity",
+    "name": "Turbidity",
+    "type": "FLOAT",
+    "value": 2.200000047683716
+   },
+   {
+    "id": "ground_albedo",
+    "name": "Ground Albedo",
+    "type": "FLOAT",
+    "value": 0.30000001192092896
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexVoronoi",
+  "label": "Voronoi Texture",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "W",
+    "identifier": "W",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   },
+   {
+    "name": "Scale",
+    "identifier": "Scale",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 5.0
+   },
+   {
+    "name": "Detail",
+    "identifier": "Detail",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Roughness",
+    "identifier": "Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Lacunarity",
+    "identifier": "Lacunarity",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 2.0
+   },
+   {
+    "name": "Smoothness",
+    "identifier": "Smoothness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 1.0
+   },
+   {
+    "name": "Exponent",
+    "identifier": "Exponent",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.5
+   },
+   {
+    "name": "Randomness",
+    "identifier": "Randomness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Distance",
+    "identifier": "Distance",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Position",
+    "identifier": "Position",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "W",
+    "identifier": "W",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   },
+   {
+    "name": "Radius",
+    "identifier": "Radius",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "voronoi_dimensions",
+    "name": "Dimensions",
+    "type": "ENUM",
+    "value": "3D",
+    "items": [
+     {
+      "id": "1D",
+      "name": "1D"
+     },
+     {
+      "id": "2D",
+      "name": "2D"
+     },
+     {
+      "id": "3D",
+      "name": "3D"
+     },
+     {
+      "id": "4D",
+      "name": "4D"
+     }
+    ]
+   },
+   {
+    "id": "distance",
+    "name": "Distance Metric",
+    "type": "ENUM",
+    "value": "EUCLIDEAN",
+    "items": [
+     {
+      "id": "EUCLIDEAN",
+      "name": "Euclidean"
+     },
+     {
+      "id": "MANHATTAN",
+      "name": "Manhattan"
+     },
+     {
+      "id": "CHEBYCHEV",
+      "name": "Chebychev"
+     },
+     {
+      "id": "MINKOWSKI",
+      "name": "Minkowski"
+     }
+    ]
+   },
+   {
+    "id": "feature",
+    "name": "Feature Output",
+    "type": "ENUM",
+    "value": "F1",
+    "items": [
+     {
+      "id": "F1",
+      "name": "F1"
+     },
+     {
+      "id": "F2",
+      "name": "F2"
+     },
+     {
+      "id": "SMOOTH_F1",
+      "name": "Smooth F1"
+     },
+     {
+      "id": "DISTANCE_TO_EDGE",
+      "name": "Distance to Edge"
+     },
+     {
+      "id": "N_SPHERE_RADIUS",
+      "name": "N-Sphere Radius"
+     }
+    ]
+   },
+   {
+    "id": "normalize",
+    "name": "Normalize",
+    "type": "BOOLEAN",
+    "value": false
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexWave",
+  "label": "Wave Texture",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Scale",
+    "identifier": "Scale",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 5.0
+   },
+   {
+    "name": "Distortion",
+    "identifier": "Distortion",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Detail",
+    "identifier": "Detail",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 2.0
+   },
+   {
+    "name": "Detail Scale",
+    "identifier": "Detail Scale",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Detail Roughness",
+    "identifier": "Detail Roughness",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   },
+   {
+    "name": "Phase Offset",
+    "identifier": "Phase Offset",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "wave_type",
+    "name": "Wave Type",
+    "type": "ENUM",
+    "value": "BANDS",
+    "items": [
+     {
+      "id": "BANDS",
+      "name": "Bands"
+     },
+     {
+      "id": "RINGS",
+      "name": "Rings"
+     }
+    ]
+   },
+   {
+    "id": "bands_direction",
+    "name": "Bands Direction",
+    "type": "ENUM",
+    "value": "X",
+    "items": [
+     {
+      "id": "X",
+      "name": "X"
+     },
+     {
+      "id": "Y",
+      "name": "Y"
+     },
+     {
+      "id": "Z",
+      "name": "Z"
+     },
+     {
+      "id": "DIAGONAL",
+      "name": "Diagonal"
+     }
+    ]
+   },
+   {
+    "id": "rings_direction",
+    "name": "Rings Direction",
+    "type": "ENUM",
+    "value": "X",
+    "items": [
+     {
+      "id": "X",
+      "name": "X"
+     },
+     {
+      "id": "Y",
+      "name": "Y"
+     },
+     {
+      "id": "Z",
+      "name": "Z"
+     },
+     {
+      "id": "SPHERICAL",
+      "name": "Spherical"
+     }
+    ]
+   },
+   {
+    "id": "wave_profile",
+    "name": "Wave Profile",
+    "type": "ENUM",
+    "value": "SIN",
+    "items": [
+     {
+      "id": "SIN",
+      "name": "Sine"
+     },
+     {
+      "id": "SAW",
+      "name": "Saw"
+     },
+     {
+      "id": "TRI",
+      "name": "Triangle"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeTexWhiteNoise",
+  "label": "White Noise Texture",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "W",
+    "identifier": "W",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "noise_dimensions",
+    "name": "Dimensions",
+    "type": "ENUM",
+    "value": "3D",
+    "items": [
+     {
+      "id": "1D",
+      "name": "1D"
+     },
+     {
+      "id": "2D",
+      "name": "2D"
+     },
+     {
+      "id": "3D",
+      "name": "3D"
+     },
+     {
+      "id": "4D",
+      "name": "4D"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeUVAlongStroke",
+  "label": "UV Along Stroke",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "UV",
+    "identifier": "UV",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "use_tips",
+    "name": "Use Tips",
+    "type": "BOOLEAN",
+    "value": false
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeUVMap",
+  "label": "UV Map",
+  "width": 160.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "UV",
+    "identifier": "UV",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "from_instancer",
+    "name": "From Instancer",
+    "type": "BOOLEAN",
+    "value": false
+   },
+   {
+    "id": "uv_map",
+    "name": "UV Map",
+    "type": "STRING",
+    "value": ""
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeValToRGB",
+  "label": "Color Ramp",
+  "width": 240.0,
+  "inputs": [
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.5
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Alpha",
+    "identifier": "Alpha",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeValue",
+  "label": "Value",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeVectorCurve",
+  "label": "Vector Curves",
+  "width": 240.0,
+  "inputs": [
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeVectorDisplacement",
+  "label": "Vector Displacement",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Midlevel",
+    "identifier": "Midlevel",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Scale",
+    "identifier": "Scale",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.009999999776482582
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Displacement",
+    "identifier": "Displacement",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "space",
+    "name": "Space",
+    "type": "ENUM",
+    "value": "TANGENT",
+    "items": [
+     {
+      "id": "TANGENT",
+      "name": "Tangent Space"
+     },
+     {
+      "id": "OBJECT",
+      "name": "Object Space"
+     },
+     {
+      "id": "WORLD",
+      "name": "World Space"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeVectorMath",
+  "label": "Vector Math",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Vector",
+    "identifier": "Vector_001",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Vector",
+    "identifier": "Vector_002",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Scale",
+    "identifier": "Scale",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 1.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Value",
+    "identifier": "Value",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "operation",
+    "name": "Operation",
+    "type": "ENUM",
+    "value": "ADD",
+    "items": [
+     {
+      "id": "ADD",
+      "name": "Add"
+     },
+     {
+      "id": "SUBTRACT",
+      "name": "Subtract"
+     },
+     {
+      "id": "MULTIPLY",
+      "name": "Multiply"
+     },
+     {
+      "id": "DIVIDE",
+      "name": "Divide"
+     },
+     {
+      "id": "MULTIPLY_ADD",
+      "name": "Multiply Add"
+     },
+     {
+      "id": "CROSS_PRODUCT",
+      "name": "Cross Product"
+     },
+     {
+      "id": "PROJECT",
+      "name": "Project"
+     },
+     {
+      "id": "REFLECT",
+      "name": "Reflect"
+     },
+     {
+      "id": "REFRACT",
+      "name": "Refract"
+     },
+     {
+      "id": "FACEFORWARD",
+      "name": "Faceforward"
+     },
+     {
+      "id": "DOT_PRODUCT",
+      "name": "Dot Product"
+     },
+     {
+      "id": "DISTANCE",
+      "name": "Distance"
+     },
+     {
+      "id": "LENGTH",
+      "name": "Length"
+     },
+     {
+      "id": "SCALE",
+      "name": "Scale"
+     },
+     {
+      "id": "NORMALIZE",
+      "name": "Normalize"
+     },
+     {
+      "id": "ABSOLUTE",
+      "name": "Absolute"
+     },
+     {
+      "id": "POWER",
+      "name": "Power"
+     },
+     {
+      "id": "SIGN",
+      "name": "Sign"
+     },
+     {
+      "id": "MINIMUM",
+      "name": "Minimum"
+     },
+     {
+      "id": "MAXIMUM",
+      "name": "Maximum"
+     },
+     {
+      "id": "ROUND",
+      "name": "Round"
+     },
+     {
+      "id": "FLOOR",
+      "name": "Floor"
+     },
+     {
+      "id": "CEIL",
+      "name": "Ceil"
+     },
+     {
+      "id": "FRACTION",
+      "name": "Fraction"
+     },
+     {
+      "id": "MODULO",
+      "name": "Modulo"
+     },
+     {
+      "id": "WRAP",
+      "name": "Wrap"
+     },
+     {
+      "id": "SNAP",
+      "name": "Snap"
+     },
+     {
+      "id": "SINE",
+      "name": "Sine"
+     },
+     {
+      "id": "COSINE",
+      "name": "Cosine"
+     },
+     {
+      "id": "TANGENT",
+      "name": "Tangent"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeVectorRotate",
+  "label": "Vector Rotate",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": true,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Center",
+    "identifier": "Center",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "name": "Axis",
+    "identifier": "Axis",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Angle",
+    "identifier": "Angle",
+    "type": "NodeSocketFloatAngle",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Rotation",
+    "identifier": "Rotation",
+    "type": "NodeSocketVectorEuler",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": false,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "rotation_type",
+    "name": "Type",
+    "type": "ENUM",
+    "value": "AXIS_ANGLE",
+    "items": [
+     {
+      "id": "AXIS_ANGLE",
+      "name": "Axis Angle"
+     },
+     {
+      "id": "X_AXIS",
+      "name": "X Axis"
+     },
+     {
+      "id": "Y_AXIS",
+      "name": "Y Axis"
+     },
+     {
+      "id": "Z_AXIS",
+      "name": "Z Axis"
+     },
+     {
+      "id": "EULER_XYZ",
+      "name": "Euler"
+     }
+    ]
+   },
+   {
+    "id": "invert",
+    "name": "Invert",
+    "type": "BOOLEAN",
+    "value": false
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeVectorTransform",
+  "label": "Vector Transform",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.5,
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Vector",
+    "identifier": "Vector",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "props": [
+   {
+    "id": "vector_type",
+    "name": "Type",
+    "type": "ENUM",
+    "value": "VECTOR",
+    "items": [
+     {
+      "id": "POINT",
+      "name": "Point"
+     },
+     {
+      "id": "VECTOR",
+      "name": "Vector"
+     },
+     {
+      "id": "NORMAL",
+      "name": "Normal"
+     }
+    ]
+   },
+   {
+    "id": "convert_from",
+    "name": "Convert From",
+    "type": "ENUM",
+    "value": "WORLD",
+    "items": [
+     {
+      "id": "WORLD",
+      "name": "World"
+     },
+     {
+      "id": "OBJECT",
+      "name": "Object"
+     },
+     {
+      "id": "CAMERA",
+      "name": "Camera"
+     }
+    ]
+   },
+   {
+    "id": "convert_to",
+    "name": "Convert To",
+    "type": "ENUM",
+    "value": "OBJECT",
+    "items": [
+     {
+      "id": "WORLD",
+      "name": "World"
+     },
+     {
+      "id": "OBJECT",
+      "name": "Object"
+     },
+     {
+      "id": "CAMERA",
+      "name": "Camera"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeVertexColor",
+  "label": "Color Attribute",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Alpha",
+    "identifier": "Alpha",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "layer_name",
+    "name": "Color Attribute",
+    "type": "STRING",
+    "value": ""
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeVolumeAbsorption",
+  "label": "Volume Absorption",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Density",
+    "identifier": "Density",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Volume",
+    "identifier": "Volume",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeVolumeCoefficients",
+  "label": "Volume Coefficients",
+  "width": 240.0,
+  "inputs": [
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   },
+   {
+    "name": "Absorption Coefficients",
+    "identifier": "Absorption Coefficients",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Scatter Coefficients",
+    "identifier": "Scatter Coefficients",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Anisotropy",
+    "identifier": "Anisotropy",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "IOR",
+    "identifier": "IOR",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 1.3300000429153442
+   },
+   {
+    "name": "Backscatter",
+    "identifier": "Backscatter",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.10000000149011612
+   },
+   {
+    "name": "Alpha",
+    "identifier": "Alpha",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.5
+   },
+   {
+    "name": "Diameter",
+    "identifier": "Diameter",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 20.0
+   },
+   {
+    "name": "Emission Coefficients",
+    "identifier": "Emission Coefficients",
+    "type": "NodeSocketVector",
+    "stype": "VECTOR",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Volume",
+    "identifier": "Volume",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "phase",
+    "name": "Phase",
+    "type": "ENUM",
+    "value": "HENYEY_GREENSTEIN",
+    "items": [
+     {
+      "id": "HENYEY_GREENSTEIN",
+      "name": "Henyey-Greenstein"
+     },
+     {
+      "id": "FOURNIER_FORAND",
+      "name": "Fournier-Forand"
+     },
+     {
+      "id": "DRAINE",
+      "name": "Draine"
+     },
+     {
+      "id": "RAYLEIGH",
+      "name": "Rayleigh"
+     },
+     {
+      "id": "MIE",
+      "name": "Mie"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeVolumeInfo",
+  "label": "Volume Info",
+  "width": 140.0,
+  "inputs": [],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Density",
+    "identifier": "Density",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Flame",
+    "identifier": "Flame",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Temperature",
+    "identifier": "Temperature",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeVolumePrincipled",
+  "label": "Principled Volume",
+  "width": 240.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.5,
+     0.5,
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "name": "Color Attribute",
+    "identifier": "Color Attribute",
+    "type": "NodeSocketString",
+    "stype": "STRING",
+    "hide_value": false,
+    "enabled": true,
+    "default": ""
+   },
+   {
+    "name": "Density",
+    "identifier": "Density",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Density Attribute",
+    "identifier": "Density Attribute",
+    "type": "NodeSocketString",
+    "stype": "STRING",
+    "hide_value": false,
+    "enabled": true,
+    "default": "density"
+   },
+   {
+    "name": "Anisotropy",
+    "identifier": "Anisotropy",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Absorption Color",
+    "identifier": "Absorption Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Emission Strength",
+    "identifier": "Emission Strength",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Emission Color",
+    "identifier": "Emission Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Blackbody Intensity",
+    "identifier": "Blackbody Intensity",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "Blackbody Tint",
+    "identifier": "Blackbody Tint",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "name": "Temperature",
+    "identifier": "Temperature",
+    "type": "NodeSocketFloatColorTemperature",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1000.0
+   },
+   {
+    "name": "Temperature Attribute",
+    "identifier": "Temperature Attribute",
+    "type": "NodeSocketString",
+    "stype": "STRING",
+    "hide_value": false,
+    "enabled": true,
+    "default": "temperature"
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Volume",
+    "identifier": "Volume",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeVolumeScatter",
+  "label": "Volume Scatter",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   },
+   {
+    "name": "Density",
+    "identifier": "Density",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 1.0
+   },
+   {
+    "name": "Anisotropy",
+    "identifier": "Anisotropy",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   },
+   {
+    "name": "IOR",
+    "identifier": "IOR",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 1.3300000429153442
+   },
+   {
+    "name": "Backscatter",
+    "identifier": "Backscatter",
+    "type": "NodeSocketFloatFactor",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.10000000149011612
+   },
+   {
+    "name": "Alpha",
+    "identifier": "Alpha",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.5
+   },
+   {
+    "name": "Diameter",
+    "identifier": "Diameter",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 20.0
+   },
+   {
+    "name": "Weight",
+    "identifier": "Weight",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": false,
+    "default": 0.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Volume",
+    "identifier": "Volume",
+    "type": "NodeSocketShader",
+    "stype": "SHADER",
+    "hide_value": false,
+    "enabled": true
+   }
+  ],
+  "props": [
+   {
+    "id": "phase",
+    "name": "Phase",
+    "type": "ENUM",
+    "value": "HENYEY_GREENSTEIN",
+    "items": [
+     {
+      "id": "HENYEY_GREENSTEIN",
+      "name": "Henyey-Greenstein"
+     },
+     {
+      "id": "FOURNIER_FORAND",
+      "name": "Fournier-Forand"
+     },
+     {
+      "id": "DRAINE",
+      "name": "Draine"
+     },
+     {
+      "id": "RAYLEIGH",
+      "name": "Rayleigh"
+     },
+     {
+      "id": "MIE",
+      "name": "Mie"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "idname": "ShaderNodeWavelength",
+  "label": "Wavelength",
+  "width": 160.0,
+  "inputs": [
+   {
+    "name": "Wavelength",
+    "identifier": "Wavelength",
+    "type": "NodeSocketFloatWavelength",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 500.0
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "identifier": "Color",
+    "type": "NodeSocketColor",
+    "stype": "RGBA",
+    "hide_value": false,
+    "enabled": true,
+    "default": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  ],
+  "props": []
+ },
+ {
+  "idname": "ShaderNodeWireframe",
+  "label": "Wireframe",
+  "width": 140.0,
+  "inputs": [
+   {
+    "name": "Size",
+    "identifier": "Size",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.009999999776482582
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Factor",
+    "identifier": "Fac",
+    "type": "NodeSocketFloat",
+    "stype": "VALUE",
+    "hide_value": false,
+    "enabled": true,
+    "default": 0.0
+   }
+  ],
+  "props": [
+   {
+    "id": "use_pixel_size",
+    "name": "Pixel Size",
+    "type": "BOOLEAN",
+    "value": false
+   }
+  ]
+ }
+]

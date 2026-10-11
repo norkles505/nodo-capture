@@ -1,0 +1,5 @@
+﻿
+main.py:126:             "Filter", "Glare", "Inpaint", "Kuwahara", "Pixelate", "SunBeams", "VecBlur",
+main.py:592:        elif idn in ("CompositorNodeConvolve", "CompositorNodeGlare"):
+
+

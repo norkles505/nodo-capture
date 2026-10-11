@@ -1,0 +1,9 @@
+compositor multiple -> ['Multiple Images']
+compositor sequence -> ['Image Sequence', 'Sequencer Strip Info']
+compositor nodo imagen en CATALOG: True
+compositor 3 nodos Image creados, alto cada uno: 175.2
+shader multiple -> ['Multiple Images']
+shader sequence -> ['Image Sequence']
+shader nodo imagen en CATALOG: True
+shader 3 nodos Image creados, alto cada uno: 196.2
+FIN

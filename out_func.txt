@@ -1,0 +1,11 @@
+links: 2 (esperado 2)
+Value + Value = {'Value': 5.5} (esperado 5.5)
+MULTIPLY = {'Value': 7.0} (esperado 7.0)
+tras cambiar a=4: {'Value': 14.0} (esperado 14.0)
+ciclo rechazado: True (esperado True)
+shader->float rechazado: True (esperado True)
+Mix inputs: [('Factor_Float', 'VALUE'), ('Factor_Vector', 'VECTOR'), ('A_Float', 'VALUE'), ('B_Float', 'VALUE'), ('A_Vector', 'VECTOR'), ('B_Vector', 'VECTOR'), ('A_Color', 'RGBA'), ('B_Color', 'RGBA'), ('A_Rotation', 'ROTATION'), ('B_Rotation', 'ROTATION')]
+Mix RGBA 50%: {'Result_Color': [0.5, 0.0, 0.5, 1.0]} (esperado ~[0.5,0,0.5,1])
+render OK
+compositor usa: CompositorNodeRGB
+compositor Value fila: ['block']

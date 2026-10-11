@@ -1,0 +1,7 @@
+﻿C:\Users\HP\Desktop\modelar\erkis\planos\proyectos\Creacion de tablas\main.py | 05/02/2026 19:11:59 | 129
+C:\Users\HP\Desktop\modelar\erkis\planos\proyectos\proyecto\main_qt.py | 05/03/2026 00:51:39 | 695
+C:\Users\HP\Desktop\proyectos\drawengine\main.py | 08/06/2026 18:29:10 | 744
+C:\Users\HP\Desktop\proyectos\drawengine\ui\main_window.py | 08/06/2026 18:29:06 | 99048
+C:\Users\HP\Desktop\proyectos\nodo capture\main.py | 10/08/2026 13:48:36 | 73807
+C:\Users\HP\Desktop\proyectos\nodo capture\main_func.py | 10/08/2026 13:31:59 | 7896
+fin

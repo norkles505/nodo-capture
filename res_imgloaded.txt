@@ -1,0 +1,14 @@
+antes  -> alto: 175.2 | filas: ['out', 'out', 'bool', 'bool', 'enum', 'enum']
+despues-> alto: 181.0 (real Blender 181.0) | ancho: 140.0
+filas: [('out', 25.0, 'Image'), ('out', 46.5, 'Alpha'), ('imgloaded', 71.0, ''), ('enum', 99.5, 'Source'), ('enum', 126.0, 'Color Space'), ('enum', 152.5, 'Alpha')]
+titulo: Multiple Images.png
+ancho titulo: 107 | hueco disponible hasta el ojo: 93.0
+sockets visibles: {('out', 'Image'): True, ('out', 'Alpha'): True}
+edit out -> omitido
+edit out -> omitido
+edit imgloaded -> False
+edit enum -> omitido
+edit enum -> omitido
+edit enum -> omitido
+PNG exportado: data/test_imgloaded.png
+FIN

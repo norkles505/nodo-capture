@@ -1,0 +1,9 @@
+enlaces: 1
+OK Blender Dark BG= #1a1a1a BODY= #303030 PNG True
+OK Claro BG= #a6a6a6 BODY= #bdbdbd PNG True
+OK Medianoche BG= #0b0f1a BODY= #141a2b PNG True
+OK Word BG= #ffffff BODY= #fffefd PNG True
+import: Zz Test
+temas: ['Blender Dark', 'Claro', 'Medianoche', 'Word', 'Zz Test']
+OK importado BG= #303030
+BUILTIN BG= #1a1a1a (debe ser #1a1a1a)

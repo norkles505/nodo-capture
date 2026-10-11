@@ -1,0 +1,93 @@
+nuevos=74 ok=74 fallan=0
+
+
+{
+ "input_node": [
+  "Boolean",
+  "Font",
+  "Integer",
+  "Integer Vector",
+  "Menu",
+  "Object",
+  "Rotation",
+  "String",
+  "Value",
+  "Vector",
+  "Active Camera",
+  "Camera Info",
+  "Object Info",
+  "Special Characters"
+ ],
+ "output_node": [
+  "Warning"
+ ],
+ "converter_node": [
+  "Blackbody",
+  "Color Ramp",
+  "Switch",
+  "Index Switch",
+  "Menu Switch",
+  "Combine XYZ",
+  "Map Range",
+  "Mix",
+  "Separate XYZ",
+  "Radial Tiling",
+  "Clamp",
+  "Float Curve",
+  "Math",
+  "Format String",
+  "Match String",
+  "Replace String",
+  "Reverse String",
+  "Set String Case",
+  "Slice String",
+  "Trim String",
+  "Find in String",
+  "String Length",
+  "String to Value",
+  "Value to String",
+  "Combine Matrix",
+  "Matrix Determinant",
+  "Invert Matrix",
+  "Multiply Matrices",
+  "Project Point",
+  "Separate Matrix",
+  "Transform Direction",
+  "Transform Point",
+  "Transpose Matrix",
+  "Align Rotation to Vector",
+  "Axes to Rotation",
+  "Axis Angle to Rotation",
+  "Euler to Rotation",
+  "Invert Rotation",
+  "Rotate Rotation",
+  "Rotate Vector",
+  "Rotation to Axis Angle",
+  "Rotation to Euler",
+  "Rotation to Quaternion",
+  "Quaternion to Rotation"
+ ],
+ "color_node": [
+  "Gamma"
+ ],
+ "texture_node": [
+  "Brick Texture",
+  "Checker Texture",
+  "Gabor Texture",
+  "Gradient Texture",
+  "Magic Texture",
+  "Noise Texture",
+  "Voronoi Texture",
+  "Wave Texture",
+  "White Noise Texture"
+ ],
+ "vector_node": [
+  "Vector Curves",
+  "Vector Math",
+  "Vector Rotate"
+ ],
+ "group_socket_node": [
+  "Group Input",
+  "Group Output"
+ ]
+}
