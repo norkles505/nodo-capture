@@ -1,1 +1,0 @@
-OK: marcadores actualizados (el grosor del contorno ya no estaba en 0.9, no se toco). Backup: main.py.pre_ramp5.bak

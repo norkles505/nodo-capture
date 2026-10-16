@@ -1,1 +1,0 @@
-OK: marcadores y borde de la barra actualizados. Backup: main.py.pre_ramp4.bak

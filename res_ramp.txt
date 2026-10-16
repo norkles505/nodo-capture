@@ -1,1 +1,0 @@
-OK: bloque ramp reemplazado (1571 -> 4101 caracteres). Backup: main.py.pre_ramp.bak

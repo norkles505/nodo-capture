@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Entorno virtual (lo crea iniciar.sh)
+.venv/
+venv/
+
+# Editores / sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Copias de seguridad y temporales
+*.bak
+*.tmp
+*.log
+
+# Scripts y salidas de depuracion
+_dbg_*.py
+_patch_*.py
+res_*.txt
+out_*.txt
+out_*.png
+chk*.txt
+dump_tmp.txt
+err_*.txt
+st.txt
+done.txt
+patch_*.txt
+
+# Capturas de prueba generadas
+data/test_*.png
+data/test_*.svg
+
+# Preferencia local del usuario
+data/theme_choice.txt

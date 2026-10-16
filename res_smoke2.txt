@@ -1,2 +1,0 @@
-﻿Fuente: Inter Variable (Inter.woff2 cargada)
-shader 99 nodos OK
