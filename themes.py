@@ -110,6 +110,9 @@ def apply(data):
     M.DIM = QColor(ex["dim"])
     M.FIELD = col(wd["wcol_regular"]["inner"])
     M.FIELD_LINE = col(wd["wcol_regular"]["outline"])
+    # fondo de los campos de busqueda (UV Map...): wcol_text del tema; sin el, oscuro en temas oscuros
+    M.TEXT_FIELD = (col(wd["wcol_text"]["inner"]) if "wcol_text" in wd
+                    else (QColor("#1d1d1d") if M.BODY.lightness() < 128 else M.FIELD))
     M.MENU = col(wd["wcol_menu"]["inner"])
     M.MENU_ITEM = col(wd["wcol_menu"]["item"])
     M.SLIDER = col(wd["wcol_numslider"]["item"])

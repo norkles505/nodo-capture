@@ -31,6 +31,25 @@ def load(name):
 THEME = load("theme.json")
 WID = load("widgets.json")
 CATALOG = {"shader": load("shader_nodes.json"), "compositor": load("compositor_nodes.json")}
+
+
+def _co_group_image():
+    """Blender crea los grupos del compositor con un item Image: Group Output lo muestra como entrada y
+    Group Input como salida (el JSON se exporto de un grupo sin items y solo trae el socket virtual)."""
+    nodes = CATALOG["compositor"]
+    nodes = list(nodes.values()) if isinstance(nodes, dict) else nodes
+    for n in nodes:
+        if not isinstance(n, dict):
+            continue
+        sock = {"name": "Image", "identifier": "Image", "type": "NodeSocketColor", "stype": "RGBA",
+                "hide_value": False, "enabled": True, "default": [0.0, 0.0, 0.0, 1.0]}
+        if n.get("idname") == "NodeGroupOutput" and not any(s["name"] == "Image" for s in n["inputs"]):
+            n["inputs"].insert(0, dict(sock))
+        elif n.get("idname") == "NodeGroupInput" and not any(s["name"] == "Image" for s in n["outputs"]):
+            n["outputs"].insert(0, dict(sock, hide_value=True))
+
+
+_co_group_image()
 WIDTH_LIMITS = load("width_limits.json") if (DATA / "width_limits.json").exists() else {}   # idname -> [ancho min, max] de Blender
 # Frame y Reroute son nodos de "layout": no vienen del exportador, se dibujan con clases propias
 LAYOUT_SPECS = [
@@ -75,6 +94,7 @@ TITLE = QColor("#eeeeee")
 DIM = QColor("#7d7d7d")
 FIELD = col(WID["wcol_regular"]["inner"])
 FIELD_LINE = col(WID["wcol_regular"]["outline"])
+TEXT_FIELD = col(WID["wcol_text"]["inner"]) if "wcol_text" in WID else QColor("#1d1d1d")   # fondo oscuro de los campos de busqueda (UV Map)
 MENU = col(WID["wcol_menu"]["inner"])
 MENU_ITEM = col(WID["wcol_menu"]["item"])   # color de la flechita de los menus
 SLIDER = col(WID["wcol_numslider"]["item"])
@@ -88,6 +108,21 @@ SOCK = {"VALUE": "#a1a1a1", "INT": "#598c5c", "BOOLEAN": "#cca6d6", "VECTOR": "#
 # medidas en px a escala 1 (unidad de widget de Blender = 20 px)
 HEADER, ROW, FH, GAP, PAD, R, SR = 20.0, 20.0, 20.0, 2.0, 10.0, 6.0, 5.0
 LINK_LINE, LINK_LINE_W = "#000000", 1.0   # borde de los cables (grosor a cada lado del hilo)
+BAR_W, BAR_H = 5.0, 11.5     # socket de "un solo valor" de Blender 5.x: barra vertical en vez de circulo
+BAR_SHAPES = {"SQUARE"}      # valores de socket.display_shape (los exporta export_socket_shapes.py) que se dibujan como barra
+# respaldo mientras el JSON no traiga "shape": nodo -> entradas que son barra (medido en capturas de Blender 5.2)
+BAR_FALLBACK = {"CompositorNodeKuwahara": {"Type", "Uniformity", "Sharpness", "Eccentricity", "High Precision"},
+                # Glare (captura de Blender): todas las entradas son barras salvo Image y Kernel
+                "CompositorNodeGlare": {"Type", "Quality", "Threshold", "Smoothness", "Clamp", "Maximum", "Strength",
+                                        "Saturation", "Tint", "Size", "Streaks", "Streaks Angle", "Iterations",
+                                        "Fade", "Color Modulation", "Diagonal", "Sun Position", "Jitter",
+                                        "Kernel Data Type"},
+                # Lens Distortion (captura de Blender): todas las entradas son barras salvo Image
+                "CompositorNodeLensdist": {"Type", "Distortion", "Dispersion", "Jitter", "Fit"},
+                # Filter (captura de Blender): solo el menu Type es barra; Factor es circulo
+                "CompositorNodeFilter": {"Type"},
+                # Group Output/Input (captura de Blender): el item Image va como barra; el socket virtual, circulo
+                "NodeGroupOutput": {"Image"}, "NodeGroupInput": {"Image"}}
 SOCK_LINE, SOCK_LINE_W = "#000000", 1.0   # borde de los sockets (fino, como en Blender)
 RAD = 4.0   # esquinas de campos (roundness 0.4 del tema)
 CURVING = 5.0
@@ -190,7 +225,7 @@ def category(idname, mode):
         n = idname.replace("ShaderNode", "")
         if n.startswith("Output"):
             return "output_node"
-        if n.startswith("Tex"):
+        if n.startswith("Tex") and n not in SH_IN:   # TexCoord empieza por "Tex" pero es un nodo de entrada
             return "texture_node"
         for s, c in ((SH_IN, "input_node"), (SH_COLOR, "color_node"), (SH_VEC, "vector_node"),
                      (SH_CONV, "converter_node")):
@@ -252,13 +287,36 @@ PROP_PANEL = {"ShaderNodeBsdfPrincipled": {"distribution": "Specular",
                                              "subsurface_method": "Subsurface"}}
 
 SKIP_PROPS = {"is_active_output", "use_custom_color"}
+# Render Layers (medido en capturas de Blender): aire antes de la fila Scene, paso de cada fila y valor por defecto
+PROPS_TOP = {"CompositorNodeRLayers": 3.7}
+RL_PITCH = {"scene": 24.1, "layer": 20.0}
+CPANEL_BOX = 20.0   # x (desde el margen) de la casilla de un subpanel con checkbox (Glare > Clamp)
+PROP_DEFAULTS = {("CompositorNodeRLayers", "scene"): "Scene"}
+PREVIEW_ICON = {"CompositorNodeRLayers", "CompositorNodeFilter"}   # nodos con el icono de vista previa (ojo cerrado) en la cabecera
 PROP_PANEL["ShaderNodeVolumeCoefficients"] = {"phase": "Scatter"}
 # nodos cuyos paneles vienen abiertos por defecto (como en el PDF)
 OPEN_DEFAULT = {"ShaderNodeVolumeCoefficients", "CompositorNodeGlare"}
 # nodos que dibujan sus propiedades (casillas/menus) ANTES de las salidas
 PROPS_FIRST = {"ShaderNodeRaycast", "ShaderNodeVectorRotate"}
 # la primera entrada comparte fila con la salida; valor = mostrar tambien el nombre de la salida
-IO_MERGE = {"ShaderNodeGamma": True, "ShaderNodeVectorRotate": False}
+IO_MERGE = {"ShaderNodeGamma": True, "ShaderNodeVectorRotate": False, "CompositorNodeKuwahara": False,
+            "CompositorNodeGlare": False, "CompositorNodeLensdist": False, "CompositorNodeFilter": False}
+# sockets de tipo menu que Blender dibuja como desplegable: (nodo, socket) -> opciones (id = nombre)
+MENU_ITEMS = {("CompositorNodeKuwahara", "Type"): [{"id": "Classic", "name": "Classic"},
+                                                    {"id": "Anisotropic", "name": "Anisotropic"}]}
+# Glare: Type, Quality y Kernel Data Type son menus en Blender (el JSON los trae como sockets MENU sin opciones)
+MENU_ITEMS.update({
+    ("CompositorNodeGlare", "Type"): [{"id": n, "name": n} for n in
+                                      ("Bloom", "Ghosts", "Streaks", "Fog Glow", "Simple Star", "Sun Beams", "Kernel")],
+    ("CompositorNodeGlare", "Quality"): [{"id": n, "name": n} for n in ("High", "Medium", "Low")],
+    ("CompositorNodeGlare", "Kernel Data Type"): [{"id": n, "name": n} for n in ("Float", "Color")],
+    # Lens Distortion: Type es un menu (opciones segun mi recuerdo de Blender 5.x, sin verificar)
+    ("CompositorNodeLensdist", "Type"): [{"id": n, "name": n} for n in ("Radial", "Horizontal")],
+    # Filter: nombres de Blender 4.x/5.x segun mi recuerdo, sin verificar
+    ("CompositorNodeFilter", "Type"): [{"id": n, "name": n} for n in
+                                       ("Soften", "Box Sharpen", "Diamond Sharpen", "Laplace", "Sobel",
+                                        "Prewitt", "Kirsch", "Shadow")],
+})
 # panel plegable sin sockets al final del nodo
 TRAILING_PANELS = {"ShaderNodeRaycast": "Attributes"}
 # Mix: que menus/casillas se ven segun el tipo de dato (como en Blender 5.2)
@@ -317,6 +375,7 @@ PROP_ORDER = {
                               "use_zbuffer", "z_scale"],
     "CompositorNodeCryptomatte": ["_lbl", "_pick", "matte_id"],
     "CompositorNodeOutputFile": ["directory", "save_as_render", "use_file_extension"],
+    "CompositorNodeRLayers": ["scene", "layer"],
 }
 PROP_EXTRA = {
     "ShaderNodeAmbientOcclusion": {"samples": {"name": "Samples"}},
@@ -336,9 +395,9 @@ PROP_EXTRA = {
                          "aerosol_density": {"name": "Aerosols"},
                          "ozone_density": {"name": "Ozone"}},
     "ShaderNodeAttribute": {"attribute_name": {"name": "Name", "ph": "Name"}},
-    "ShaderNodeUVMap": {"uv_map": {"name": "UV Map", "icon": "uv"}},
+    "ShaderNodeUVMap": {"uv_map": {"name": "UV Map", "icon": "uvmap"}},
     "ShaderNodeVertexColor": {"layer_name": {"name": "Color", "icon": "uv"}},
-    "ShaderNodeNormalMap": {"uv_map": {"name": "UV Map", "icon": "uv"}},
+    "ShaderNodeNormalMap": {"uv_map": {"name": "UV Map", "icon": "uvmap"}},
     "ShaderNodeTexIES": {"mode": {"seg": True}, "ies": {"name": "Text", "ph": "Text", "icon": "uv"}},
     "ShaderNodeTexCoord": {"object": {"name": "Object", "ph": "Object", "icon": "obj"}},
     "ShaderNodeTangent": {"axis": {"seg": True}},
@@ -357,6 +416,9 @@ PROP_EXTRA = {
                                   "_pick": {"type": "PICK"},
                                   "matte_id": {"name": "Matte ID", "ph": ""}},
     "CompositorNodeOutputFile": {"directory": {"name": "Directory", "ph": "Directory"}},
+    "CompositorNodeRLayers": {"scene": {"name": "Scene", "ph": "Scene", "rl": "scene"},
+                              "layer": {"name": "Layer", "rl": "layer",
+                                        "items": [{"id": "ViewLayer", "name": "ViewLayer"}]}},
 }
 
 # widgets dibujados como bloque justo despues de las salidas: idname -> (tipo, alto extra)
@@ -424,6 +486,7 @@ EXTRA_H = {"ShaderNodeVolumeCoefficients": 21.3,
            "CompositorNodeDefocus": 8.3,
            "CompositorNodeCryptomatte": -0.7,
            "CompositorNodeOutputFile": -2.2,
+           "CompositorNodeRLayers": 3.0,
            "FunctionNodeInputBool": -27.2,
            "FunctionNodeInputVector": 36.3,
            "GeometryNodeMenuSwitch": -27.2,
@@ -463,9 +526,9 @@ def fmt(v, st):
 
 def fmt_unit(v, r):
     u = r.get("unit")
-    if u in ("deg", "m", "nm"):
+    if u in ("deg", "m", "nm", "px"):
         x = math.degrees(float(v)) if u == "deg" else float(v)
-        t = f"{x:.3f}".rstrip("0").rstrip(".")
+        t = f"{x:.3f}" if u == "px" else f"{x:.3f}".rstrip("0").rstrip(".")   # px conserva los 3 decimales (6.000 px)
         return t + ("\u00b0" if u == "deg" else " " + u)
     return fmt(v, r["st"])
 
@@ -516,6 +579,136 @@ def draw_image_icon(p, rect, color):
                               QPointF(585.7934, 59.0979), QPointF(585.7934, 574.6404),
                               QPointF(451.4899, 574.6404)]))
     p.restore()
+
+
+_OBJ_ICON_CACHE = {}
+
+
+def draw_object_icon(p, rect, color):
+    """Icono de objeto (tu cuadrado.svg, viewBox 500x500): cuadrado central relleno y cuatro esquinas, vectorial y del color dado."""
+    c = QColor(color).name()
+    r = _OBJ_ICON_CACHE.get(c)
+    if r is None:
+        svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">'
+               '<path d="M133.458 116.727 L366.542 116.727 C375.782 116.727 383.273 124.218 383.273 133.458 '
+               'L383.273 366.542 C383.273 375.782 375.782 383.273 366.542 383.273 L133.458 383.273 '
+               'C124.218 383.273 116.727 375.782 116.727 366.542 L116.727 133.458 '
+               'C116.727 124.218 124.218 116.727 133.458 116.727 Z" fill="%(c)s" stroke="%(c)s" stroke-miterlimit="10"/>'
+               '<g fill="none" stroke="%(c)s" stroke-width="45" stroke-linecap="round" stroke-linejoin="round" opacity="0.75">'
+               '<path d="M359.004 43.432 L458.463 43.432 L458.463 141.34"/>'
+               '<path d="M141.954 43.432 L42.494 43.432 L42.494 141.34"/>'
+               '<path d="M359.004 455.5 L458.463 455.5 L458.463 357.592"/>'
+               '<path d="M141.954 455.5 L42.494 455.5 L42.494 357.592"/>'
+               '</g></svg>') % {"c": c}
+        r = _OBJ_ICON_CACHE[c] = QSvgRenderer(svg.encode("utf-8"))
+    r.render(p, QRectF(rect))
+
+
+_DROPPER_ICON_CACHE = {}
+
+
+def draw_dropper_icon(p, rect, color):
+    """Icono de cuentagotas (tu drop.svg, viewBox 500x500), vectorial y del color dado."""
+    c = QColor(color).name()
+    r = _DROPPER_ICON_CACHE.get(c)
+    if r is None:
+        svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">'
+               '<g fill="none" stroke="%(c)s" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">'
+               '<path d="M202.628 120.346 L377.06 294.777"/>'
+               '<path d="M250 180.999 L118.759 311.269 L109.017 358.274 L58.175 408.051"/>'
+               '<path d="M313.155 239.994 L182.884 371.235 L135.879 380.977 L86.102 431.819"/>'
+               '</g>'
+               '<path d="M337.743 243.28 L405.04 177.379 C441.119 145.071 452.09 97.205 426.465 68.244 '
+               'C402.655 41.334 351.39 51.312 315.528 87.173 L246.902 151.258" '
+               'fill="%(c)s" stroke="%(c)s" stroke-width="30" stroke-miterlimit="10"/>'
+               '</svg>') % {"c": c}
+        r = _DROPPER_ICON_CACHE[c] = QSvgRenderer(svg.encode("utf-8"))
+    r.render(p, QRectF(rect))
+
+
+_UV_ICON_CACHE = {}
+
+
+def draw_uv_icon(p, rect, color):
+    """Icono de UV Map (tu SVG, viewBox 500x500), vectorial y del color dado."""
+    c = QColor(color).name()
+    r = _UV_ICON_CACHE.get(c)
+    if r is None:
+        svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">'
+               '<g fill="none" stroke="%(c)s" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">'
+               '<path d="M364.668 42.015 L462.875 42.015 L462.875 140.222 L364.668 140.222 Z"/>'
+               '<path d="M364.668 321.854 L462.875 321.854 L462.875 420.06 L364.668 420.06 Z"/>'
+               '<path d="M413.771 133.124 L413.771 329.306" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>'
+               '<path d="M227.794 382.8 L363.991 382.8"/>'
+               '<path d="M362.991 80.481 L87.489 80.481 C64.415 80.481 45.709 99.187 45.709 122.262 L45.709 122.262 '
+               'C45.709 145.336 64.415 164.042 87.489 164.042 L182.991 164.042 L182.991 448.716 L87.489 448.716 '
+               'C64.415 448.716 45.709 430.011 45.709 406.936 L45.709 406.936 L45.745 120.524"/>'
+               '</g>'
+               '<path fill="%(c)s" d="M45.709 406.936 L45.744 123.989 C46.65 146.262 64.993 164.042 87.489 164.042 '
+               'L182.991 164.042 L182.991 448.716 L87.489 448.716 C64.415 448.716 45.709 430.011 45.709 406.936 Z"/>'
+               '</svg>') % {"c": c}
+        r = _UV_ICON_CACHE[c] = QSvgRenderer(svg.encode("utf-8"))
+    r.render(p, QRectF(rect))
+
+
+_SCENE_ICON_CACHE = {}
+
+
+def draw_scene_icon(p, rect, color):
+    """Icono 'Scene' de Blender (tu SVG, viewBox 500x500), vectorial y del color dado."""
+    c = QColor(color).name()
+    r = _SCENE_ICON_CACHE.get(c)
+    if r is None:
+        svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">'
+               '<path d="M230.551 342.382 C230.551 285.583 276.596 239.538 333.395 239.538 '
+               'C390.194 239.538 436.239 285.583 436.239 342.382 C436.239 399.181 390.194 445.225 333.395 445.225 '
+               'C276.596 445.225 230.551 399.181 230.551 342.382 Z" '
+               'fill="none" stroke="%(c)s" stroke-width="32" stroke-miterlimit="10"/>'
+               '<path d="M342.839 113.025 C342.839 87.233 363.747 66.325 389.539 66.325 '
+               'C415.331 66.325 436.239 87.233 436.239 113.025 C436.239 138.817 415.331 159.725 389.539 159.725 '
+               'C363.747 159.725 342.839 138.817 342.839 113.025 Z" '
+               'fill="%(c)s" stroke="%(c)s" stroke-width="34" stroke-miterlimit="10"/>'
+               '<path d="M324.177 294.48 C324.177 294.48 294.701 297.896 288.07 330.587" '
+               'fill="%(c)s" stroke="%(c)s" stroke-width="29" stroke-linecap="round" stroke-linejoin="round"/>'
+               '<path d="M52.258 330.587 L174.538 61.737 L260.815 204.709 L266.075 213.138 '
+               'C215.906 233.522 180.532 282.747 180.532 340.235 C180.532 360.433 183.192 378.853 192.74 395.877 '
+               'C190.125 396.594 183.999 398.133 174.384 398.487 C82.832 401.866 52.258 330.587 52.258 330.587 Z" '
+               'fill="%(c)s" stroke="%(c)s" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>'
+               '</svg>') % {"c": c}
+        r = _SCENE_ICON_CACHE[c] = QSvgRenderer(svg.encode("utf-8"))
+    r.render(p, QRectF(rect))
+
+
+_LAYERS_ICON_CACHE = {}
+
+
+def draw_layers_icon(p, rect, color):
+    """Icono de View Layer (tu SVG, viewBox 500x500), vectorial y del color dado."""
+    c = QColor(color).name()
+    r = _LAYERS_ICON_CACHE.get(c)
+    if r is None:
+        dot = ('<path d="M%(x0)s 219.071 C%(x0)s 217.533 %(a)s 216.287 %(x1)s 216.287 '
+               'C%(b)s 216.287 %(x2)s 217.533 %(x2)s 219.071 C%(x2)s 220.609 %(b)s 221.855 %(x1)s 221.855 '
+               'C%(a)s 221.855 %(x0)s 220.609 %(x0)s 219.071 Z" '
+               'fill="%(c)s" stroke="%(c)s" stroke-width="26" stroke-miterlimit="10"/>')
+        dots = "".join(dot % {"x0": x0, "a": a, "x1": x1, "b": b, "x2": x2, "c": c} for x0, a, x1, b, x2 in (
+            ("207.505", "208.751", "210.289", "211.826", "213.073"),
+            ("261.223", "262.469", "264.007", "265.544", "266.791"),
+            ("318.605", "319.851", "321.389", "322.926", "324.173"),
+            ("370.742", "371.989", "373.526", "375.064", "376.31")))
+        svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">'
+               '<path d="M130.585 66.361 L213.789 66.361" fill="%(c)s" stroke="%(c)s" stroke-width="30" '
+               'stroke-linecap="round" stroke-linejoin="round"/>'
+               '<g fill="none" stroke="%(c)s" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">'
+               '<path d="M269.933 430.315 L78.902 430.315 L78.902 119.941 L261.743 119.941 L261.743 175.008 '
+               'L416.36 175.008 L416.36 261.776 L389.817 288.318 L340.999 288.318 L340.999 373.267 L206.505 373.267"/>'
+               '<path d="M88.307 175.178 L264.007 175.178"/>'
+               '</g>'
+               '<path d="M82.414 182.959 L168.447 182.959 L168.447 372.87 L82.414 372.87 Z" fill="%(c)s" '
+               'stroke="%(c)s" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>'
+               ) % {"c": c} + dots + '</svg>'
+        r = _LAYERS_ICON_CACHE[c] = QSvgRenderer(svg.encode("utf-8"))
+    r.render(p, QRectF(rect))
 
 
 RAMP_CMODES = ["RGB", "HSV", "HSL"]
@@ -582,6 +775,22 @@ class SocketItem(QGraphicsEllipseItem):
         self.setZValue(2)
         self.setAcceptedMouseButtons(Qt.LeftButton)
         self.setCursor(Qt.CrossCursor)
+
+    def is_bar(self):
+        """True si Blender dibuja este socket como barra vertical (solo acepta un valor, no una imagen)."""
+        sh = self.spec.get("shape")
+        if sh is not None:
+            return sh in BAR_SHAPES
+        return self.spec.get("name") in BAR_FALLBACK.get(self.node.spec["idname"], ())
+
+    def paint(self, p, opt, widget=None):
+        if self.is_bar():
+            p.setRenderHint(QPainter.Antialiasing)
+            p.setPen(self.pen())
+            p.setBrush(self.brush())
+            p.drawRoundedRect(QRectF(-BAR_W / 2, -BAR_H / 2, BAR_W, BAR_H), 1.3, 1.3)
+        else:
+            super().paint(p, opt, widget)
 
     HIT = 8.0   # area de clic mas grande que el circulo dibujado (como en Blender)
 
@@ -678,10 +887,15 @@ class NodeItem(QGraphicsItem):
         self.vals = {s["identifier"]: (list(s["default"]) if isinstance(s.get("default"), list)
                                        else s.get("default")) for s in spec["inputs"]}
         self.pvals = {p["id"]: p.get("value") for p in spec["props"]}
+        for (_n, _pid), _dv in PROP_DEFAULTS.items():
+            if _n == spec["idname"] and not self.pvals.get(_pid):
+                self.pvals[_pid] = _dv
         self.panels = PANELS.get(spec["idname"], [])
         self.panel_open = {name: (spec["idname"] in OPEN_DEFAULT) for name, _ in self.panels}
         if spec["idname"] in TRAILING_PANELS:
             self.panel_open.setdefault(TRAILING_PANELS[spec["idname"]], False)
+        if spec["idname"] == "CompositorNodeGlare":
+            self.panel_open["Clamp"] = False   # subpanel Clamp (con casilla) dentro de Highlights; cerrado por defecto
         self.pmap = {sock: name for name, socks in self.panels for sock in socks}
         self.panel_props = PROP_PANEL.get(spec["idname"], {})
         self.lin_in, self.lin_out = set(), set()
@@ -727,7 +941,9 @@ class NodeItem(QGraphicsItem):
     def _cond_props(self, out):
         """Menus/casillas que Blender oculta segun otras propiedades."""
         idn, pv = self.spec["idname"], self.pvals
-        if idn == "ShaderNodeTexImage" and pv.get("projection") != "BOX":
+        if idn == "ShaderNodeNormalMap" and pv.get("space", "TANGENT") != "TANGENT":
+            out = [q for q in out if q["id"] not in ("base", "uv_map")]   # Base y UV Map solo existen en Tangent Space
+        elif idn == "ShaderNodeTexImage" and pv.get("projection") != "BOX":
             out = [q for q in out if q["id"] != "projection_blend"]
         elif idn == "ShaderNodeTexVoronoi":
             edge = pv.get("feature") in ("DISTANCE_TO_EDGE", "N_SPHERE_RADIUS")
@@ -810,6 +1026,13 @@ class NodeItem(QGraphicsItem):
             for s in outs:
                 if s["name"] in on_o:
                     s["enabled"] = on_o[s["name"]]
+        elif idn == "CompositorNodeKuwahara":
+            aniso = str(self.vals.get("Type") or "Anisotropic") == "Anisotropic"
+            for s in ins:
+                if s["name"] in ("Uniformity", "Sharpness", "Eccentricity"):
+                    s["enabled"] = aniso          # solo en Anisotropic
+                elif s["name"] == "High Precision":
+                    s["enabled"] = not aniso      # solo en Classic
         elif idn == "ShaderNodeTexGabor":
             is3 = pv.get("gabor_type") == "3D"
             for s in ins:
@@ -834,6 +1057,12 @@ class NodeItem(QGraphicsItem):
                     s["enabled"] = is_col
             if idn == "CompositorNodeGlare":
                 self._glare_dyn(ins)
+        elif idn == "CompositorNodeLensdist":
+            # Horizontal solo tiene Dispersion; Radial muestra tambien Distortion, Jitter y Fit (capturas de Blender)
+            horiz = "horizontal" in str(self.vals.get("Type") or "").lower()
+            for s in ins:
+                if s["name"] in ("Distortion", "Jitter", "Fit"):
+                    s["enabled"] = not horiz
         elif idn in ("ShaderNodeCombineColor", "ShaderNodeSeparateColor",
                      "CompositorNodeCombineColor", "CompositorNodeSeparateColor"):
             names = {"HSV": ["Hue", "Saturation", "Value"],
@@ -930,12 +1159,14 @@ class NodeItem(QGraphicsItem):
 
     def _visible(self, s, linked):
         en = self._mix_enabled(s) if self.spec["idname"] == "ShaderNodeMix" else s["enabled"]
-        return (en and s["type"] != "NodeSocketVirtual" and
+        return (en and (s["type"] != "NodeSocketVirtual" or self.spec["idname"] in ("NodeGroupInput", "NodeGroupOutput")) and
                 not (self.hide_unused and s["identifier"] not in linked))
 
     def prop_row(self, p, y):
         t, ref = p["type"], ("p", p["id"])
         if t == "ENUM":
+            if p.get("rl"):
+                return dict(k="enum", y=y, h=FH, name=p["name"], ref=ref, items=p["items"], rl=p["rl"]), RL_PITCH[p["rl"]]
             return dict(k="enum", y=y, h=FH, name=p["name"], ref=ref, items=p["items"],
                         seg=p.get("seg", False), inline=p.get("inline", False)), EROW - ENUM_TIGHT.get(self.spec["idname"], 0.0)
         if t in ("INT", "FLOAT"):
@@ -944,6 +1175,9 @@ class NodeItem(QGraphicsItem):
                         lo=p.get("lo"), hi=p.get("hi"), unit=p.get("unit")), \
                 FH + (0.0 if self.spec["idname"] in STACKED else GAP)
         if t in ("STRING", "POINTER"):
+            if p.get("rl"):
+                return dict(k="str", y=y, h=FH, name=p["name"], ref=ref, ph=p.get("ph", ""),
+                            icon=p.get("icon"), rl=p["rl"]), RL_PITCH[p["rl"]]
             return dict(k="str", y=y, h=FH, name=p["name"], ref=ref, ph=p.get("ph", ""),
                         icon=p.get("icon")), FH + GAP
         if t == "WARN":
@@ -1005,6 +1239,7 @@ class NodeItem(QGraphicsItem):
             else:
                 rows.append(dict(k="block", y=top, h=(y - top) + blk[1], kind=blk[0]))
             y += blk[1]
+        y += PROPS_TOP.get(idn, 0.0)
         for p in (self.shown_props() if idn not in PROPS_FIRST else []):
             if p["id"] in self.panel_props:
                 continue
@@ -1089,10 +1324,15 @@ class NodeItem(QGraphicsItem):
                     y -= 1.0   # Thin Wall: Blender la deja ~1 unidad mas arriba (paso 21 desde Alpha)
                 lo, hi = s.get("min"), s.get("max")
                 if "Factor" in s["type"] and not isinstance(lo, (int, float)):
-                    lo, hi = (-1.0, 1.0) if s["identifier"] == "Subsurface Anisotropy" else (0.0, 1.0)   # factores de 0 a 1 (el JSON no trae min/max); Anisotropy va de -1 a 1
+                    lo, hi = ((-1.0, 1.0) if s["identifier"] == "Subsurface Anisotropy"
+                              else (0.0, 2.0) if (idn, s["identifier"]) == ("CompositorNodeKuwahara", "Eccentricity")
+                              else (-1.0, 1.0) if (idn, s["identifier"]) == ("CompositorNodeLensdist", "Distortion")   # 0.000 = barra a medias (captura de Blender)
+                              else (0.0, 1.0))   # factores de 0 a 1 (el JSON no trae min/max); Anisotropy va de -1 a 1
                 fac = ("Factor" in s["type"]) and isinstance(lo, (int, float)) and hi != lo
                 rows.append(dict(k=kind, y=y, h=FH, name=s["name"], ref=ref, st=st,
-                                 fac=fac, lo=lo, hi=hi, dim=self._inactive(s), unit={"NodeSocketFloatDistance": "m", "NodeSocketFloatWavelength": "nm"}.get(s["type"])))
+                                 fac=fac, lo=lo, hi=hi, dim=self._inactive(s), unit={"NodeSocketFloatDistance": "m", "NodeSocketFloatWavelength": "nm", "NodeSocketFloatPixel": "px", "NodeSocketFloatAngle": "deg"}.get(s["type"])))
+                if st == "MENU" and (idn, s["name"]) in MENU_ITEMS:   # desplegable en vez de campo de texto
+                    rows[-1].update(k="enum", items=MENU_ITEMS[(idn, s["name"])])
                 sk.setPos(0, y + FH / 2)
                 if kind == "boolin":
                     y += 1.0   # compensa: las filas siguientes no se mueven
@@ -1373,6 +1613,21 @@ class NodeItem(QGraphicsItem):
         p.setPen(QPen(tcol, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))   # "v" fina como en Blender
         dx = 3.5 if self.img_loaded is not None else 0.0
         p.drawPolyline(QPolygonF([QPointF(8.5 + dx, 8.2), QPointF(12 + dx, 11.8), QPointF(15.5 + dx, 8.2)]))
+        if self.spec["idname"] in PREVIEW_ICON:   # ojo cerrado (vista previa apagada) a la derecha de la cabecera
+            ex, ey = self.w - 16.0, HEADER / 2
+            lid = QPainterPath()
+            lid.moveTo(ex - 6.0, ey - 1.6)
+            lid.quadTo(ex, ey + 6.0, ex + 6.0, ey - 1.6)
+            p.setPen(QPen(tcol, 1.4, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+            p.setBrush(Qt.NoBrush)
+            p.drawPath(lid)
+        if self.spec["idname"] == "CompositorNodeViewer":   # icono de monitor (Viewer) a la derecha de la cabecera
+            ex, ey = self.w - 16.0, HEADER / 2
+            p.setPen(QPen(tcol, 1.4, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+            p.setBrush(Qt.NoBrush)
+            p.drawRoundedRect(QRectF(ex - 6.5, ey - 5.5, 13.0, 9.0), 1.6, 1.6)   # pantalla
+            p.drawLine(QPointF(ex, ey + 3.5), QPointF(ex, ey + 5.6))             # pie
+            p.drawLine(QPointF(ex - 3.2, ey + 5.8), QPointF(ex + 3.2, ey + 5.8))  # base
         if self.img_loaded is not None and self.spec["idname"].startswith("Compositor"):   # icono del ojo (vista previa) a la derecha de la cabecera
             ex, ey = self.w - 16.0, HEADER / 2
             eye = QPainterPath()
@@ -1448,6 +1703,9 @@ class NodeItem(QGraphicsItem):
                 self.mini_btn(p, QRectF(PAD + i * sw, y, sw, h), it["name"], it["id"] == v)
             return
         if k == "enum":
+            if r.get("rl"):
+                self.paint_rl(p, r, rect, v)
+                return
             if r.get("inline"):
                 lw = fw * r.get("lw", 0.36)
                 p.setPen(TXT)
@@ -1495,8 +1753,13 @@ class NodeItem(QGraphicsItem):
                     p.restore()
             self.outline(p, path)
             p.setPen(TXT)
-            p.drawText(rect.adjusted(NUM_PAD_L, 0, -NUM_PAD_R, 0), AL, r["name"])
-            p.drawText(rect.adjusted(NUM_PAD_L, 0, -NUM_PAD_R, 0), AR, fmt_unit(v, r))
+            inner = rect.adjusted(NUM_PAD_L, 0, -NUM_PAD_R, 0)
+            vtxt = fmt_unit(v, r)
+            fm = p.fontMetrics()
+            # el nombre se corta con "…" para no pisar el valor (como hace Blender)
+            avail = max(0.0, inner.width() - fm.horizontalAdvance(vtxt) - 2)
+            p.drawText(inner, AL, fm.elidedText(r["name"], Qt.ElideRight, int(avail)))
+            p.drawText(inner, AR, vtxt)
         elif k == "num_legacy":   # rama antigua (margen 8), ya sin uso
             path = self.field(p, rect, FIELD, r.get("jt", False), r.get("jb", False))
             if r.get("fac"):
@@ -1534,20 +1797,74 @@ class NodeItem(QGraphicsItem):
             p.setPen(QColor("#111111") if lum > 0.6 else QColor("#ffffff"))
             p.drawText(rect.adjusted(8, 0, -8, 0), AL, r["name"])
         elif k == "str":
-            path = self.field(p, rect, FIELD)
+            if r.get("rl"):
+                self.paint_rl(p, r, rect, v)
+                return
+            path = self.field(p, rect, TEXT_FIELD if r.get("icon") == "uvmap" else FIELD)
             self.outline(p, path)
             left = 8
             if r.get("icon"):
                 p.setPen(QPen(TXT, 1.1))
                 p.setBrush(Qt.NoBrush)
-                if r["icon"] == "circle":
+                if r["icon"] == "uvmap":
+                    draw_uv_icon(p, QRectF(rect.x() + 5, rect.center().y() - 7, 14, 14), TXT)
+                elif r["icon"] == "circle":
                     p.drawEllipse(QRectF(rect.x() + 7, rect.center().y() - 4, 9, 9))
+                elif r["icon"] == "obj":
+                    draw_object_icon(p, QRectF(rect.x() + 4, rect.center().y() - 7.5, 15, 15), TXT)
                 else:
                     p.drawRect(QRectF(rect.x() + 7, rect.center().y() - 4, 8, 8))
                 left = 22
+            right = 8
+            if r.get("icon") == "obj":   # selector de objeto: cuentagotas a la derecha, como en Blender
+                draw_dropper_icon(p, QRectF(rect.right() - 20, rect.center().y() - 7.5, 15, 15), TXT)
+                right = 24
             shown = str(v) if v else ""
             p.setPen(TXT if shown else DIM)
-            p.drawText(rect.adjusted(left, 0, -8, 0), AL, shown or r.get("ph", ""))
+            p.drawText(rect.adjusted(left, 0, -right, 0), AL, shown or r.get("ph", ""))
+
+    def paint_rl(self, p, r, rect, v):
+        """Render Layers: fila Scene (selector | nombre | X) y fila Layer (menu | boton de capas)."""
+        x, y, fw, h = rect.x(), rect.y(), rect.width(), rect.height()
+        bw = 20.0                                              # ancho del boton de la derecha (X / capas)
+
+        def chevron(cx, cy):
+            p.setPen(QPen(MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+            p.setBrush(Qt.NoBrush)
+            p.drawPolyline(QPolygonF([QPointF(cx - 2.6, cy - 1.2), QPointF(cx, cy + 1.4), QPointF(cx + 2.6, cy - 1.2)]))
+
+        cy = y + h / 2
+        btn = QRectF(x + fw - bw, y, bw, h)
+        if r["rl"] == "scene":
+            sw = 31.0                                          # selector de escena: icono + flechita
+            path = self.field(p, QRectF(x, y, sw, h), MENU)
+            self.outline(p, path)
+            draw_scene_icon(p, QRectF(x + 3.0, cy - 7.5, 15.0, 15.0), TXT)
+            chevron(x + sw - 6.5, cy)
+            tx = x + sw + 1                                    # nombre de la escena (campo de texto oscuro)
+            tf = QRectF(tx, y, btn.left() - 1 - tx, h)
+            path = self.field(p, tf, TEXT_FIELD)
+            self.outline(p, path)
+            shown = str(v) if v else ""
+            p.setPen(TXT if shown else DIM)
+            p.drawText(tf.adjusted(8, 0, -6, 0), AL, shown or r.get("ph", ""))
+            path = self.field(p, btn, FIELD)                   # X: quitar la escena
+            self.outline(p, path)
+            p.setPen(QPen(TXT, 1.3, Qt.SolidLine, Qt.RoundCap))
+            c = btn.center()
+            p.drawLine(QPointF(c.x() - 3.8, c.y() - 3.8), QPointF(c.x() + 3.8, c.y() + 3.8))
+            p.drawLine(QPointF(c.x() - 3.8, c.y() + 3.8), QPointF(c.x() + 3.8, c.y() - 3.8))
+        else:
+            fld = QRectF(x, y, fw - bw - 1, h)                 # menu de la capa
+            path = self.field(p, fld, MENU)
+            self.outline(p, path)
+            name = next((i["name"] for i in r["items"] if i["id"] == v), str(v))
+            p.setPen(TXT)
+            p.drawText(fld.adjusted(8, 0, -22, 0), AL, name)
+            chevron(fld.right() - 11.0, cy)
+            path = self.field(p, btn, FIELD)                   # boton de capas de render
+            self.outline(p, path)
+            draw_layers_icon(p, QRectF(btn.center().x() - 8.0, cy - 8.0, 16.0, 16.0), TXT)
 
     def mini_btn(self, p, rect, text, active=False):
         path = self.field(p, rect, CHECK_ON if active else FIELD)
@@ -2227,6 +2544,10 @@ class NodeItem(QGraphicsItem):
         menus/colores/textos se abren al soltar (como en Blender)."""
         k = r["k"]
         self._ed = dict(r=r, sx=e.screenPos().x(), moved=False, mode="noop")
+        if k == "str" and r.get("rl") == "scene" and e.pos().x() >= self.w - PAD - 20.0:
+            self.put(r, "")                    # X de Render Layers: quita la escena
+            self.scene().sync()
+            return
         if k in ("bool", "boolin"):
             self.put(r, not self.get(r))
             self.scene().sync()
@@ -2774,13 +3095,23 @@ class AddDialog(QDialog):
         self.refill("")
 
     def refill(self, t):
+        from difflib import SequenceMatcher
         self.lst.clear()
-        t = t.lower()
+        t = t.strip().lower()
+        hits = []
         for s in self.specs:
-            if t in s["label"].lower() or t in s["idname"].lower():
-                it = QListWidgetItem(s["label"])
-                it.setData(Qt.UserRole, s["idname"])
-                self.lst.addItem(it)
+            lab, idn = s["label"].lower(), s["idname"].lower()
+            if t in lab or t in idn:
+                hits.append((0.0, s))                      # coincidencia exacta: va primero
+            elif len(t) >= 4:                              # tolera erratas ("kawahura" -> Kuwahara)
+                sc = max(SequenceMatcher(None, t, w).ratio() for w in [lab] + lab.split())
+                if sc >= 0.6:
+                    hits.append((1.0 - sc, s))
+        hits.sort(key=lambda h: h[0])                      # estable: exactos en orden alfabetico, luego por parecido
+        for _score, s in hits:
+            it = QListWidgetItem(s["label"])
+            it.setData(Qt.UserRole, s["idname"])
+            self.lst.addItem(it)
         if self.lst.count():
             self.lst.setCurrentRow(0)
 
@@ -2819,6 +3150,12 @@ class Window(QMainWindow):
         self._act(tb, "PNG transparente", "Ctrl+Shift+E", lambda: self.export("png", True))
         self._act(tb, "Exportar SVG", "Ctrl+Alt+E", lambda: self.export("svg", False))
         self.switch()
+        import project
+        project.init(self)   # menu Archivo: Nuevo / Abrir / Guardar / Guardar como (proyectos .nodocap)
+        import copypaste
+        copypaste.init(self)   # menu Editar: Copiar (Ctrl+C) / Pegar (Ctrl+V) / Duplicar (Shift+D)
+        import blender_export
+        blender_export.init(self)   # menu Blender + boton "Copiar para Blender" (Ctrl+Shift+C)
 
     def _act(self, tb, text, key, fn):
         a = QAction(text, self)
@@ -2827,6 +3164,13 @@ class Window(QMainWindow):
         a.triggered.connect(lambda _c=False: fn())
         tb.addAction(a)
         self.addAction(a)
+
+    def closeEvent(self, e):
+        import project
+        if project.confirm_discard(self):   # pregunta si hay cambios sin guardar
+            e.accept()
+        else:
+            e.ignore()
 
     @property
     def cur(self):
