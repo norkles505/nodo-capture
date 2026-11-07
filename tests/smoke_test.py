@@ -3,7 +3,7 @@ import sys
 import traceback
 
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # raiz del proyecto
 sys.path.insert(0, HERE)
 
 from PySide6.QtWidgets import QApplication

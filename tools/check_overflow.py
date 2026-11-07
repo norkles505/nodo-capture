@@ -1,7 +1,7 @@
 """Detecta nodos cuyo contenido (filas o sockets) se sale del cuerpo del nodo."""
 import os, sys
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
-here = os.path.dirname(os.path.abspath(__file__))
+here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # raiz del proyecto
 sys.path.insert(0, here)
 from PySide6.QtWidgets import QApplication
 app = QApplication([])

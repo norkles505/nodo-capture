@@ -1,7 +1,7 @@
 """Prueba Reroute y Frame: tipos, cadenas, calculo a traves del reroute, validacion y arrastre del frame."""
 import os, sys, traceback
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
-here = os.path.dirname(os.path.abspath(__file__))
+here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # raiz del proyecto
 sys.path.insert(0, here)
 from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QImage, QPainter

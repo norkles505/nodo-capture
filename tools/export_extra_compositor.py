@@ -12,7 +12,7 @@ import os
 import re
 import shutil
 
-DATA = (os.path.join(os.path.dirname(os.path.abspath(__file__)), "data") if "__file__" in globals()
+DATA = (os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data") if "__file__" in globals()
         else r"c:\Users\HP\Desktop\proyectos\nodo capture\data")
 PATH = os.path.join(DATA, "compositor_nodes.json")
 BASE_PROPS = {p.identifier for p in bpy.types.Node.bl_rna.properties}
