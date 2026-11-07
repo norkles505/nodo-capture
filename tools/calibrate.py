@@ -2,7 +2,7 @@
 import os, sys, re, json
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
 here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # raiz del proyecto
-sys.path.insert(0, here)
+sys.path.insert(0, os.path.join(here, "src"))
 from PySide6.QtWidgets import QApplication
 app = QApplication([])
 import main
@@ -35,5 +35,5 @@ txt = open(path, encoding="utf-8", newline="").read()
 new_txt, cnt = re.subn(r"EXTRA_H = \{.*?\}\r?\n", lambda m: body, txt, count=1, flags=re.S)
 assert cnt == 1
 open(path, "w", encoding="utf-8", newline="").write(new_txt)
-open(os.path.join(here, "calibrate_log.txt"), "w", encoding="utf-8").write("\n".join(log))
+open(os.path.join(here, "tools", "calibrate_log.txt"), "w", encoding="utf-8").write("\n".join(log))
 print("ok", len(log))

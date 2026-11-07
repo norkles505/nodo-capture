@@ -6,7 +6,7 @@ from pathlib import Path
 
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
 HERE = Path(__file__).resolve().parent.parent   # raiz del proyecto
-sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE / "src"))
 out = []
 try:
     from PySide6.QtCore import Qt, QRectF
@@ -38,4 +38,4 @@ try:
     img.save(str(HERE / "data" / "test_socket.png"))
 except Exception:
     out.append(traceback.format_exc())
-(HERE / "res_socket.txt").write_text("\n".join(out), encoding="utf-8")
+(HERE / "tests" / "res_socket.txt").write_text("\n".join(out), encoding="utf-8")

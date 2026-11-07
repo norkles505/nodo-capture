@@ -7,7 +7,7 @@ import os
 import sys
 
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))   # raiz del proyecto
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))   # raiz del proyecto
 
 from PySide6.QtCore import QRectF
 from PySide6.QtGui import QImage, QPainter

@@ -3,7 +3,7 @@
 # Uso:
 #   ./push.sh                 -> mensaje aleatorio
 #   ./push.sh "mi mensaje"    -> usa tu propio mensaje
-cd "$(dirname "$0")" || exit 1
+cd "$(dirname "$0")/.." || exit 1
 
 if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   echo "ERROR: esta carpeta no es un repositorio git."

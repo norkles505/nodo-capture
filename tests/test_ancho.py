@@ -1,8 +1,8 @@
 import os, sys, traceback
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # raiz del proyecto
-sys.path.insert(0, HERE)
-out = open(os.path.join(HERE, "res_ancho.txt"), "w", encoding="utf-8")
+sys.path.insert(0, os.path.join(HERE, "src"))
+out = open(os.path.join(HERE, "tests", "res_ancho.txt"), "w", encoding="utf-8")
 def log(*a): print(*a, file=out, flush=True)
 try:
     from PySide6.QtWidgets import QApplication

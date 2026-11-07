@@ -4,7 +4,7 @@ import sys
 import traceback
 
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))   # raiz del proyecto (main.py, main_func.py)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))   # raiz del proyecto (main.py, main_func.py)
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out_func.txt")
 lines = []
 

@@ -8,7 +8,7 @@ from pathlib import Path
 
 from PySide6.QtGui import QColor
 
-DATA = Path(__file__).parent / "data"
+DATA = Path(__file__).resolve().parent.parent / "data"
 
 
 def load(name):

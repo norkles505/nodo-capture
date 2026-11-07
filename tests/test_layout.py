@@ -2,7 +2,7 @@
 import os, sys, traceback
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
 here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # raiz del proyecto
-sys.path.insert(0, here)
+sys.path.insert(0, os.path.join(here, "src"))
 from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QImage, QPainter
 from PySide6.QtCore import QRectF, QPointF
@@ -78,7 +78,7 @@ try:
     p.setRenderHint(QPainter.Antialiasing)
     sc.render(p, QRectF(img.rect()), rect)
     p.end()
-    img.save(os.path.join(here, "out_layout.png"))
+    img.save(os.path.join(here, "tests", "out_layout.png"))
     log("render ok:", img.width(), "x", img.height())
 
     # borrar reroute y frame
@@ -91,5 +91,5 @@ try:
 except Exception:
     log("ERROR:\n" + traceback.format_exc())
 
-open(os.path.join(here, "res_layout.txt"), "w", encoding="utf-8").write("\n".join(out))
+open(os.path.join(here, "tests", "res_layout.txt"), "w", encoding="utf-8").write("\n".join(out))
 print("listo")

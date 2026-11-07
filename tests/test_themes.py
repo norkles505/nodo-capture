@@ -6,8 +6,8 @@ from pathlib import Path
 
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
 HERE = Path(__file__).resolve().parent.parent   # raiz del proyecto
-sys.path.insert(0, str(HERE))
-LOG = HERE / "res_themes.txt"
+sys.path.insert(0, str(HERE / "src"))
+LOG = HERE / "tests" / "res_themes.txt"
 out = []
 
 

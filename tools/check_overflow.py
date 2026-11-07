@@ -2,7 +2,7 @@
 import os, sys
 os.environ["QT_QPA_PLATFORM"] = "offscreen"
 here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # raiz del proyecto
-sys.path.insert(0, here)
+sys.path.insert(0, os.path.join(here, "src"))
 from PySide6.QtWidgets import QApplication
 app = QApplication([])
 import main
@@ -18,5 +18,5 @@ for mode in ("shader", "compositor"):
             bad += 1
             lines.append(f"{mode} {s['idname']}: h={n.h:.1f} contenido llega a {max(bottom, sock):.1f} (se sale {over:.1f})")
 lines.append(f"nodos con contenido fuera del cuerpo: {bad}")
-open(os.path.join(here, "out_overflow.txt"), "w", encoding="utf-8").write("\n".join(lines))
+open(os.path.join(here, "tools", "out_overflow.txt"), "w", encoding="utf-8").write("\n".join(lines))
 print("ok")

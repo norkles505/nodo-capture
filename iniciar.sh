@@ -35,7 +35,7 @@ if ! .venv/bin/python -c "import PySide6" >/dev/null 2>&1; then
   fi
 fi
 
-.venv/bin/python main.py
+.venv/bin/python src/main.py
 codigo=$?
 
 if [ $codigo -ne 0 ]; then
