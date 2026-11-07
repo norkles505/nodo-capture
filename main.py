@@ -23,6 +23,8 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QGraphicsView, QGraphi
 from icons import (draw_folder_icon, draw_image_icon, draw_object_icon, draw_dropper_icon,
                    draw_uv_icon, draw_scene_icon, draw_layers_icon)
 from ramp import RAMP_CMODES, RAMP_INTERPS, _new_ramp, ramp_eval, ramp_samples
+import style as S
+from style import DATA, load, THEME, WID, col, lin2s, s2lin
 from node_tables import (_GLARE_COMMON, BLOCKS, category, CO_COLOR, CO_DIST, CO_FILTER, CO_IN,
                           CO_MATTE, CO_OUT, CO_SHARED_IN, CO_VEC, CPANEL_BOX, EXTRA_H, GLARE_SOCKS,
                           IMGSEL_H, IO_MERGE, MATH_1, MATH_3, MATH_LABELS, MENU_ITEMS, MIX_ORDER,
@@ -31,15 +33,18 @@ from node_tables import (_GLARE_COMMON, BLOCKS, category, CO_COLOR, CO_DIST, CO_
                           SH_CONV, SH_IN, SH_VEC, SKIP_PROPS, TRAILING_PANELS, VM_1, VM_3,
                           VM_LABELS, VM_VAL)
 
-DATA = Path(__file__).parent / "data"
+# Los colores y el estilo que cambia el tema viven en style.py (themes.py los reasigna alli y las clases los
+# leen como S.BG, S.TXT...). main.BG, main.TXT... siguen respondiendo con el valor vigente: main_func.py,
+# las pruebas y las herramientas los leen asi.
+_STYLE_NAMES = frozenset(['BG', 'BODY', 'CHECK_ON', 'CURVING', 'DIM', 'FIELD', 'FIELD_LINE', 'GRID_MAJOR', 'GRID_MINOR', 'HEAD', 'LINK_LINE', 'MENU', 'MENU_ITEM', 'OUTLINE', 'RAD', 'SEL', 'SLIDER', 'SOCK', 'SOCK_LINE', 'TEXT_FIELD', 'TITLE', 'TXT', 'WCOL_OUT', 'WCOL_SKIN', 'WIRE', 'WIRE_SEL'])
 
 
-def load(name):
-    return json.loads((DATA / name).read_text(encoding="utf-8"))
+def __getattr__(name):
+    if name in _STYLE_NAMES:
+        return getattr(S, name)
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 
-THEME = load("theme.json")
-WID = load("widgets.json")
 CATALOG = {"shader": load("shader_nodes.json"), "compositor": load("compositor_nodes.json")}
 
 
@@ -76,48 +81,11 @@ for _m in CATALOG:
 
 
 # ------------------------------------------------------------------ estilo
-def col(v):
-    return QColor.fromRgbF(v[0], v[1], v[2], v[3] if len(v) > 3 else 1.0)
-
-
-def lin2s(c):
-    c = max(0.0, min(1.0, c))
-    return 12.92 * c if c <= 0.0031308 else 1.055 * c ** (1 / 2.4) - 0.055
-
-
-def s2lin(c):
-    return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
-
-
-HEAD = {k: col(THEME[k]) for k in ("input_node", "output_node", "shader_node", "texture_node",
-                                   "converter_node", "vector_node", "filter_node", "color_node",
-                                   "matte_node", "distor_node", "group_node", "group_socket_node",
-                                   "frame_node")}
-BG = QColor("#1a1a1a")                      # fondo del Node Editor (tema de tu Blender)
-GRID_MINOR = QColor("#212121")
-GRID_MAJOR = col(THEME["grid"])
-BODY = col(THEME["node_backdrop"])
-OUTLINE = col(THEME["node_outline"])
-SEL = col(THEME["node_selected"])           # naranja de seleccion
-TXT = col(WID["wcol_regular"]["text"])
-TITLE = QColor("#eeeeee")
-DIM = QColor("#7d7d7d")
-FIELD = col(WID["wcol_regular"]["inner"])
-FIELD_LINE = col(WID["wcol_regular"]["outline"])
-TEXT_FIELD = col(WID["wcol_text"]["inner"]) if "wcol_text" in WID else QColor("#1d1d1d")   # fondo oscuro de los campos de busqueda (UV Map)
-MENU = col(WID["wcol_menu"]["inner"])
-MENU_ITEM = col(WID["wcol_menu"]["item"])   # color de la flechita de los menus
-SLIDER = col(WID["wcol_numslider"]["item"])
-CHECK_ON = col(WID["wcol_option"]["inner_sel"])
-WIRE = col(THEME["wire"])
-WIRE_SEL = col(THEME["wire_select"])
-SOCK = {"VALUE": "#a1a1a1", "INT": "#598c5c", "BOOLEAN": "#cca6d6", "VECTOR": "#6363c7",
-        "RGBA": "#c7c729", "SHADER": "#63c763", "STRING": "#71b2ff", "ROTATION": "#a64dc7",
-        "MATRIX": "#8c2b4f", "MENU": "#a1a1a1"}
+# (colores y estilo del tema: style.py)
 
 # medidas en px a escala 1 (unidad de widget de Blender = 20 px)
 HEADER, ROW, FH, GAP, PAD, R, SR = 20.0, 20.0, 20.0, 2.0, 10.0, 6.0, 5.0
-LINK_LINE, LINK_LINE_W = "#000000", 1.0   # borde de los cables (grosor a cada lado del hilo)
+LINK_LINE_W = 1.0   # grosor del borde de los cables a cada lado del hilo (su color, LINK_LINE, esta en style.py)
 BAR_W, BAR_H = 5.0, 11.5     # socket de "un solo valor" de Blender 5.x: barra vertical en vez de circulo
 BAR_SHAPES = {"SQUARE"}      # valores de socket.display_shape (los exporta export_socket_shapes.py) que se dibujan como barra
 # respaldo mientras el JSON no traiga "shape": nodo -> entradas que son barra (medido en capturas de Blender 5.2)
@@ -133,9 +101,7 @@ BAR_FALLBACK = {"CompositorNodeKuwahara": {"Type", "Uniformity", "Sharpness", "E
                 "CompositorNodeFilter": {"Type"},
                 # Group Output/Input (captura de Blender): el item Image va como barra; el socket virtual, circulo
                 "NodeGroupOutput": {"Image"}, "NodeGroupInput": {"Image"}}
-SOCK_LINE, SOCK_LINE_W = "#000000", 1.0   # borde de los sockets (fino, como en Blender)
-RAD = 4.0   # esquinas de campos (roundness 0.4 del tema)
-CURVING = 5.0
+SOCK_LINE_W = 1.0   # grosor del borde de los sockets (fino, como en Blender; su color, SOCK_LINE, esta en style.py)
 FIELD_LINE_W = 0.8   # grosor del borde de los campos (menus, numeros, casillas)
 NODE_LINE_W = 0.85   # grosor del borde del nodo (seleccionado: 2.0)
 IMG_TOP = 3.0        # aire sobre la fila selector/New/Open de los nodos de imagen
@@ -155,7 +121,7 @@ ENUM_TIGHT = {"ShaderNodeTexImage": 1.5, "ShaderNodeTexEnvironment": 1.5}   # me
 TOP_SHIFT = {"ShaderNodeBsdfPrincipled": 2.6}   # sube la primera fila (la salida) de estos nodos
 INPUT_PULL = {"ShaderNodeMath": 2.0, "ShaderNodeVectorMath": 5.6, "ShaderNodeTexImage": 3.5, "ShaderNodeTexEnvironment": 3.5, "ShaderNodeBsdfPrincipled": 3.6}   # acerca las entradas al ultimo menu
 LINK_W = 3.5   # grosor del hilo del cable (antes 2.2); sube o baja este valor para ajustarlo
-# CURVING arriba = noodle_curving del tema (0 = cable recto, 10 = muy curvo); 5 es el valor de Blender
+# CURVING (style.py) = noodle_curving del tema (0 = cable recto, 10 = muy curvo); 5 es el valor de Blender
 LROW = 21.0   # fila de socket sin widget
 PANEL_GAP_HEAD = 4.5   # aire bajo la cabecera de un panel abierto (Blender lo deja mas holgado)
 PANEL_GAP_END = 3.0
@@ -218,8 +184,8 @@ class SocketItem(QGraphicsEllipseItem):
     def __init__(self, node, spec, is_out):
         super().__init__(-SR, -SR, 2 * SR, 2 * SR, node)
         self.node, self.spec, self.is_out = node, spec, is_out
-        self.setBrush(QBrush(QColor(SOCK.get(spec.get("stype"), "#a1a1a1"))))
-        self.setPen(QPen(QColor(SOCK_LINE), SOCK_LINE_W))
+        self.setBrush(QBrush(QColor(S.SOCK.get(spec.get("stype"), "#a1a1a1"))))
+        self.setPen(QPen(QColor(S.SOCK_LINE), SOCK_LINE_W))
         self.setZValue(2)
         self.setAcceptedMouseButtons(Qt.LeftButton)
         self.setCursor(Qt.CrossCursor)
@@ -268,7 +234,7 @@ class LinkItem(QGraphicsPathItem):
     def __init__(self, a, b):
         super().__init__()
         self.a, self.b, self.end = a, b, None
-        pen = QPen(WIRE, LINK_W)
+        pen = QPen(S.WIRE, LINK_W)
         pen.setCapStyle(Qt.RoundCap)
         self.setPen(pen)
         self.setZValue(0)
@@ -276,8 +242,8 @@ class LinkItem(QGraphicsPathItem):
 
     def gradient(self):
         """Color del cable segun el tipo de socket (como 'Wire Colors' de Blender)."""
-        ca = QColor(SOCK.get(self.a.spec.get("stype"), "#a1a1a1"))
-        cb = QColor(SOCK.get(self.b.spec.get("stype"), "#a1a1a1")) if self.b is not None else ca
+        ca = QColor(S.SOCK.get(self.a.spec.get("stype"), "#a1a1a1"))
+        cb = QColor(S.SOCK.get(self.b.spec.get("stype"), "#a1a1a1")) if self.b is not None else ca
         pa = self.a.scenePos()
         pb = self.b.scenePos() if self.b is not None else (self.end or pa)
         g = QLinearGradient(pa, pb)
@@ -294,7 +260,7 @@ class LinkItem(QGraphicsPathItem):
         pb = self.b.scenePos() if self.b is not None else (self.end or pa)
         if self.b is None and not self.a.is_out:
             pa, pb = pb, pa
-        d = max(abs(pb.x() - pa.x()) * CURVING * 0.1, CURVING * 8.0)
+        d = max(abs(pb.x() - pa.x()) * S.CURVING * 0.1, S.CURVING * 8.0)
         path = QPainterPath(pa)
         path.cubicTo(QPointF(pa.x() + d, pa.y()), QPointF(pb.x() - d, pb.y()), pb)
         self.setPath(path)
@@ -307,12 +273,12 @@ class LinkItem(QGraphicsPathItem):
     def paint(self, p, opt, widget=None):
         pen = QPen(self.pen())
         if self.isSelected():
-            pen.setColor(WIRE_SEL)
+            pen.setColor(S.WIRE_SEL)
         else:
             pen.setBrush(QBrush(self.gradient()))
         p.setPen(pen)
         p.setBrush(Qt.NoBrush)
-        border = QPen(QColor(LINK_LINE), pen.widthF() + 2 * LINK_LINE_W)
+        border = QPen(QColor(S.LINK_LINE), pen.widthF() + 2 * LINK_LINE_W)
         border.setCapStyle(Qt.RoundCap)
         p.setPen(border)
         p.drawPath(self.path())     # primero el borde oscuro, luego el hilo encima
@@ -993,11 +959,11 @@ class NodeItem(QGraphicsItem):
     def _rr(path, rect, jt=False, jb=False):
         """Rectangulo redondeado; jt/jb = esquinas superiores/inferiores rectas (campo apilado)."""
         if not (jt or jb):
-            path.addRoundedRect(rect, RAD, RAD)
+            path.addRoundedRect(rect, S.RAD, S.RAD)
             return
         x, y, w, h = rect.x(), rect.y(), rect.width(), rect.height()
-        rt = 0.0 if jt else RAD
-        rb = 0.0 if jb else RAD
+        rt = 0.0 if jt else S.RAD
+        rb = 0.0 if jb else S.RAD
         path.moveTo(x + rt, y)
         path.lineTo(x + w - rt, y)
         if rt:
@@ -1022,37 +988,37 @@ class NodeItem(QGraphicsItem):
         path.closeSubpath()
 
     def outline(self, p, path):
-        p.setPen(QPen(FIELD_LINE, FIELD_LINE_W))
+        p.setPen(QPen(S.FIELD_LINE, FIELD_LINE_W))
         p.setBrush(Qt.NoBrush)
         p.drawPath(path)
 
     def _outline_legacy(self, p, path):
-        p.setPen(QPen(FIELD_LINE, 1.0))
+        p.setPen(QPen(S.FIELD_LINE, 1.0))
         p.setBrush(Qt.NoBrush)
         p.drawPath(path)
 
     def paint(self, p, opt, widget=None):
         p.setRenderHint(QPainter.Antialiasing)
         p.setRenderHint(QPainter.TextAntialiasing)
-        k = 0.55 if BODY.lightness() > 128 else 1.0   # sombra suave bajo el nodo (mas tenue en temas claros)
+        k = 0.55 if S.BODY.lightness() > 128 else 1.0   # sombra suave bajo el nodo (mas tenue en temas claros)
         for i, a in ((4, 10), (3, 14), (2, 18), (1, 22)):
             sh = QPainterPath()
             sh.addRoundedRect(QRectF(-i + 0.5, -i + 2.5, self.w + 2 * i - 1, self.h + 2 * i - 1), R + i, R + i)
             p.fillPath(sh, QColor(0, 0, 0, int(a * k)))
         body = QPainterPath()
         body.addRoundedRect(QRectF(0, 0, self.w, self.h), R, R)
-        p.fillPath(body, BODY)
+        p.fillPath(body, S.BODY)
         p.save()
         p.setClipPath(body)
-        p.fillRect(QRectF(0, 0, self.w, HEADER), HEAD[self._cat()])
+        p.fillRect(QRectF(0, 0, self.w, HEADER), S.HEAD[self._cat()])
         p.restore()
         sel = self.isSelected()
-        p.setPen(QPen(SEL if sel else OUTLINE, 2.0 if sel else NODE_LINE_W))
+        p.setPen(QPen(S.SEL if sel else S.OUTLINE, 2.0 if sel else NODE_LINE_W))
         p.setBrush(Qt.NoBrush)
         p.drawPath(body)
         p.setFont(NodeItem.F)
-        hc = HEAD[self._cat()]
-        tcol = TITLE   # Blender: titulo claro sobre cabeceras oscuras
+        hc = S.HEAD[self._cat()]
+        tcol = S.TITLE   # Blender: titulo claro sobre cabeceras oscuras
         p.setPen(tcol)
         tx = 24.5 if self.img_loaded is not None else 26.0   # Blender: el titulo arranca a ~24.5 u
         p.drawText(QRectF(tx, 0, self.w - tx - (26.0 if self.img_loaded is not None else 8.0), HEADER), AL, self.title())
@@ -1106,7 +1072,7 @@ class NodeItem(QGraphicsItem):
         if k == "imgloaded":
             self.paint_imgloaded(p, r)
             return
-        p.setPen(TXT)
+        p.setPen(S.TXT)
         if k == "out":
             p.drawText(QRectF(PAD, y, fw, h), AR, r["name"])
             return
@@ -1122,25 +1088,25 @@ class NodeItem(QGraphicsItem):
             p.setBrush(QColor("#e0b000"))
             p.setPen(Qt.NoPen)
             p.drawPolygon(QPolygonF([QPointF(cx, cy - 6), QPointF(cx + 6.5, cy + 5), QPointF(cx - 6.5, cy + 5)]))
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             p.drawText(QRectF(PAD + 20, y, fw - 20, h), AL, r["name"])
             return
         if k == "panel":
             op = self.panel_open[r["panel"]]
             if op:
-                p.fillRect(QRectF(0, y, self.w, h), QColor(0, 0, 0, 12 if BODY.lightness() > 128 else 38))
+                p.fillRect(QRectF(0, y, self.w, h), QColor(0, 0, 0, 12 if S.BODY.lightness() > 128 else 38))
             cx, cy = PAD + 5, y + h / 2
             p.setBrush(QColor("#d9d9d9"))
             p.setPen(Qt.NoPen)
             if op:
-                p.setPen(QPen(TXT, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+                p.setPen(QPen(S.TXT, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
                 p.setBrush(Qt.NoBrush)
                 p.drawPolyline(QPolygonF([QPointF(cx - 4, cy - 1.8), QPointF(cx, cy + 1.8), QPointF(cx + 4, cy - 1.8)]))
             else:
-                p.setPen(QPen(TXT, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+                p.setPen(QPen(S.TXT, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
                 p.setBrush(Qt.NoBrush)
                 p.drawPolyline(QPolygonF([QPointF(cx - 1.8, cy - 4), QPointF(cx + 1.8, cy), QPointF(cx - 1.8, cy + 4)]))
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             p.drawText(QRectF(PAD + 16, y, fw - 16, h), AL, r["name"])
             return
         rect = QRectF(PAD, y, fw, h)
@@ -1156,13 +1122,13 @@ class NodeItem(QGraphicsItem):
                 return
             if r.get("inline"):
                 lw = fw * r.get("lw", 0.36)
-                p.setPen(TXT)
+                p.setPen(S.TXT)
                 p.drawText(QRectF(PAD, y, lw, h), AL, r["name"] + ("" if r.get("nocolon") else ":"))
                 rect = QRectF(PAD + lw, y, fw - lw, h)
-            path = self.field(p, rect, MENU)
+            path = self.field(p, rect, S.MENU)
             self.outline(p, path)
             name = next((i["name"] for i in r["items"] if i["id"] == v), str(v))
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             left = 8
             if r["ref"][1] == "data_type":
                 dc = {"FLOAT": "#a1a1a1", "FLOAT_VECTOR": "#6363c7", "VECTOR": "#6363c7",
@@ -1172,35 +1138,35 @@ class NodeItem(QGraphicsItem):
                 p.setBrush(QColor(dc))
                 p.drawEllipse(QPointF(rect.x() + 12, rect.center().y()), 3.5, 3.5)
                 left = 22
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             p.drawText(rect.adjusted(left, 0, -22, 0), AL, name)
             cx, cy = rect.right() - r.get("arrow", 11.0), rect.center().y()
-            p.setPen(QPen(MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+            p.setPen(QPen(S.MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
             p.drawLine(QPointF(cx - 2.6, cy - 1.2), QPointF(cx, cy + 1.4))
             p.drawLine(QPointF(cx, cy + 1.4), QPointF(cx + 2.6, cy - 1.2))
         elif k in ("bool", "boolin"):
             box = QRectF(PAD, y + (h - 14) / 2, 14, 14)
             bp = QPainterPath()
             bp.addRoundedRect(box, 3, 3)
-            p.fillPath(bp, CHECK_ON if v else FIELD)
+            p.fillPath(bp, S.CHECK_ON if v else S.FIELD)
             self.outline(p, bp)
             if v:
                 p.setPen(QPen(QColor("#ffffff"), 1.7, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
                 p.drawLine(QPointF(box.x() + 3.2, box.y() + 7.3), QPointF(box.x() + 6, box.y() + 10.3))
                 p.drawLine(QPointF(box.x() + 6, box.y() + 10.3), QPointF(box.x() + 10.8, box.y() + 3.8))
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             p.drawText(QRectF(PAD + 17, y, fw - 17, h), AL, r["name"])
         elif k == "num":
-            path = self.field(p, rect, FIELD, r.get("jt", False), r.get("jb", False))
+            path = self.field(p, rect, S.FIELD, r.get("jt", False), r.get("jb", False))
             if r.get("fac"):
                 frac = max(0.0, min(1.0, (float(v) - r["lo"]) / (r["hi"] - r["lo"])))
                 if frac > 0:
                     p.save()
                     p.setClipPath(path)
-                    p.fillRect(QRectF(rect.x(), rect.y(), rect.width() * frac, rect.height()), SLIDER)
+                    p.fillRect(QRectF(rect.x(), rect.y(), rect.width() * frac, rect.height()), S.SLIDER)
                     p.restore()
             self.outline(p, path)
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             inner = rect.adjusted(NUM_PAD_L, 0, -NUM_PAD_R, 0)
             vtxt = fmt_unit(v, r)
             fm = p.fontMetrics()
@@ -1209,22 +1175,22 @@ class NodeItem(QGraphicsItem):
             p.drawText(inner, AL, fm.elidedText(r["name"], Qt.ElideRight, int(avail)))
             p.drawText(inner, AR, vtxt)
         elif k == "num_legacy":   # rama antigua (margen 8), ya sin uso
-            path = self.field(p, rect, FIELD, r.get("jt", False), r.get("jb", False))
+            path = self.field(p, rect, S.FIELD, r.get("jt", False), r.get("jb", False))
             if r.get("fac"):
                 frac = max(0.0, min(1.0, (float(v) - r["lo"]) / (r["hi"] - r["lo"])))
                 if frac > 0:
                     p.save()
                     p.setClipPath(path)
-                    p.fillRect(QRectF(rect.x(), rect.y(), rect.width() * frac, rect.height()), SLIDER)
+                    p.fillRect(QRectF(rect.x(), rect.y(), rect.width() * frac, rect.height()), S.SLIDER)
                     p.restore()
             self.outline(p, path)
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             p.drawText(rect.adjusted(8, 0, -8, 0), AL, r["name"])
             p.drawText(rect.adjusted(8, 0, -8, 0), AR, fmt_unit(v, r))
         elif k == "vec":
-            path = self.field(p, rect, FIELD)
+            path = self.field(p, rect, S.FIELD)
             self.outline(p, path)
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             p.drawText(rect.adjusted(8, 0, -8, 0), AL, r["name"])
             vtxt = fmt_unit(v[r["i"]], {"unit": r.get("unit"), "st": "VALUE"})
             if r["name"]:
@@ -1233,9 +1199,9 @@ class NodeItem(QGraphicsItem):
                 p.drawText(rect, Qt.AlignCenter, vtxt)
         elif k == "color":
             c = QColor.fromRgbF(lin2s(v[0]), lin2s(v[1]), lin2s(v[2]))
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             if r.get("dim"):   # entrada que no influye: solo la etiqueta se atenua, la muestra de color no
-                p.setPen(QColor(TXT.red(), TXT.green(), TXT.blue(), 115))
+                p.setPen(QColor(S.TXT.red(), S.TXT.green(), S.TXT.blue(), 115))
             p.drawText(QRectF(rect.x(), y, rect.width() * 0.4, h), AL, r["name"])   # etiqueta fuera del campo
             rect = QRectF(rect.x() + rect.width() * 0.42, rect.y(), rect.width() * 0.58, rect.height())
             path = self.field(p, rect, c)
@@ -1248,27 +1214,27 @@ class NodeItem(QGraphicsItem):
             if r.get("rl"):
                 self.paint_rl(p, r, rect, v)
                 return
-            path = self.field(p, rect, TEXT_FIELD if r.get("icon") == "uvmap" else FIELD)
+            path = self.field(p, rect, S.TEXT_FIELD if r.get("icon") == "uvmap" else S.FIELD)
             self.outline(p, path)
             left = 8
             if r.get("icon"):
-                p.setPen(QPen(TXT, 1.1))
+                p.setPen(QPen(S.TXT, 1.1))
                 p.setBrush(Qt.NoBrush)
                 if r["icon"] == "uvmap":
-                    draw_uv_icon(p, QRectF(rect.x() + 5, rect.center().y() - 7, 14, 14), TXT)
+                    draw_uv_icon(p, QRectF(rect.x() + 5, rect.center().y() - 7, 14, 14), S.TXT)
                 elif r["icon"] == "circle":
                     p.drawEllipse(QRectF(rect.x() + 7, rect.center().y() - 4, 9, 9))
                 elif r["icon"] == "obj":
-                    draw_object_icon(p, QRectF(rect.x() + 4, rect.center().y() - 7.5, 15, 15), TXT)
+                    draw_object_icon(p, QRectF(rect.x() + 4, rect.center().y() - 7.5, 15, 15), S.TXT)
                 else:
                     p.drawRect(QRectF(rect.x() + 7, rect.center().y() - 4, 8, 8))
                 left = 22
             right = 8
             if r.get("icon") == "obj":   # selector de objeto: cuentagotas a la derecha, como en Blender
-                draw_dropper_icon(p, QRectF(rect.right() - 20, rect.center().y() - 7.5, 15, 15), TXT)
+                draw_dropper_icon(p, QRectF(rect.right() - 20, rect.center().y() - 7.5, 15, 15), S.TXT)
                 right = 24
             shown = str(v) if v else ""
-            p.setPen(TXT if shown else DIM)
+            p.setPen(S.TXT if shown else S.DIM)
             p.drawText(rect.adjusted(left, 0, -right, 0), AL, shown or r.get("ph", ""))
 
     def paint_rl(self, p, r, rect, v):
@@ -1277,7 +1243,7 @@ class NodeItem(QGraphicsItem):
         bw = 20.0                                              # ancho del boton de la derecha (X / capas)
 
         def chevron(cx, cy):
-            p.setPen(QPen(MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+            p.setPen(QPen(S.MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
             p.setBrush(Qt.NoBrush)
             p.drawPolyline(QPolygonF([QPointF(cx - 2.6, cy - 1.2), QPointF(cx, cy + 1.4), QPointF(cx + 2.6, cy - 1.2)]))
 
@@ -1285,39 +1251,39 @@ class NodeItem(QGraphicsItem):
         btn = QRectF(x + fw - bw, y, bw, h)
         if r["rl"] == "scene":
             sw = 31.0                                          # selector de escena: icono + flechita
-            path = self.field(p, QRectF(x, y, sw, h), MENU)
+            path = self.field(p, QRectF(x, y, sw, h), S.MENU)
             self.outline(p, path)
-            draw_scene_icon(p, QRectF(x + 3.0, cy - 7.5, 15.0, 15.0), TXT)
+            draw_scene_icon(p, QRectF(x + 3.0, cy - 7.5, 15.0, 15.0), S.TXT)
             chevron(x + sw - 6.5, cy)
             tx = x + sw + 1                                    # nombre de la escena (campo de texto oscuro)
             tf = QRectF(tx, y, btn.left() - 1 - tx, h)
-            path = self.field(p, tf, TEXT_FIELD)
+            path = self.field(p, tf, S.TEXT_FIELD)
             self.outline(p, path)
             shown = str(v) if v else ""
-            p.setPen(TXT if shown else DIM)
+            p.setPen(S.TXT if shown else S.DIM)
             p.drawText(tf.adjusted(8, 0, -6, 0), AL, shown or r.get("ph", ""))
-            path = self.field(p, btn, FIELD)                   # X: quitar la escena
+            path = self.field(p, btn, S.FIELD)                   # X: quitar la escena
             self.outline(p, path)
-            p.setPen(QPen(TXT, 1.3, Qt.SolidLine, Qt.RoundCap))
+            p.setPen(QPen(S.TXT, 1.3, Qt.SolidLine, Qt.RoundCap))
             c = btn.center()
             p.drawLine(QPointF(c.x() - 3.8, c.y() - 3.8), QPointF(c.x() + 3.8, c.y() + 3.8))
             p.drawLine(QPointF(c.x() - 3.8, c.y() + 3.8), QPointF(c.x() + 3.8, c.y() - 3.8))
         else:
             fld = QRectF(x, y, fw - bw - 1, h)                 # menu de la capa
-            path = self.field(p, fld, MENU)
+            path = self.field(p, fld, S.MENU)
             self.outline(p, path)
             name = next((i["name"] for i in r["items"] if i["id"] == v), str(v))
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             p.drawText(fld.adjusted(8, 0, -22, 0), AL, name)
             chevron(fld.right() - 11.0, cy)
-            path = self.field(p, btn, FIELD)                   # boton de capas de render
+            path = self.field(p, btn, S.FIELD)                   # boton de capas de render
             self.outline(p, path)
-            draw_layers_icon(p, QRectF(btn.center().x() - 8.0, cy - 8.0, 16.0, 16.0), TXT)
+            draw_layers_icon(p, QRectF(btn.center().x() - 8.0, cy - 8.0, 16.0, 16.0), S.TXT)
 
     def mini_btn(self, p, rect, text, active=False):
-        path = self.field(p, rect, CHECK_ON if active else FIELD)
+        path = self.field(p, rect, S.CHECK_ON if active else S.FIELD)
         self.outline(p, path)
-        p.setPen(QColor("#ffffff") if active else TXT)
+        p.setPen(QColor("#ffffff") if active else S.TXT)
         p.drawText(rect, Qt.AlignCenter, text)
 
     def paint_imgsel(self, p, x, y, fw):
@@ -1325,14 +1291,14 @@ class NodeItem(QGraphicsItem):
         y New/Open van pegados formando un solo grupo con una linea de union."""
         yy, bh, sw = y + IMG_TOP, 20.0, 31.0
         # selector (estilo menu)
-        path = self.field(p, QRectF(x, yy, sw, bh), MENU)
-        p.setPen(QPen(globals().get("WCOL_OUT", {}).get("menu", FIELD_LINE), FIELD_LINE_W))
+        path = self.field(p, QRectF(x, yy, sw, bh), S.MENU)
+        p.setPen(QPen(S.WCOL_OUT.get("menu", S.FIELD_LINE), FIELD_LINE_W))
         p.setBrush(Qt.NoBrush)
         p.drawPath(path)
         ic = QRectF(x + 2.3, yy + 1.85, 16.3, 16.3)           # icono de imagen (tu SVG)
         p.setPen(Qt.NoPen)
-        p.setBrush(TXT)
-        draw_image_icon(p, ic, TXT)
+        p.setBrush(S.TXT)
+        draw_image_icon(p, ic, S.TXT)
         p.setBrush(Qt.NoBrush)   # (el dibujo viejo de la montana ya no se ve: lo reemplaza draw_image_icon)
         p.drawPolygon(QPolygonF([QPointF(ic.left() + 1.5, ic.bottom() - 1.5),
                                  QPointF(ic.left() + 4.5, ic.bottom() - 5.5),
@@ -1341,29 +1307,29 @@ class NodeItem(QGraphicsItem):
                                  QPointF(ic.right() - 1.5, ic.bottom() - 1.5)]))
         pass
         cx, cy = x + sw - 7.5, yy + bh / 2                    # flechita del menu
-        p.setPen(QPen(MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+        p.setPen(QPen(S.MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
         p.setBrush(Qt.NoBrush)
         p.drawPolyline(QPolygonF([QPointF(cx - 2.6, cy - 1.2), QPointF(cx, cy + 1.4), QPointF(cx + 2.6, cy - 1.2)]))
         # grupo New | Open
         gx = x + sw + 1
         grp = QRectF(gx, yy, x + fw - gx, bh)
-        path = self.field(p, grp, FIELD)
-        p.setPen(QPen(FIELD_LINE, FIELD_LINE_W))
+        path = self.field(p, grp, S.FIELD)
+        p.setPen(QPen(S.FIELD_LINE, FIELD_LINE_W))
         p.setBrush(Qt.NoBrush)
         p.drawPath(path)
         mid = grp.center().x()
         p.drawLine(QPointF(mid, grp.top()), QPointF(mid, grp.bottom()))
-        p.setPen(TXT)
+        p.setPen(S.TXT)
         p.drawText(QRectF(grp.left() + 14, yy, mid - grp.left() - 14, bh), Qt.AlignCenter, "New")
         p.drawText(QRectF(mid + 14, yy, grp.right() - mid - 14, bh), Qt.AlignCenter, "Open")
         pc = QPointF(grp.left() + 12, yy + bh / 2)            # "+" de New
-        p.setPen(QPen(TXT, 1.2))
+        p.setPen(QPen(S.TXT, 1.2))
         p.drawLine(QPointF(pc.x() - 4, pc.y()), QPointF(pc.x() + 4, pc.y()))
         p.drawLine(QPointF(pc.x(), pc.y() - 4), QPointF(pc.x(), pc.y() + 4))
         fx, fy = mid + 8, yy + 5.5                            # carpeta de Open
         p.setPen(Qt.NoPen)
-        p.setBrush(TXT)
-        draw_folder_icon(p, QRectF(fx - 0.5, yy + bh / 2 - 6.5, 13.0, 13.0), TXT)   # tu folder.svg
+        p.setBrush(S.TXT)
+        draw_folder_icon(p, QRectF(fx - 0.5, yy + bh / 2 - 6.5, 13.0, 13.0), S.TXT)   # tu folder.svg
         pass
 
     def _fit_text(self, fm, text, width):
@@ -1393,31 +1359,31 @@ class NodeItem(QGraphicsItem):
         name_w = gw - users - sum(ic_w)
 
         # --- selector de imagen: marco fino con montana y sol (como el icono de Blender) + flechita
-        path = self.field(p, QRectF(x, yy, sw, bh), MENU)
-        p.setPen(QPen(globals().get("WCOL_OUT", {}).get("menu", FIELD_LINE), FIELD_LINE_W))
+        path = self.field(p, QRectF(x, yy, sw, bh), S.MENU)
+        p.setPen(QPen(S.WCOL_OUT.get("menu", S.FIELD_LINE), FIELD_LINE_W))
         p.setBrush(Qt.NoBrush)
         p.drawPath(path)
         isz = 16.3 if wide else 11.8
         ic = QRectF(x + (4.0 if wide else 3.2), yy + (bh - isz) / 2, isz, isz)
         pt = lambda fx, fy: QPointF(ic.left() + fx * ic.width(), ic.top() + fy * ic.height())
-        p.setPen(QPen(TXT, 1.3, Qt.SolidLine, Qt.SquareCap, Qt.MiterJoin))
+        p.setPen(QPen(S.TXT, 1.3, Qt.SolidLine, Qt.SquareCap, Qt.MiterJoin))
         p.setBrush(Qt.NoBrush)
-        draw_image_icon(p, ic, TXT)
+        draw_image_icon(p, ic, S.TXT)
         p.setPen(Qt.NoPen)
-        p.setBrush(TXT)
+        p.setBrush(S.TXT)
         pass
         pass
         cx, cy = x + sw - (5.0 if wide else 4.5), yy + bh / 2
         hw = 2.6 if wide else 2.2
-        p.setPen(QPen(MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+        p.setPen(QPen(S.MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
         p.setBrush(Qt.NoBrush)
         p.drawPolyline(QPolygonF([QPointF(cx - hw, cy - 1.2), QPointF(cx, cy + 1.4), QPointF(cx + hw, cy - 1.2)]))
 
         # --- grupo: nombre | usuarios | iconos
         gx = x + sw + 1
         grp = QRectF(gx, yy, gw, bh)
-        path = self.field(p, grp, FIELD)
-        p.setPen(QPen(FIELD_LINE, FIELD_LINE_W))
+        path = self.field(p, grp, S.FIELD)
+        p.setPen(QPen(S.FIELD_LINE, FIELD_LINE_W))
         p.setBrush(Qt.NoBrush)
         p.drawPath(path)
         edges, acc = [], grp.left()
@@ -1428,11 +1394,11 @@ class NodeItem(QGraphicsItem):
             p.drawLine(QPointF(b, grp.top()), QPointF(b, grp.bottom()))
         fm = QFontMetrics(NodeItem.F)
         short = self._fit_text(fm, d.get("name", ""), name_w - 13.5)
-        p.setPen(TXT)
+        p.setPen(S.TXT)
         p.drawText(QRectF(edges[0][0] + 7.5, yy, name_w - 7.5, bh), AL, short)
         p.drawText(QRectF(edges[1][0], yy, edges[1][1] - edges[1][0], bh), Qt.AlignCenter, str(d.get("users", 1)))
         c = lambda i: QPointF((edges[i][0] + edges[i][1]) / 2, yy + bh / 2)
-        pen = QPen(TXT, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin)
+        pen = QPen(S.TXT, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin)
 
         q, s = c(2), 1.2                                             # escudo (usuario falso)
         sh = QPainterPath()
@@ -1458,7 +1424,7 @@ class NodeItem(QGraphicsItem):
         front.lineTo(q.x() + 6.0 * s, q.y() + 6.5 * s)
         front.lineTo(q.x() - 3.5 * s, q.y() + 6.5 * s)
         front.closeSubpath()
-        p.setBrush(FIELD)
+        p.setBrush(S.FIELD)
         p.drawPath(front)
         p.setBrush(Qt.NoBrush)
         p.drawPolyline(QPolygonF([QPointF(q.x() + 1.5 * s, q.y() - 3.0 * s), QPointF(q.x() + 1.5 * s, q.y() + 1.5 * s),
@@ -1466,12 +1432,12 @@ class NodeItem(QGraphicsItem):
 
         q, s = c(4), 1.1                                             # carpeta (rellena, como en Blender)
         p.setPen(Qt.NoPen)
-        p.setBrush(TXT)
-        draw_folder_icon(p, QRectF(q.x() - 8.0, q.y() - 8.0, 16.0, 16.0), TXT)   # tu folder.svg
+        p.setBrush(S.TXT)
+        draw_folder_icon(p, QRectF(q.x() - 8.0, q.y() - 8.0, 16.0, 16.0), S.TXT)   # tu folder.svg
         pass
 
         q = c(5)                                                     # X (quitar imagen)
-        p.setPen(QPen(TXT, 1.3, Qt.SolidLine, Qt.RoundCap))
+        p.setPen(QPen(S.TXT, 1.3, Qt.SolidLine, Qt.RoundCap))
         p.drawLine(QPointF(q.x() - 3.8, q.y() - 3.8), QPointF(q.x() + 3.8, q.y() + 3.8))
         p.drawLine(QPointF(q.x() - 3.8, q.y() + 3.8), QPointF(q.x() + 3.8, q.y() - 3.8))
 
@@ -1541,14 +1507,14 @@ class NodeItem(QGraphicsItem):
                 p.drawLine(QPointF(gr.left(), gr.center().y()), QPointF(gr.right(), gr.center().y()))
             p.setPen(QPen(QColor("#0d0d0d"), 1.3))
             p.drawLine(QPointF(gr.left(), gr.bottom()), QPointF(gr.right(), gr.top()))
-            p.setPen(QPen(FIELD_LINE, 1.0))
+            p.setPen(QPen(S.FIELD_LINE, 1.0))
             p.setBrush(Qt.NoBrush)
             p.drawRect(gr)
         elif kind == "ramp":
             # medidas de Blender 5.2 (sacadas de capturas), relativas al inicio del bloque (y)
             by = y + 8.0                                  # fila de iconos + menu doble
             cy = by + 10.0
-            p.setPen(QPen(TXT, 1.0, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+            p.setPen(QPen(S.TXT, 1.0, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
             p.setBrush(Qt.NoBrush)
             cx = x + 10.0                                 # "+"
             p.drawLine(QPointF(cx - 3.9, cy), QPointF(cx + 3.9, cy))
@@ -1560,15 +1526,15 @@ class NodeItem(QGraphicsItem):
                                       QPointF(cx + 3.7, cy - 2.0)]))
             gx = x + 92.8                                 # RGB | Linear: una sola caja con linea divisoria
             grp = QRectF(gx, by, x + fw - gx, 20.0)
-            path = self.field(p, grp, MENU)
+            path = self.field(p, grp, S.MENU)
             self.outline(p, path)
             mid = x + 156.0
-            p.setPen(QPen(FIELD_LINE, FIELD_LINE_W))
+            p.setPen(QPen(S.FIELD_LINE, FIELD_LINE_W))
             p.drawLine(QPointF(mid, grp.top()), QPointF(mid, grp.bottom()))
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             p.drawText(QRectF(x + 100.0, by, mid - x - 100.0, 20.0), AL, self.ramp["cmode"])
             p.drawText(QRectF(x + 163.3, by, x + fw - x - 163.3, 20.0), AL, self.ramp["interp"])
-            p.setPen(QPen(MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+            p.setPen(QPen(S.MENU_ITEM, 1.1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
             for ax in (x + 150.4, x + 213.2):             # flechitas de cada menu
                 p.drawLine(QPointF(ax - 2.6, cy - 1.2), QPointF(ax, cy + 1.4))
                 p.drawLine(QPointF(ax, cy + 1.4), QPointF(ax + 2.6, cy - 1.2))
@@ -1580,7 +1546,7 @@ class NodeItem(QGraphicsItem):
                 lg.setColorAt(_t, QColor.fromRgbF(lin2s(_c[0]), lin2s(_c[1]), lin2s(_c[2]), 1.0))
             # (degradado muestreado desde los marcadores)
             p.fillRect(gr, QBrush(lg))
-            p.setPen(QPen(QColor(TXT.red(), TXT.green(), TXT.blue(), 70), 0.8))   # borde fino de la barra
+            p.setPen(QPen(QColor(S.TXT.red(), S.TXT.green(), S.TXT.blue(), 70), 0.8))   # borde fino de la barra
             p.setBrush(Qt.NoBrush)
             p.drawRect(gr)
             # marcadores: pentagono con la punta hacia arriba, centrado en cada extremo de la barra
@@ -1619,20 +1585,20 @@ class NodeItem(QGraphicsItem):
             # fila "0" + Pos
             py = y + 63.2
             z = QRectF(x, py, 63.0, 20.0)
-            path = self.field(p, z, FIELD)
+            path = self.field(p, z, S.FIELD)
             self.outline(p, path)
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             p.drawText(z, Qt.AlignCenter, str(self.ramp["active"]))
             f2 = QRectF(x + 71.7, py, fw - 71.7, 20.0)
-            path = self.field(p, f2, FIELD)
+            path = self.field(p, f2, S.FIELD)
             _pf = 0.0   # en Blender el campo Pos no lleva relleno
             if _pf > 0:                                   # Pos es un deslizador 0-1: relleno proporcional
                 p.save()
                 p.setClipPath(path)
-                p.fillRect(QRectF(f2.x(), f2.y(), f2.width() * _pf, f2.height()), SLIDER)
+                p.fillRect(QRectF(f2.x(), f2.y(), f2.width() * _pf, f2.height()), S.SLIDER)
                 p.restore()
             self.outline(p, path)
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             p.drawText(f2.adjusted(NUM_PAD_L, 0, -NUM_PAD_R, 0), AL, "Pos")
             p.drawText(f2.adjusted(NUM_PAD_L, 0, -NUM_PAD_R, 0), AR, f'{self.ramp["stops"][self.ramp["active"]]["pos"]:.3f}')
             # muestra de color (queda a 2 u del Factor, como en Blender)
@@ -1642,7 +1608,7 @@ class NodeItem(QGraphicsItem):
         elif kind == "imgsel":
             self.paint_imgsel(p, x, y, fw)
             
-            p.setPen(QPen(TXT, 1.2))
+            p.setPen(QPen(S.TXT, 1.2))
             p.setBrush(Qt.NoBrush)
             
             
@@ -1664,9 +1630,9 @@ class NodeItem(QGraphicsItem):
                 p.drawEllipse(c, rad, rad)
         elif kind == "groupsel":
             f = QRectF(x, y + 2, fw, 18)
-            path = self.field(p, f, FIELD)
+            path = self.field(p, f, S.FIELD)
             self.outline(p, path)
-            p.setPen(TXT)
+            p.setPen(S.TXT)
             p.drawText(f.adjusted(8, 0, -8, 0), AL, self.spec["label"])
 
     # ---- interaccion
@@ -2242,11 +2208,11 @@ class RerouteItem(QGraphicsItem):
     def paint(self, p, opt, widget=None):
         p.setRenderHint(QPainter.Antialiasing)
         if self.isSelected():
-            p.setPen(QPen(SEL, 2.0))
+            p.setPen(QPen(S.SEL, 2.0))
             p.setBrush(Qt.NoBrush)
             p.drawEllipse(QPointF(0, 0), self.R + 2.5, self.R + 2.5)
-        p.setPen(QPen(QColor(SOCK_LINE), SOCK_LINE_W))
-        p.setBrush(QBrush(QColor(SOCK.get(self.eff or "VALUE", "#a1a1a1"))))
+        p.setPen(QPen(QColor(S.SOCK_LINE), SOCK_LINE_W))
+        p.setBrush(QBrush(QColor(S.SOCK.get(self.eff or "VALUE", "#a1a1a1"))))
         p.drawEllipse(QPointF(0, 0), self.R, self.R)
 
 
@@ -2281,17 +2247,17 @@ class FrameItem(QGraphicsItem):
         p.setRenderHint(QPainter.TextAntialiasing)
         path = QPainterPath()
         path.addRoundedRect(QRectF(0, 0, self.w, self.h), 4, 4)
-        p.fillPath(path, HEAD["frame_node"])
+        p.fillPath(path, S.HEAD["frame_node"])
         sel = self.isSelected()
-        p.setPen(QPen(SEL if sel else OUTLINE, 2.0 if sel else NODE_LINE_W))
+        p.setPen(QPen(S.SEL if sel else S.OUTLINE, 2.0 if sel else NODE_LINE_W))
         p.setBrush(Qt.NoBrush)
         p.drawPath(path)
         if NodeItem.F is None:
             NodeItem.F = make_font()
         p.setFont(NodeItem.F)
-        p.setPen(TITLE)
+        p.setPen(S.TITLE)
         p.drawText(QRectF(8, 4, self.w - 16, 20), Qt.AlignHCenter | Qt.AlignVCenter, self.label)
-        p.setPen(QPen(DIM, 1.0))        # asa de redimensionado
+        p.setPen(QPen(S.DIM, 1.0))        # asa de redimensionado
         p.drawLine(QPointF(self.w - 12, self.h - 4), QPointF(self.w - 4, self.h - 12))
         p.drawLine(QPointF(self.w - 8, self.h - 4), QPointF(self.w - 4, self.h - 8))
 
@@ -2374,17 +2340,17 @@ class NodeScene(QGraphicsScene):
     def drawBackground(self, p, rect):
         if self.exporting:
             return
-        p.fillRect(rect, BG)
+        p.fillRect(rect, S.BG)
         step = 20
         if rect.width() / step > 300:
             return
         x0 = int(math.floor(rect.left() / step)) * step
         y0 = int(math.floor(rect.top() / step)) * step
         for x in range(x0, int(rect.right()) + step, step):
-            p.setPen(QPen(GRID_MAJOR if x % (step * 5) == 0 else GRID_MINOR, 0))
+            p.setPen(QPen(S.GRID_MAJOR if x % (step * 5) == 0 else S.GRID_MINOR, 0))
             p.drawLine(QPointF(x, rect.top()), QPointF(x, rect.bottom()))
         for y in range(y0, int(rect.bottom()) + step, step):
-            p.setPen(QPen(GRID_MAJOR if y % (step * 5) == 0 else GRID_MINOR, 0))
+            p.setPen(QPen(S.GRID_MAJOR if y % (step * 5) == 0 else S.GRID_MINOR, 0))
             p.drawLine(QPointF(rect.left(), y), QPointF(rect.right(), y))
 
     def nodes(self):
@@ -2678,7 +2644,7 @@ class Window(QMainWindow):
             if kind == "png":
                 img = QImage(max(1, int(rect.width() * scale)), max(1, int(rect.height() * scale)),
                              QImage.Format_ARGB32)
-                img.fill(Qt.transparent if transparent else BG)
+                img.fill(Qt.transparent if transparent else S.BG)
                 p = QPainter(img)
                 p.setRenderHint(QPainter.Antialiasing)
                 p.setRenderHint(QPainter.TextAntialiasing)
@@ -2694,7 +2660,7 @@ class Window(QMainWindow):
                 p = QPainter(g)
                 p.setRenderHint(QPainter.Antialiasing)
                 if not transparent:
-                    p.fillRect(QRectF(0, 0, rect.width(), rect.height()), BG)
+                    p.fillRect(QRectF(0, 0, rect.width(), rect.height()), S.BG)
                 sc.render(p, QRectF(0, 0, rect.width(), rect.height()), rect)
                 p.end()
         finally:

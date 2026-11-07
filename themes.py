@@ -24,6 +24,7 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+import style as S
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QAction, QBrush, QColor, QPalette, QPen
 from PySide6.QtWidgets import QApplication, QComboBox, QFileDialog, QMessageBox, QToolBar
@@ -81,7 +82,7 @@ def _skins(wd):
         d = wd.get(w)
         if not d:
             continue
-        skin = {name: M.col(d[key]) for name, key in _SKIN_SRC.items() if key in d}
+        skin = {name: S.col(d[key]) for name, key in _SKIN_SRC.items() if key in d}
         if "roundness" in d:
             skin["RAD"] = float(d["roundness"]) * M.FH / 2
         out[kind] = skin
@@ -97,47 +98,47 @@ def apply(data):
         wd.setdefault(wname, {}).update({k: _rgba(v) for k, v in d.items()})
     ex = dict(EXTRA_BASE)
     ex.update(data.get("extra") or {})
-    col = M.col
-    M.HEAD = {k: col(th[k]) for k in M.HEAD}
-    M.BG = QColor(ex["bg"])
-    M.GRID_MINOR = QColor(ex["grid_minor"])
-    M.GRID_MAJOR = col(th["grid"])
-    M.BODY = col(th["node_backdrop"])
-    M.OUTLINE = col(th["node_outline"])
-    M.SEL = col(th["node_selected"])
-    M.TXT = col(wd["wcol_regular"]["text"])
-    M.TITLE = QColor(ex["title"])
-    M.DIM = QColor(ex["dim"])
-    M.FIELD = col(wd["wcol_regular"]["inner"])
-    M.FIELD_LINE = col(wd["wcol_regular"]["outline"])
+    col = S.col
+    S.HEAD = {k: col(th[k]) for k in S.HEAD}
+    S.BG = QColor(ex["bg"])
+    S.GRID_MINOR = QColor(ex["grid_minor"])
+    S.GRID_MAJOR = col(th["grid"])
+    S.BODY = col(th["node_backdrop"])
+    S.OUTLINE = col(th["node_outline"])
+    S.SEL = col(th["node_selected"])
+    S.TXT = col(wd["wcol_regular"]["text"])
+    S.TITLE = QColor(ex["title"])
+    S.DIM = QColor(ex["dim"])
+    S.FIELD = col(wd["wcol_regular"]["inner"])
+    S.FIELD_LINE = col(wd["wcol_regular"]["outline"])
     # fondo de los campos de busqueda (UV Map...): wcol_text del tema; sin el, oscuro en temas oscuros
-    M.TEXT_FIELD = (col(wd["wcol_text"]["inner"]) if "wcol_text" in wd
-                    else (QColor("#1d1d1d") if M.BODY.lightness() < 128 else M.FIELD))
-    M.MENU = col(wd["wcol_menu"]["inner"])
-    M.MENU_ITEM = col(wd["wcol_menu"]["item"])
-    M.SLIDER = col(wd["wcol_numslider"]["item"])
-    M.CHECK_ON = col(wd["wcol_option"]["inner_sel"])
-    M.WIRE = col(th["wire"])
-    M.WIRE_SEL = col(th["wire_select"])
-    M.SOCK.clear()
-    M.SOCK.update(SOCK_BASE)
-    M.SOCK.update(data.get("sock") or {})
-    M.SOCK_LINE = ex["sock_line"]
-    M.LINK_LINE = ex["link_line"]
-    M.CURVING = max(0.0, min(10.0, float(ex.get("curving", 5.0))))
+    S.TEXT_FIELD = (col(wd["wcol_text"]["inner"]) if "wcol_text" in wd
+                    else (QColor("#1d1d1d") if S.BODY.lightness() < 128 else S.FIELD))
+    S.MENU = col(wd["wcol_menu"]["inner"])
+    S.MENU_ITEM = col(wd["wcol_menu"]["item"])
+    S.SLIDER = col(wd["wcol_numslider"]["item"])
+    S.CHECK_ON = col(wd["wcol_option"]["inner_sel"])
+    S.WIRE = col(th["wire"])
+    S.WIRE_SEL = col(th["wire_select"])
+    S.SOCK.clear()
+    S.SOCK.update(SOCK_BASE)
+    S.SOCK.update(data.get("sock") or {})
+    S.SOCK_LINE = ex["sock_line"]
+    S.LINK_LINE = ex["link_line"]
+    S.CURVING = max(0.0, min(10.0, float(ex.get("curving", 5.0))))
     # esquinas de los campos: radio = roundness * alto / 2 (0.4 -> 4 px, como tenia fijo)
-    M.RAD = float(wd["wcol_regular"].get("roundness", 0.4)) * M.FH / 2
+    S.RAD = float(wd["wcol_regular"].get("roundness", 0.4)) * M.FH / 2
     # contorno propio de cada tipo de widget (numeros, deslizadores, menus, casillas)
-    M.WCOL_OUT = {kind: col(wd[w]["outline"]) for kind, w in WCOL_KINDS.items() if w in wd}
+    S.WCOL_OUT = {kind: col(wd[w]["outline"]) for kind, w in WCOL_KINDS.items() if w in wd}
     # relleno, texto, relleno activo y esquinas por tipo de widget; el tema integrado se deja
     # tal cual esta calibrado (solo los temas importados/personalizados usan estos valores)
-    M.WCOL_SKIN = _skins(wd) if (data.get("theme") or data.get("widgets")) else {}
+    S.WCOL_SKIN = _skins(wd) if (data.get("theme") or data.get("widgets")) else {}
     _apply_ui(data.get("ui"))
     for sc in WIN.scenes.values():
         for it in sc.items():
             if isinstance(it, M.SocketItem):
-                it.setBrush(QBrush(QColor(M.SOCK.get(it.spec.get("stype"), "#a1a1a1"))))
-                it.setPen(QPen(QColor(M.SOCK_LINE), M.SOCK_LINE_W))
+                it.setBrush(QBrush(QColor(S.SOCK.get(it.spec.get("stype"), "#a1a1a1"))))
+                it.setPen(QPen(QColor(S.SOCK_LINE), M.SOCK_LINE_W))
         for lk in getattr(sc, "links", []):
             lk.update_path()      # la curvatura (noodle_curving) cambia con el tema
         sc.update()
@@ -205,13 +206,13 @@ def import_blender_xml(path):
 def install(window):
     global M, WIN, DIR, THEME_BASE, WID_BASE, SOCK_BASE
     M = sys.modules[type(window).__module__]
-    WIN, DIR = window, M.DATA / "themes"
-    THEME_BASE, WID_BASE = copy.deepcopy(M.THEME), copy.deepcopy(M.WID)
+    WIN, DIR = window, S.DATA / "themes"
+    THEME_BASE, WID_BASE = copy.deepcopy(S.THEME), copy.deepcopy(S.WID)
     if "wcol_toggle" in WID_BASE:
         # tu widgets.json no trae wcol_radio: se parte de wcol_toggle para que el XML pueda sobrescribirlo
         WID_BASE.setdefault("wcol_radio", copy.deepcopy(WID_BASE["wcol_toggle"]))
-    SOCK_BASE = dict(M.SOCK)
-    choice_file = M.DATA / "theme_choice.txt"
+    SOCK_BASE = dict(S.SOCK)
+    choice_file = S.DATA / "theme_choice.txt"
 
     # el contorno de cada campo depende del tipo de widget (como en Blender: wcol_num, wcol_menu...)
     NI = M.NodeItem
@@ -235,20 +236,20 @@ def install(window):
             else:
                 self._wk = None
             try:
-                skin = getattr(M, "WCOL_SKIN", {}).get(self._wk) or {}
-                saved = {n: getattr(M, n) for n in skin}
+                skin = getattr(S, "WCOL_SKIN", {}).get(self._wk) or {}
+                saved = {n: getattr(S, n) for n in skin}
                 for n, v in skin.items():
-                    setattr(M, n, v)          # colores/esquinas de este tipo de widget, solo durante la fila
+                    setattr(S, n, v)          # colores/esquinas de este tipo de widget, solo durante la fila
                 try:
                     orig_row(self, p, r)
                 finally:
                     for n, v in saved.items():
-                        setattr(M, n, v)
+                        setattr(S, n, v)
             finally:
                 self._wk = None
 
         def outline(self, p, path):
-            c = getattr(M, "WCOL_OUT", {}).get(getattr(self, "_wk", None))
+            c = getattr(S, "WCOL_OUT", {}).get(getattr(self, "_wk", None))
             if c is None:
                 orig_outline(self, p, path)
                 return
